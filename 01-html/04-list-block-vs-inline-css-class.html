@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lists</title>
+        <style>
+            .square-bullet-list {
+                list-style-type: square;
+            }
+
+            .bordered-list,
+            a {
+                border: 1px solid crimson;
+            }
+
+            #grocery-list {
+                list-style-image: url( "images/cart.png" );
+                padding-left: 800px;
+            }
+
+            /* .month-list {
+                list-style-type: lower-alpha;
+            } */
+        </style>
+    </head>
+    <body>
+        <!--
+            CSS property - display
+            Block-level: ul, p, h1, h2, li
+                - Gets full width of the parent element
+            Inline: a, img
+                - Gets as much width as it requires
+        -->
+        <!--
+            Explore description list (dl, dt, dd)
+        -->
+        <!-- unordered list -->
+        <ul class="square-bulleted-list bordered-list">
+            <li>Apples</li>
+            <li>Oranges</li>
+            <li>Bananas</li>
+        </ul>
+        
+        <ul class="bordered-list" id="grocery-list">
+            <li>Milk</li>
+            <li>Eggs</li>
+            <li>Bread</li>
+        </ul>
+        
+        <ul class="square-bullet-list">
+            <li>War</li>
+            <li>Pushpa</li>
+            <li>RRR</li>
+        </ul>
+
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+
+        <!-- ordered list -->
+        <ol class="month-list" type="a">
+            <li>Jan</li>
+            <li>Feb</li>
+            <li>Mar</li>
+        </ol>
+
+        <b>Bld text</b>
+    </body>
+</html>

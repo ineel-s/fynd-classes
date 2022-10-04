@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>display property values - block vs inline vs inline-block</title>
+        <style>
+            /* you can set width on inline-block elements */
+            /* inline elements will ALWAYS take up only as much width as required */
+            div {
+                display: inline-block;
+                width: 50%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- div is a block-level container elements -->
+        <div>
+            one
+        </div><!-- make sure not a single space comes in here if you want these 2 divs next to each other --><div>
+            two
+        </div>
+    </body>
+</html>
