@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Table</title>
+        <style>
+            .table-bordered {
+                border-collapse: collapse;
+            }
+
+            .table-bordered
+            th,
+            td {
+                border: 1px solid #444;
+            }
+
+            th,
+            td {
+                padding: 1em;
+            }
+
+            td:last-child {
+                background-color: lightgray;;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Reference for merging columns and rows : https://www.w3schools.com/html/html_table_colspan_rowspan.asp -->
+        <table class="table-bordered">
+            <caption>List of employees at Example.com</caption>
+            <thead>
+                <tr>
+                    <!-- table heading cell -->
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">John Doe</th>
+                    <td>john.doe@example.com</td>
+                    <td>Accountant</td>
+                    <td>Finance</td>
+                </tr>
+                <tr>
+                    <th scope="row">Jane Doe</th>
+                    <td>jane.doe@example.com</td>
+                    <td>Developer</td>
+                    <td>IT</td>
+                </tr>
+                <tr>
+                    <th scope="row">Mark Smith</th>
+                    <td>mark.smith@example.com</td>
+                    <td>Accountant</td>
+                    <td>Finance</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
