@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inheritance</title>
+        <style>
+            article {
+                color: green; /* inherited */
+                font-size: 24px; /* inherited */
+                padding: 24px; /* not inherited */
+                border: 1px solid black; /* not inherited */
+                background-color: yellow;
+            }
+
+            section {
+                font-size: initial; /* use the default value (16px) instead of the inherited value */
+            }
+
+            * {
+                padding: inherit; /* inherit the padding from the parent */
+                border: inherit; /* inherit the border from the parent */
+            }
+
+            a {
+                color: inherit; /* set the same color as parent */
+            }
+        </style>
+    </head>
+    <body>
+        <article>
+            <h2>Article 1</h2>
+
+            <a href="#">Link 1</a>
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto possimus officia at voluptate accusamus ad distinctio eligendi accusantium, eos, hic recusandae. Porro aspernatur corporis quia adipisci cumque soluta illum nam?
+            
+            <section>
+                <h3>Section 1</h3>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, dicta, provident repellendus molestiae illum unde cupiditate fugiat similique atque eos, quia omnis animi soluta laboriosam vitae neque sapiente? Eaque, quod.
+            </section>
+        </article>
+    </body>
+</html>

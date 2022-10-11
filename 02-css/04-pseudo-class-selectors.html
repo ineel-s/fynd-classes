@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pseudo-class selectors</title>
+        <style>
+            /**
+             * Explore :visited for links
+             */
+
+            .btn {
+                display: inline-block;
+                padding: 0.5em;
+                border: 1px solid #444;
+                text-decoration: none; /* none is used to "not apply" the property */
+                color: initial; /* initial -> use the default value for the CSS property */
+                background-color: transparent;
+                font-size: 14px;
+                font-family: Arial;
+                cursor: pointer;
+            }
+
+            /* when we hover over ANY element */
+            /* *:hover */
+            /* :hover */
+            .btn:hover {
+                background-color: #bbb;
+            }
+
+            /* when we click and hold the element */
+            .btn:active {
+                background-color: #999;
+            }
+        </style>
+    </head>
+    <body>
+        <button
+            class="btn"
+            id="save"
+            title="Save the draft of this email"
+        >
+            Save
+        </button>
+        <button class="btn">Cancel</button>
+        <button class="btn">Stop</button>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise | Panel</title>
+        <style>
+            /**
+                Block-Element-Modifier (BEM)
+                Reference: https://getbem.com/naming/
+            */
+            .panel {
+                border: 1px solid #bbb;
+                border-radius: 4px;
+            }
+
+            .panel-heading,
+            .panel-body {
+                padding: 1em;
+            }
+            
+            .panel-heading {
+                background-color: #ddd;
+            }
+
+            .panel-title {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">wew</h2>
+            </div>
+            <div class="panel-body">wewef</div>
+        </div>
+    </body>
+</html>

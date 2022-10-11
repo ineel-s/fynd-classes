@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conflict resolution</title>
+        <style>
+            /* #id > .class, :pseudo-class, [attribute] > type */
+
+            /* Specificity of a selector - ( 0/1, num_ids, num_classes, num_types ) */
+            
+            /* ( 0, 1, 2, 1 ) */
+            section #intro.highlight.emphasize {
+                color: lightgray;
+            }
+
+            /* ( 0, 1, 2, 1 ) */
+            /* 1 id selector, 2 class selector, 1 type selector */
+            body #intro.highlight.emphasize {
+                color: black;
+            }
+            
+            /* ( 0, 1, 1, 1 ) */
+            /* 1 id selector, 1 class selector, 1 type selector */
+            body #intro.highlight {
+                color: purple;
+            }
+
+            /* 1 id selector, 1 type selector */
+            body #intro {
+                color: green;
+            }
+            
+            /* 1 id selector, 0 type selectors */
+            #intro {
+                color: navy;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <!-- ( 1, 0, 0, 0 ) -->
+            <!-- <p style="color: navy;"></p> -->
+            
+            <p id="intro" class="highlight emphasize">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum voluptates cumque non aspernatur quam nisi itaque enim ex iure earum totam sit maxime ad nam vel, a exercitationem obcaecati quidem.
+            </p>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Combinators (used to combine smaller selectors to form longer selectors)</title>
+        <style>
+            a {
+                color: crimson;
+            }
+
+            /* a link anywhere within a section (link can be deeply nested) */
+            /* the space in the selector is a combinator (ancestor-descendant combinator) */
+            section a {
+                color: navy;
+            }
+
+            /* a link right within a section (link is a child of a section) */
+            /* the > in the selector is a combinator (parent-child combinator) */
+            section > a {
+                color: green;
+            }
+
+            /* no spaces between the selectors - select elements which satisfy EACH of the selectors */
+            a.x {
+                color: purple;
+            }
+
+            /* select an elemnt with class x that lies within a link */
+            a .x {
+                color: lightgray;
+            }
+
+            /* comma is used to select elements using different selectors and apply some styles */
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+
+            /* select the "immediate sibling" of the element with class other */
+            .other + li {
+                color: navy;
+            }
+            
+            /* "general sibling" selector */
+            /* the selected element need not immediately follow the .other element - it can come "much later" as well */
+            /* selects all the siblings that come after .other */
+            .other ~ li {
+                text-decoration: underline;
+            }
+
+            .other ~ .berry {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h2>Section 1</h2>
+            <p class="x">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+                <a href="#">Link 1</a>
+            </p>
+
+            <a href="#" class="x">Link 2</a>
+        </section>
+
+        <section>
+            <h2>Section 2</h2>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+                <a href="#">Link 3</a>
+            </p>
+
+            <a href="#">Link 4</a>
+        </section>
+
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+            <a href="#">Link 5</a>
+        </p>
+
+        <a href="#">
+            <strong class="x">Link</strong> 6
+        </a>
+
+        <ul>
+            <li class="citrus">Sweet lime</li>
+            <li>Oranges</li>
+            <li class="other">Apples</li>
+            <li>Bananas</li>
+            <li class="berry">Strawberries</li>
+            <li class="berry">Blueberry</li>
+        </ul>
+    </body>
+</html>

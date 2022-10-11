@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Common selectors</title>
+        <style>
+            /* .class -> class selector */
+            .btn {
+                display: inline-block;
+                padding: 0.5em;
+                border: 1px solid #444;
+                text-decoration: none; /* none is used to "not apply" the property */
+                color: initial; /* initial -> use the default value for the CSS property */
+                background-color: transparent;
+                font-size: 14px;
+                font-family: Arial;
+                cursor: pointer;
+            }
+
+            /* we generally do not prefer using id as selector */
+            /* #id -> id selector */
+            #save {
+                font-size: 18px;
+            }
+
+            /* element / tag / type selector */
+            button {
+                border-radius: 5px;
+            }
+
+            /* [attribute] selector */
+            /* select any element which has a target attribute */
+            [target] {
+                background-color: lightblue;
+            }
+
+            /* [attribute="value"] selector */
+            [href="https://www.google.com"] {
+                color: crimson;
+            }
+        </style>
+    </head>
+    <body>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia nisi dignissimos, aut asperiores odit tenetur quidem soluta, expedita illo perspiciatis sapiente impedit inventore. Soluta alias, quasi repudiandae beatae nobis accusamus?
+        <button class="btn" id="save">Save</button>
+        <button class="btn">Cancel</button>
+        <button class="btn">Stop</button>
+        <a href="#" class="btn">Know more</a>
+        <a href="#" class="btn" target="_blank">Know more</a>
+        <a href="https://www.google.com" class="btn">Google search</a>
+        <a href="https://www.facebook.com" class="btn">Meta</a>
+        <a href="https://www.google.com" class="btn">Google search</a>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Directional properties</title>
+        <style>
+            section {
+                border: 1px solid black;
+                font-size: 3em;
+            }
+
+            #section-1 {
+                /* padding is actually a shorthand property for 4 properties
+                padding-top, padding-right, padding-bottom, padding-left
+                */
+                padding: 1em 2em 4em 8em; /* top right bottom left */
+            }
+
+            #section-2 {
+                padding: 1em 2em 4em; /* top right bottom */
+            }
+            
+            #section-3 {
+                padding: 1em 2em; /* top right */
+            }
+        </style>
+    </head>
+    <body>
+        <section id="section-1">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad maiores maxime harum in, enim obcaecati aperiam reiciendis, possimus labore earum a quisquam repudiandae repellat eligendi porro voluptas aliquid atque tempore!
+        </section>
+        <section id="section-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad maiores maxime harum in, enim obcaecati aperiam reiciendis, possimus labore earum a quisquam repudiandae repellat eligendi porro voluptas aliquid atque tempore!
+        </section>
+        <section id="section-3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad maiores maxime harum in, enim obcaecati aperiam reiciendis, possimus labore earum a quisquam repudiandae repellat eligendi porro voluptas aliquid atque tempore!
+        </section>
+    </body>
+</html>

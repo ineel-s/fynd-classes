@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Structural pseduo-classes</title>
+        <style>
+            :first-child {
+                padding: 2em;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li class="citrus">Sweet lime</li>
+            <li class="citrus">Oranges</li>
+            <li class="other">Apples</li>
+            <li class="other">Bananas</li>
+            <li class="berry">Strawberries</li>
+            <li class="berry">Blueberry</li>
+        </ul>
+
+        <section>
+            <h2>Section 1</h2>
+            <p class="x">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+                <a href="#">Link 1</a>
+            </p>
+
+            <a href="#" class="x">Link 2</a>
+        </section>
+
+        <section>
+            <h2>Section 2</h2>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+                <a href="#">Link 3</a>
+            </p>
+
+            <a href="#">Link 4</a>
+        </section>
+
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+            <a href="#">Link 5</a>
+        </p>
+
+        <a href="#">
+            <strong class="x">Link</strong> 6
+        </a>
+    </body>
+</html>

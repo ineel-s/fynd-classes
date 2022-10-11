@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Structural pseduo-classes</title>
+        <style>
+            li:last-child {
+                color: crimson;
+            }
+
+            li:nth-child( 2 ) {
+                color: green;
+            }
+            
+            li:nth-child( 2n + 1 ) {
+                text-decoration: underline;
+            }
+
+
+            /* this is different from the selection below. How? */
+            /*ul:nth-child( 2 ) {
+                font-family: monospace;
+            }*/
+            
+            ul :nth-child( 2 ) {
+                font-family: monospace;
+            }
+
+            p:nth-of-type( 1 ) {
+                border: 1px dashed crimson;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li class="citrus">Sweet lime</li>
+            <li class="citrus">Oranges</li>
+            <li class="other">Apples</li>
+            <li class="other">Bananas</li>
+            <li class="berry">Strawberries</li>
+            <li class="berry">Blueberry</li>
+        </ul>
+
+        <section>
+            <h2>Section 1</h2>
+            <p class="x">
+                <strong>Para 1</strong>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+                <a href="#">Link 1</a>
+            </p>
+
+            <p>
+                <strong>Para 2</strong>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit animi sed, expedita odit tempore quas ullam corrupti, earum similique ex eligendi voluptatem libero excepturi ut totam dolorum aliquam, inventore ipsa.
+            </p>
+
+            <a href="#" class="x">Link 2</a>
+        </section>
+
+        <section>
+            <h2>Section 2</h2>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+                <a href="#">Link 3</a>
+            </p>
+
+            <a href="#">Link 4</a>
+        </section>
+
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores in facilis nostrum inventore neque amet architecto error quos voluptas totam magnam doloremque, quibusdam explicabo optio. Nihil, esse? Voluptatibus, quo.
+            <a href="#">Link 5</a>
+        </p>
+
+        <a href="#">
+            <strong class="x">Link</strong> 6
+        </a>
+    </body>
+</html>

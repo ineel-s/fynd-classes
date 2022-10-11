@@ -5,6 +5,36 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Form</title>
+        <style>
+            h1 {
+                margin: 0;
+                margin-bottom: 0.5em;
+            }
+
+            .fixed-width-form {
+                width: 100%;
+                max-width: 400px;
+                padding: 2em;
+                border: 1px solid #444;
+            }
+
+            .form-group { /* this is a flex box container */
+                display: flex;
+                margin: 0.4em 0;
+            }
+
+            .form-group label {
+                flex-basis: 40%;
+            }
+
+            .form-group .form-control {
+                flex-basis: 60%;
+            }
+
+            textarea {
+                resize: none;
+            }
+        </style>
     </head>
     <body>
         <!-- HyperText Transfer Protocol (HTTP) - protocol used for browser-server communication in web apps -->
@@ -21,80 +51,182 @@
             If we use method="post" instead of method="get", the browser will send the form info (on submission) using a "POST" HTTP request. Ut will send the info in the HTTP request body.
         -->
         <!--
-            radio, checkbox, file, textarea, reset, select
-            color, range, tel
+            Explore: color, range, tel
         -->
+        <!-- Explore: "multiple" attribute of select -->
+        <!-- Explore: fieldset tag, legend tag -->
         <!--
             When file upload is needed, add enctype="multipart/form-data" to the form
         -->
-        <form action="09-success.html" method="post" enctype="multipart/form-data">
-            <label for="username">Name</label>
-            <input
-                type="text"
-                value="John Doe"
-                placeholder="Name"
-                id="username"
-                name="user_name"
-                required
-            />
+        <form action="09-success.html" method="post" enctype="multipart/form-data" class="fixed-width-form">
+            <h1>Demo form</h1>
+            <div class="form-group">
+                <label for="username">Name</label>
+                <input
+                    type="text"
+                    value="John Doe"
+                    placeholder="Name"
+                    id="username"
+                    name="user_name"
+                    required
+                    class="form-control"
+                />
+            </div>
 
-            <label for="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                name="user_password"
-                required
-            />
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="user_password"
+                    required
+                    class="form-control"
+                />
+            </div>
 
-            <label for="quantity">Quantity</label>
-            <input
-                type="number"
-                id="quantity"
-                min="1"
-                max="10"
-            />
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    min="1"
+                    max="10"
+                    class="form-control"
+                />
+            </div>
             
-            <label for="email">Email</label>
-            <input
-                type="email"
-                id="email"
-            />
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                />
+            </div>
             
-            <label for="fynd-email">Fynd Email ID</label>
-            <input
-                type="email"
-                id="fynd-email"
-                pattern="[A-Za-z][A-Za-z_\.0-9]*[A-Za-z0-9]@gofynd.com"
-            />
+            <div class="form-group">
+                <label for="fynd-email">Fynd Email ID</label>
+                <input
+                    type="email"
+                    id="fynd-email"
+                    name="fynd-email"
+                    pattern="[A-Za-z][A-Za-z_\.0-9]*[A-Za-z0-9]@gofynd.com"
+                    class="form-control"
+                />
+            </div>
 
-            <label for="start-date">Start date</label>
-            <input
-                type="date"
-                id="start-date"
-                min="2022-10-06"
-                max="2022-10-31"
-            />
+            <div class="form-group">
+                <label for="start-date">Start date</label>
+                <input
+                    type="date"
+                    id="start-date"
+                    min="2022-10-06"
+                    max="2022-10-31"
+                    class="form-control"
+                />
+            </div>
             
-            <label for="start-time">Start time</label>
-            <input
-                type="time"
-                id="start-time"
-            />
+            <div class="form-group">
+                <label for="start-time">Start time</label>
+                <input
+                    type="time"
+                    id="start-time"
+                    class="form-control"
+                />
+            </div>
 
-            <label for="resume">Resume</label>
-            <input
-                type="file"
-                id="resume"
-                multiple
-            />
+            <div class="form-group">
+                <label for="resume">Resume</label>
+                <input
+                    type="file"
+                    id="resume"
+                    multiple
+                    class="form-control"
+                />
+            </div>
 
-            <!-- <button type="submit">Save</button> -->
-            <button type="submit">Save (submit button)</button>
-            <button type="button">Cancel</button>
-            <button type="reset">Reset</button>
+            <div class="form-group">
+                <label for="review">Your Review goes in here</label>
+                <textarea
+                    id="review"
+                    name="review"
+                    rows="5"
+                    cols="100"
+                    minlength="20"
+                    maxlength="200"
+                    class="form-control"
+                >sdbckwbb</textarea>
+            </div>
 
-            <input type="submit" value="Save (input submit button)" />
-            <input type="reset" value="Reset" />
+            <div class="form-group">
+                <label for="location">Preferred location</label>
+                <select
+                    id="location"
+                    name="location"
+                    required
+                    class="form-control"
+                >
+                    <option value="">-- Select location --</option>
+                    <option value="BLR">Bengaluru</option>
+                    <option value="GRG">Gurugram</option>
+                    <option value="MUM" selected>Mumbai</option>
+                    <option value="ND">Noida</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="form-control">
+                    <div>
+                        <label>
+                            <input type="radio" value="female" name="gender" />
+                            Female
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" value="male" name="gender" />
+                            Male
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="form-control">
+                    <div>
+                        <label>
+                            <input type="checkbox" value="sports" name="interests" />
+                            Sports
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" value="business" name="interests" />
+                            Business
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" value="arts" name="interests" />
+                            Arts
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-control">
+                    <!-- <button type="submit">Save</button> -->
+                    <button type="submit">Save (submit button)</button>
+                    <button type="button">Cancel</button>
+                    <button type="reset">Reset</button>
+
+                    <input type="submit" value="Save (input submit button)" />
+                    <input type="reset" value="Reset" />
+                </div>
+            </div>
         </form>
 
         <button type="button">General button</button>
