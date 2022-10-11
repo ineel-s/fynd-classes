@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise | Panel</title>
+        <style>
+            /**
+                Block-Element-Modifier (BEM)
+                Reference: https://getbem.com/naming/
+            */
+            .panel {
+                border: 1px solid #bbb;
+                border-radius: 4px;
+            }
+
+            .panel-primary {
+                border-color: navy;
+            }
+            
+            .panel-success {
+                border-color: green;
+            }
+
+            .panel-heading,
+            .panel-body {
+                padding: 1em;
+            }
+            
+            .panel-heading {
+                background-color: #ddd;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+            }
+
+            .panel-title {
+                margin: 0;
+            }
+
+            .panel-primary .panel-heading {
+                background-color: navy;
+                color: white;
+            }
+            
+            .panel-success .panel-heading {
+                background-color: lightgreen;
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel panel-primary"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">wew</h2>
+            </div>
+            <div class="panel-body">wewef</div>
+        </div>
+        <div class="panel panel-success"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">wew</h2>
+            </div>
+            <div class="panel-body">wewef</div>
+        </div>
+    </body>
+</html>
