@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>box-sizing</title>
+        <style>
+            /* usually we modify all elements to have width set interpreted to include horizontal padding and border space this way */
+            * {
+                box-sizing: border-box;
+            }
+
+            /* what is the width upto the border's box? */
+            /* 800px + 64px (padding-left and padding-right) + 40px (border-left-width, border-right-width) = 904px */
+            div {
+                width: 800px; /* content width */
+                padding: 2em;
+                border: 20px solid black;
+                margin: 20px auto;
+            }
+
+            #div-2 {
+                /* width setting now means width that includes horizontal padding and border spaces (not just content width) */
+                /* so what is the content width? - 800px - 64px - 40px = 696px */
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div-1">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, magnam neque dicta facilis labore facere! Quae consequuntur asperiores, fugit quidem laudantium pariatur dolorum quo vero, excepturi atque consectetur totam numquam!
+        </div>
+        <div id="div-2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, magnam neque dicta facilis labore facere! Quae consequuntur asperiores, fugit quidem laudantium pariatur dolorum quo vero, excepturi atque consectetur totam numquam!
+        </div>
+    </body>
+</html>

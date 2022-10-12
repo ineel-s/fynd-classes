@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Units of measurement</title>
+        <style>
+            /* Responsive Web Design (RWD) */
+            /* rem is preferred unit for font-size as it is easy to manage elements' font-size using it */
+
+            /* html element (root) */
+            /* 1rem -> font-size of the root element */
+            
+            /* let us specify the settings for any screen first (particularly mobile) */
+            :root {
+                font-size: 10px;
+            }
+
+            /* next comes tablet */
+            /* width >= 640px */
+            @media ( min-width : 640px ) /*and ( max-width: 991px ) */ {
+                :root {
+                    font-size: 12px;
+                }
+            }
+
+            /* next comes desktop */
+            /* width >= 992px */
+            @media ( min-width : 992px ) {
+                :root {
+                    font-size: initial;
+                }
+            }
+
+            section {
+                font-size: 1.5em; /* 1.5 * 10px = 15px */
+            }
+
+            /* 
+                Absolute units - px (96px -> 1 inch), pt (7pt -> 1 in), mm, cm, in,
+                Relative units - %, em, rem
+            */
+            #p-1 {
+                /* 1em -> for font-size, it is the value that is inherited */
+                font-size: 2em; /* 2 * 15px = 30px */
+                
+                /* 1em -> for padding, it is the value of the font-size of the element */
+                padding: 1em;
+            }
+
+            #p-2 {
+                font-size: 2rem; /* 2 * 10 = 20px */
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <p id="p-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, impedit eos laboriosam hic accusamus enim ad quaerat. Nesciunt ipsam voluptatum iste. Soluta quaerat veritatis mollitia nihil sequi earum nemo quis.</p>
+            <p id="p-2">Eos reprehenderit non, porro, repudiandae consequatur, reiciendis ab ut doloribus animi necessitatibus in repellendus voluptas explicabo! Explicabo mollitia sit minus, voluptatem nobis odit consequuntur architecto dolorum placeat animi vero nam.</p>
+            <p id="p-3">Soluta dignissimos eligendi facere doloribus rerum? Possimus officia voluptas quos aut earum, fuga atque. Alias perferendis quae nesciunt officiis adipisci similique, asperiores velit consequatur! In veniam enim tempore corporis exercitationem.</p>
+            <p id="p-4">Nihil deleniti non a iusto inventore qui necessitatibus possimus numquam adipisci, doloremque nam, quaerat ipsam pariatur eius. Velit assumenda minus ipsum sint, fuga pariatur unde numquam ducimus necessitatibus inventore molestias?</p>
+            <p id="p-5">Corporis laborum perferendis rerum fuga in magnam minus quaerat, deserunt mollitia illum temporibus impedit magni ratione, amet adipisci alias laboriosam sunt minima maiores eaque recusandae explicabo consequuntur suscipit totam. Fugiat?</p>
+        </section>
+    </body>
+</html>

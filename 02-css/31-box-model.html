@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Box model</title>
+        <style>
+            /*
+             * "Box" is the rectangle allocated for an element.
+             * Every "box" has
+             * 1. content area (As much as required for inline, as much as available for block-level)
+             * 2. padding area
+             * 3. border area
+             * 4. margin area
+             */
+            body {
+                margin: 0;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 1600px;
+            }
+
+            div {
+                /* "vertical" margins will "collapse", i.e. overlap, for block-level elements */
+                /* the vertical space between #box-1 and #box-2 is 20px only */
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            #box-1 {
+                /* width, height, min-width, min-height, max-width, max-height */
+                width: 50%; /* this is a div -> it honors width setting */
+                /*height: 120px;*/ /* do not generally set the height - let it be how much ever content requires */
+                max-width: 800px; /* maximum width allowed is 800px */
+                padding: 1em; /* personal preference - to use em for padding */
+                border: 20px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box-1">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur fugiat quam omnis pariatur nemo a aliquid, doloremque cum maxime facere eligendi nisi obcaecati voluptate odio, minima sed quidem, ipsa eius? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, unde reprehenderit. Sit perspiciatis error in. Quasi, et modi porro, numquam labore possimus delectus dolores dicta blanditiis quo maxime quibusdam. Vero. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et dolore harum provident architecto porro totam animi facere fugiat corporis accusamus, voluptates nemo laboriosam inventore. Deleniti accusamus nisi eos eius rem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusamus ratione nam fugiat nulla debitis! Reiciendis dignissimos dolor id sit eaque similique? Debitis possimus dolore fugit dolorem ad quasi veniam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam laudantium assumenda quae ipsa, ducimus perferendis quisquam error amet aperiam iure qui? Dicta, laborum aperiam! Atque aliquid magnam expedita ea necessitatibus!
+        </div>
+        <div id="box-2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur fugiat quam omnis pariatur nemo a aliquid, doloremque cum maxime facere eligendi nisi obcaecati voluptate odio, minima sed quidem, ipsa eius? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis ab expedita aspernatur eos vel numquam autem, vitae id, fuga placeat culpa blanditiis, architecto aperiam nobis soluta officia! Voluptate, qui possimus! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium explicabo neque omnis voluptas natus ad quas dolores autem. Dolore omnis quia at laborum quam mollitia facilis nemo excepturi facere esse?
+        </div>
+        <div id="box-3">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur fugiat quam omnis pariatur nemo a aliquid, doloremque cum maxime facere eligendi nisi obcaecati voluptate odio, minima sed quidem, ipsa eius? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis ab expedita aspernatur eos vel numquam autem, vitae id, fuga placeat culpa blanditiis, architecto aperiam nobis soluta officia! Voluptate, qui possimus! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium explicabo neque omnis voluptas natus ad quas dolores autem. Dolore omnis quia at laborum quam mollitia facilis nemo excepturi facere esse?
+        </div>
+    </body>
+</html>

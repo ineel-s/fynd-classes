@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Background</title>
+        <style>
+            /*
+                Explore :
+                background-origin
+                background-attachment
+            */
+            div {
+                height: 2000px;
+                padding: 2em;
+                border: 10px dashed black;
+            }
+
+            div:nth-child(1) {
+                background-color: crimson;
+            }
+            
+            div:nth-child(2) {
+                background-image: url( "backgrounds/nine-colorful-patterns/557.jpg" );
+            }
+            
+            div:nth-child(3) {
+                background-image: url( "backgrounds/nine-colorful-patterns/557.jpg" );
+                background-repeat: no-repeat;
+            }
+
+            div:nth-child(4) {
+                background-image: url( "backgrounds/nine-colorful-patterns/557.jpg" );
+                background-size: cover;
+            }
+            
+            div:nth-child(5) {
+                background-image: url( "backgrounds/nine-colorful-patterns/557.jpg" );
+                background-size: contain;
+                background-clip: padding-box;
+            }
+
+            div:nth-child(6) {
+                background-image: url( "backgrounds/nine-colorful-patterns/557.jpg" );
+                background-size: 400px 400px;
+                background-clip: content-box;
+            }
+            
+            div:nth-child(7) {
+                background-image: url( "backgrounds/nine-colorful-patterns/557.jpg" );
+                background-size: 50% 50%;
+                background-clip: content-box;
+            }
+        </style>
+    </head>
+    <body>
+        <!--
+            background (shorthand)
+            background-image
+            background-color
+            background-position
+            background-size
+            background-repeat
+        -->
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </body>
+</html>
