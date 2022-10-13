@@ -1,0 +1,34 @@
+<!--
+    In flex-box (display: flex; on a parent), the parent will control the layout of the children
+    For example: Lay the children in a row / column, single line / allow multiple lines
+    The children has some say in the layout
+    "Flex"box - Here children can flex, i.e. change their dimensions based on the space available in the parent
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flex-box layout</title>
+        <style>
+            /* The parent laid out the children in row-wise fashion. The parent adjusted the width of the children so that they all get same height */
+            .parent {
+                display: flex;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo eligendi fugiat commodi at architecto impedit, repellat ab ut perferendis possimus assumenda sapiente cupiditate debitis autem, voluptatibus maxime cum magnam? Quibusdam.</div>
+            <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque cum consequatur praesentium dolore eaque at temporibus quo repudiandae quam? Soluta aut sapiente quia dolor laudantium cum, in molestias quos fuga.
+            Dolorem sequi sit eveniet molestiae explicabo distinctio rem sunt pariatur! Ratione asperiores, temporibus vero tempora ea sit, voluptatem laudantium magnam id vel autem quisquam unde libero. In doloremque quod temporibus.</div>
+            <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore dolor illum incidunt aperiam eveniet! Veniam aut inventore quibusdam nam ratione est harum accusantium laborum exercitationem a, ducimus recusandae minima voluptatibus.
+            Tempora necessitatibus culpa ducimus illum sint officia ex, quaerat voluptatum eius soluta dolor vitae, reprehenderit labore unde, similique consectetur laborum. Veritatis minus cupiditate tenetur laudantium aperiam ratione numquam pariatur ab!
+            Rem animi commodi consectetur quisquam eum est omnis, similique, alias dolorem accusamus, beatae dolore illo maxime aliquam laudantium magni voluptas. Est delectus voluptatibus voluptatum quia deleniti. Odit vel qui molestiae!</div>
+            <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias voluptatem amet provident itaque facere, laudantium maxime corrupti ratione modi ducimus dicta maiores quasi? Sequi sit dolor neque voluptatem eaque rerum.</div>
+            <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto quod unde maiores quisquam eveniet iure, fugiat, velit neque quidem quibusdam, magni quaerat cum eius voluptatibus quae nesciunt qui impedit modi?
+            Quis dolorem, facilis debitis nihil recusandae omnis repellendus quas, quos enim itaque sed earum ut nemo et corporis labore reiciendis provident! Sunt quas cum consequatur deleniti, temporibus reprehenderit amet rerum.</div>
+        </div>
+    </body>
+</html>

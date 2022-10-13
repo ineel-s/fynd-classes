@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hiding and showing</title>
+        <style>
+            div {
+                padding: 1em;
+                border: 1px solid black;
+            }
+            
+            div:nth-child(2) {
+                display: none;
+            }
+            
+            div:nth-child(4) {
+                visibility: hidden;
+            }
+
+            div:nth-child(6) {
+                opacity: 1; /* we cannot see what is behind the element (opaque) */
+            }
+            
+            div:nth-child(7) {
+                opacity: 0.5; /* we cannot partially see what is behind the element (semi-transparent) */
+            }
+            
+            div:nth-child(8) {
+                opacity: 0; /* fully transprent */
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>Div 1</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 2</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 3</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 4</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 5</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 6</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 7</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 8</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+        <div>
+            <h2>Div 9</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus aliquam sapiente cum? Eum, id? Sunt eveniet iure inventore possimus. Quam magni laboriosam laudantium praesentium, minima assumenda explicabo quisquam aut accusamus.
+        </div>
+    </body>
+</html>
