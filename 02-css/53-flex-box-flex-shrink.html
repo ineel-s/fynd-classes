@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>flex-shrink</title>
+        <style>
+            .row {
+                display: flex;
+                margin: 80px 0;
+            }
+  
+            /* If width of row is 1776px, then each child wants 888px */
+            /* The parent is falling short by -888px */
+            /* Each child reduces by -888 / ( 1 + 1 + 1 ) = -296px */
+            /* So each child will be 592px */
+            .col {
+                flex-basis: 50%;
+                flex-shrink: 1; /* 1 is default */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row" id="row-1">
+            <div class="col">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid cupiditate molestias illo minus! Ducimus minus maiores libero magni reprehenderit commodi aperiam facilis odio, officiis necessitatibus est et! Iusto, provident architecto.
+            </div>
+            <div class="col">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid cupiditate molestias illo minus! Ducimus minus maiores libero magni reprehenderit commodi aperiam facilis odio, officiis necessitatibus est et! Iusto, provident architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam porro quis sequi minus. Esse autem cum perspiciatis deleniti similique dolores, quaerat, porro perferendis tempora, accusamus delectus aspernatur corrupti vero beatae.
+            </div>
+            <div class="col">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid cupiditate molestias illo minus! Ducimus minus maiores libero magni reprehenderit commodi aperiam facilis odio, officiis necessitatibus est et! Iusto, provident architecto. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, dignissimos ullam nisi, voluptatum ducimus pariatur quos dolores ex dolorum corporis cupiditate rerum! Omnis atque iste mollitia debitis voluptate impedit officiis?
+            </div>
+        </div>
+    </body>
+</html>

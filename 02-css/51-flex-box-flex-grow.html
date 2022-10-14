@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>flex-grow</title>
+        <style>
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 80px 0;
+            }
+  
+            /**
+                flex-grow for 3 children is in the ratio 1:1:1
+                So the extra space will be divided equally among them
+            */
+            .col {
+                flex-basis: 20%;
+                flex-grow: 1; /* default is 0 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row" id="row-1">
+            <div class="col">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid cupiditate molestias illo minus! Ducimus minus maiores libero magni reprehenderit commodi aperiam facilis odio, officiis necessitatibus est et! Iusto, provident architecto.
+            </div>
+            <div class="col">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid cupiditate molestias illo minus! Ducimus minus maiores libero magni reprehenderit commodi aperiam facilis odio, officiis necessitatibus est et! Iusto, provident architecto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam porro quis sequi minus. Esse autem cum perspiciatis deleniti similique dolores, quaerat, porro perferendis tempora, accusamus delectus aspernatur corrupti vero beatae.
+            </div>
+            <div class="col">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid cupiditate molestias illo minus! Ducimus minus maiores libero magni reprehenderit commodi aperiam facilis odio, officiis necessitatibus est et! Iusto, provident architecto. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, dignissimos ullam nisi, voluptatum ducimus pariatur quos dolores ex dolorum corporis cupiditate rerum! Omnis atque iste mollitia debitis voluptate impedit officiis?
+            </div>
+        </div>
+    </body>
+</html>
