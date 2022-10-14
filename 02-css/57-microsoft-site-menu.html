@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Microsoft site menu (applying flex box)</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <style>
+            /* .main-menu {
+                padding-left: 5%;
+                padding-right: 5%;
+            } */
+            .main-menu-inner {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 5%;
+            }
+
+            .main-menu-nav {
+                display: flex;
+                list-style-type: none;
+                align-items: center;
+            }
+
+            .main-menu-nav a {
+                display: inline-block;
+                padding: 10px;
+                border-bottom: 2px solid transparent;
+                margin: 0 10px;
+                text-decoration: none;
+                color: initial;
+            }
+
+            .main-menu-nav a:hover {
+                border-bottom: 2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="main-menu">
+            <div class="main-menu-inner">
+                <ul class="main-menu-nav">
+                    <li>
+                        <a href="https://microsoft.com">
+                            <img src="images/microsoft-logo.png" alt="Microsoft logo" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Microsoft 365</a>
+                    </li>
+                    <li>
+                        <a href="#">Teams</a>
+                    </li>
+                    <li>
+                        <a href="#">Windows</a>
+                    </li>
+                    <li>
+                        <a href="#">Surface</a>
+                    </li>
+                    <li>
+                        <a href="#">XBox</a>
+                    </li>
+                    <li>
+                        <a href="#">Support</a>
+                    </li>
+                </ul>
+                <ul class="main-menu-nav">
+                    <li>
+                        <a href="#">All Microsoft</a>
+                    </li>
+                    <li>
+                        <a href="#">Search</a>
+                    </li>
+                    <li>
+                        <a href="#">Cart</a>
+                    </li>
+                    <li>
+                        <a href="#">Sign in</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </body>
+</html>
