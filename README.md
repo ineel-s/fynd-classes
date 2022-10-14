@@ -7,3 +7,5 @@
     - CSS Lab Guide: Q. 1, 3, 4
 - Oct 12
     - CSS Lab Guide: Q. 11
+- Oct 14
+    - CSS Lab Guide: Q. 5, 6, 10, 12, 13, 14, More exercises - 1, 4
