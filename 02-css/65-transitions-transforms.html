@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Transforms and Transitions</title>
+        <style>
+            /* The reverse transition should be made smooth */
+            /* Explore translate transformation */ 
+            /* Explore @keyframes rule and how to create animations */
+            body {
+                width: 80%;
+                max-width: 1340px;
+                margin: 50px auto;
+            }
+
+            .transform {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
+                height: 100px;
+                background-color: crimson;
+                color: white;
+                transition: transform 1000ms;
+                margin: 100px;
+            }
+
+            .rotate:hover {
+                transform: rotate( -15deg );
+                transform-origin: bottom left;
+            }
+
+            .rotate-ease-in-out {
+                transition-timing-function: ease-in-out;
+            }
+            
+            .rotate-linear {
+                transition-timing-function: linear;
+            }
+
+            .scale {
+                transition-property: transform;
+                transition-duration: 200ms;
+            }
+
+            .scale:hover {
+                transform: scale( 1.2, 1.2 );
+            }
+        </style>
+    </head>
+    <body>
+        <div class="transform rotate rotate-ease-in-out">Fynd</div>
+        <div class="transform rotate rotate-linear">Fynd</div>
+        <div class="transform scale">Fynd</div>
+    </body>
+</html>
