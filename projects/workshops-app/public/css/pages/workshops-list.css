@@ -1,0 +1,9 @@
+.btn-details {
+    font-size: 1rem;
+}
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
