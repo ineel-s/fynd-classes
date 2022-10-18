@@ -1,0 +1,22 @@
+.workshop-details {
+    display: flex;
+    /* Shorthand: https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow */
+    flex-flow: row wrap;
+    gap: 20px
+}
+
+.workshop-details-image,
+.workshop-details-text {
+    flex-basis: 100%;
+}
+
+@media ( min-width: 992px ) {
+    .workshop-details-image {
+        flex-basis: 30%;
+    }
+
+    .workshop-details-text {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}

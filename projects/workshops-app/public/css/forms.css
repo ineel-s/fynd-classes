@@ -1,0 +1,25 @@
+.form-group {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 16px 0;
+}
+
+.form-group label,
+.form-group .form-control-wrapper {
+    flex-basis: 100%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5em;
+}
+
+@media ( min-width : 640px ) {
+    .form-group label {
+        flex-basis: 30%;
+    }
+
+    .form-group .form-control-wrapper {
+        flex-basis: 70%;
+    }
+}

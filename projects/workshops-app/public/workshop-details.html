@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React JS Masterclass | Workshops App</title>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,900;1,100&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="/external/normalize.css">
+        <link rel="stylesheet" href="/css/utils.css">
+        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/nav.css">
+        <link rel="stylesheet" href="/css/forms.css">
+        <link rel="stylesheet" href="/css/pages/workshop-details.css">
+    </head>
+    <body>
+        <nav class="main-menu">
+            <ul class="main-menu-nav list-unstyled container">
+                <li><a href="/">Home</a></li>
+                <li><a href="/workshops-list.html">Workshops List</a></li>
+                <li><a href="/feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+
+        <main class="container mt-4">
+            <section>
+                <h1>React JS Masterclass</h1>
+                <hr />
+                <div class="workshop-details">
+                    <div class="workshop-details-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png" alt="Angular JS Bootcamp" class="img-fluid" />
+                    </div>
+                    <div class="workshop-details-text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum labore ex fugiat voluptate quas obcaecati repellendus provident laudantium praesentium quod pariatur earum repudiandae delectus, officiis, reiciendis suscipit culpa. At, maxime!
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Details of new session</h2>
+                <hr />
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <div class="form-control-wrapper">
+                            <input type="text" id="name" name="name" class="form-control" aria-describedby="name-description" />
+                            <div id="name-description">Name of the session (only letters A-Z a-z and spaces allowed)</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="speaker">Speaker</label>
+                        <div class="form-control-wrapper">
+                            <input type="text" id="speaker" name="speaker" class="form-control" />
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
