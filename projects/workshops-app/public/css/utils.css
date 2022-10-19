@@ -29,10 +29,28 @@
     display: flex !important;
 }
 
+.justify-content-between {
+    justify-content: space-between;
+}
+
 .align-items-center {
     align-items: center;
 }
 
 .img-fluid {
     width: 100%;
+}
+
+.d-sm-none {
+    display: none;
+}
+
+@media ( min-width: 992px ) {
+    .d-lg-none {
+        display: none;
+    }
+
+    .d-sm-none {
+        display: block;
+    }
 }

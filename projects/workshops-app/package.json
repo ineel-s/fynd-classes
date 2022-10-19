@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "copy": "cpx \"node_modules/normalize.css/normalize.css\" public/external",
+    "copy": "cpx \"node_modules/{normalize.css/normalize.css,@fortawesome/fontawesome-free}/**/*\" public/external",
     "start": "live-server --mount=/:public"
   },
   "keywords": [],
