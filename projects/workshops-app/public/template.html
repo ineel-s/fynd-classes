@@ -7,6 +7,7 @@
         <title></title>
         
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,900;1,100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/external/@fortawesome/fontawesome-free/css/all.min.css">
         
         <link rel="stylesheet" href="/external/normalize.css">
         <link rel="stylesheet" href="/css/utils.css">
@@ -18,14 +19,22 @@
     <body>
         <nav class="main-menu">
             <ul class="main-menu-nav list-unstyled container">
-                <li><a href="/">Home</a></li>
-                <li><a href="/workshops-list.html">Workshops List</a></li>
-                <li><a href="/feedback.html">Feedback</a></li>
+                <li class="d-lg-none">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="/">Workshops App</a>
+                        <button class="fa-solid fa-bars main-menu-toggler"></button>
+                    </div>
+                </li>
+                <li class="main-menu-link"><a href="/" class="active">Home</a></li>
+                <li class="main-menu-link"><a href="/workshops-list.html">Workshops List</a></li>
+                <li class="main-menu-link"><a href="/feedback.html">Feedback</a></li>
             </ul>
         </nav>
 
         <main class="container mt-4">
             
         </main>
+
+        <script src="/js/nav.js"></script>
     </body>
 </html>
