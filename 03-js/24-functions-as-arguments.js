@@ -27,6 +27,6 @@ print(
     },
     // helper function for print function
     function( person ) {
-        return person.gender === 'female' ? 'Mademoiselle' : 'Monsieur';
+        return person.gender === 'female' ? 'Madame' : 'Monseiur';
     }
 );
