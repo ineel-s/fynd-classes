@@ -17,7 +17,7 @@ function getTitle( person ) {
 }
 
 // The name of the function is a reference to the function
-print( john, getTitle );
+print( john, getTitle ); // person = john; fetchTitle = getTitle
 
 print(
     {

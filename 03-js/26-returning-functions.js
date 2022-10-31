@@ -1,12 +1,12 @@
 function getter( key ){
-    return {
-        name: 'John',
-        age: 32
-    };
-
-    // return function( person ) {
-    //     return person[key];
+    // return {
+    //     name: 'John',
+    //     age: 32
     // };
+
+    return function( person ) {
+        return person[key];
+    };
 }
 
 const john = {
@@ -29,4 +29,4 @@ const age = getter( 'age' );
 console.log( age( john ) );
 console.log( age( jane ) );
 
-getter().name; // no objection
+// getter().name; // no objection
