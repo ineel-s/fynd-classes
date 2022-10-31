@@ -13,3 +13,13 @@
     - 03-JS (ES5 and earlier) - Lab guide
         - CONDITIONAL AND LOOP STATEMENTS : Q. 1, 6, 11
         - FUNCTIONS : Q. 8, 9
+- Oct 31
+    - 03-JS (ES5 and earlier) - Lab guide
+        - Functions
+            - 10
+        - Objects
+            - 4 (optional)
+        - Function context
+            - 1, 2 (needs bit more exploration on bind())
+        - Built-in classes - strings, arrays
+            - 6
