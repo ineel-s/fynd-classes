@@ -32,6 +32,26 @@ persons.sort(
             return 0;
         }
     }
-)
+);
+
+console.log( persons );
+
+// Sort by age
+persons.sort(
+    ( a, b ) => {
+        // if( a.age < b.age ) {
+        //     return -1;
+        // }
+
+        // if( b.age < a.age ) {
+        //     return 1;
+        // }
+
+        // if( a.age === b.age ) {
+        //     return 0;
+        // }
+        return a.age - b.age;
+    }
+);
 
 console.log( persons );
