@@ -1,4 +1,4 @@
-// Number, String, Boolean
+// Number, String, Boolean - classes which wrap primitive number, string, boolean
 const quote = 'An apple a day keeps the doctor away';
 
 // strings are immutable - we cannot change strings
@@ -20,3 +20,9 @@ console.log( quote.indexOf( 'banana' ) ); // -1
 
 console.log( quote.toUpperCase() );
 console.log( quote.toLowerCase() );
+
+console.log( '    John Doe   ' );
+console.log( '    John Doe   '.trim() );
+
+const words = 'Hello world. How are you?'.split( ' ' );
+console.log( words );
