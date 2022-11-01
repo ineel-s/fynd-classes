@@ -23,3 +23,7 @@
             - 1, 2 (needs bit more exploration on bind())
         - Built-in classes - strings, arrays
             - 6
+- Nov 1
+    - 03-JS (ES5 and earlier) - Lab guide
+        - Built-in classes - strings, arrays
+            - 1 - 5
