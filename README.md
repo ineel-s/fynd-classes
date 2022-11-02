@@ -27,3 +27,9 @@
     - 03-JS (ES5 and earlier) - Lab guide
         - Built-in classes - strings, arrays
             - 1 - 5
+- Nov 2
+    - 03-JS (ES5 and earlier) - Lab guide
+        - Built-in classes - strings, arrays
+            - 1 - 5
+    - 04-JS (ES2015+) - Lab guide.pdf
+        - 4, 5, 
