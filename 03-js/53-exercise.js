@@ -18,3 +18,10 @@ const iPhone11 = {
         return (this.price * (100 - percentage)) / 100;
     },
 };
+
+// create the variables using destructuring - the variables should have values as shown below. 
+// destructure here... 
+// your code...
+ 
+// below line logs - iPhone 11   Apple   128   12 MP Ultra Wide   Green 
+console.log( name, brand, ram, rearCamera, secondColor );
