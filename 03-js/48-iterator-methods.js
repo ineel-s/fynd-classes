@@ -50,4 +50,39 @@ console.log( squares );
 const personNames = persons.map( p => p.name );
 console.log( personNames );
 
+// iterate through the array - forEach
+// numbers.forEach( ( item, idx, array ) => array[idx]++ );
+numbers.forEach( item => console.log( item ) );
+console.log( numbers );
+
+// EXERCISE: Use forEach to increase the age of every person in the persons array
+persons.forEach( p => p.age++ );
+console.log( persons );
+
+// BAD USE CASE FOR USING forEach - we can use filter instead
+// const evens = [];
+
+// numbers.forEach( ( item, idx ) => {
+//     if( item % 2 === 0 ) {
+//         evens.push( item );
+//     }
+//     // console.log( item, idx );
+// });
+
+// console.log( evens );
+
 // you want an "aggregate value" - a single value that summarizes the array
+// const numbers = [ 1, 2, 3, 4, 5, 6 ];
+// iteration 1: acc = 0, item = 1 => 0 + 1 = 1 (new value for acc)
+// iteration 2: acc = 1, item = 2 => 1 + 2 = 3 (new value for acc)
+// iteration 3: acc = 3, item = 3 => 3 + 3 = 6 (new value for acc)
+// iteration 4: acc = 6, item = 4 => 6 + 4 = 10 (new value for acc)
+// iteration 5: acc = 10, item = 5 => 10 + 5 = 15 (new value for acc)
+// iteration 6: acc = 15, item = 6 => 15 + 6 = 21 (new value for acc)
+// reduce returns 21 (final value for acc)
+const sum = numbers.reduce( ( acc, item ) => acc + item, 0 );
+console.log( 'sum =', sum );
+
+// EXERCISE: Find out the maximum age of persons using reduce
+const maxAge = persons.reduce( ( maxAge, p ) => Math.max( maxAge, p.age ), 0 )
+console.log( maxAge );
