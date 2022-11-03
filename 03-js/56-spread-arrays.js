@@ -16,4 +16,33 @@ console.log( nums1Copy ); // [ 2, 2, 3 ]
 const nums3 = [ ...nums1, ...nums2 ];
 console.log( nums3 );
 
-// Scenario #2: Apply it on an object
+const persons = [
+    {
+        name: 'Bob',
+        age: 32
+    },
+    {
+        name: 'Aaron',
+        age: 40
+    },
+    {
+        name: 'Charlie',
+        age: 35
+    },
+    {
+        name: 'Elena',
+        age: 45
+    },
+    {
+        name: 'Dave',
+        age: 18
+    }
+];
+
+const personsCopy = [ ...persons ]; // the items in persons array are copied by reference
+personsCopy[0].age++;
+
+console.log( persons );
+console.log( personsCopy );
+console.log( persons === personsCopy ); // false -> the arrays are different
+console.log( persons[0] === personsCopy[0] ); // true
