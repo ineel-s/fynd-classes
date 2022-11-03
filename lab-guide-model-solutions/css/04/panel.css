@@ -1,0 +1,47 @@
+.panel {
+    border: 1px solid var( --default-color-dark, black );
+    border-radius: var( --border-radius-default, 4px );
+}
+
+.panel-primary {
+    border-color: var( --primary-color, navy );
+}
+
+.panel-secondary {
+    border-color: var( --secondary-color, olive );
+}
+
+.panel-error {
+    border-color: var( --error-color, crimson );
+}
+
+.panel-heading,
+.panel-body {
+    padding: 1em;
+}
+
+.panel-heading {
+    background-color: var( --default-color, gray );
+    border-top-left-radius: var( --border-radius-default, 4px );
+    border-top-right-radius: var( --border-radius-default, 4px );
+}
+
+.panel-title {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.panel-primary .panel-heading {
+    background-color: var( --primary-color, navy );
+    color: ivory;
+}
+
+.panel-secondary .panel-heading {
+    background-color: var( --secondary-color, olive );
+    color: ivory;
+}
+
+.panel-error .panel-heading {
+    background-color: var( --error-color, crimson );
+    color: ivory;
+}

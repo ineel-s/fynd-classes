@@ -1,0 +1,17 @@
+.required-indicator-message {
+    margin: 0.5em 0;
+}
+
+.required-indicator  {
+    color: crimson;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-control-wrapper {
+    margin: 0.25em 0 1em;
+}

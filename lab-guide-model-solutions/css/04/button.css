@@ -1,0 +1,48 @@
+.btn {
+    display: inline-block;
+    padding: 1em;
+    border: 0;
+    border-radius: var( --border-radius-default, 4px );
+    color: ivory;
+    font-family: inherit;
+    font-size: 1em;
+    cursor: pointer;
+
+    /* styles specifically for links styled as buttons */
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var( --primary-color, navy );
+}
+
+.btn-primary:hover {
+    background-color: var( --primary-color-dark, navy );
+}
+
+.btn-secondary {
+    background-color: var( --secondary-color, olive );
+}
+
+.btn-secondary:hover {
+    background-color: var( --secondary-color-dark, olive );
+}
+
+.btn-error {
+    background-color: var( --error-color, crimson );
+}
+
+.btn-error:hover {
+    background-color: var( --error-color-dark, crimson );
+}
+
+.btn:active {
+    outline: 3px solid var( --default-color-outline, rgba(128, 128, 128, 0.5) );
+}
+
+.btn-fixed {
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

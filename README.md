@@ -33,3 +33,6 @@
             - 1 - 5
     - 04-JS (ES2015+) - Lab guide.pdf
         - 4, 5, 
+- Nov 3
+    - 04-JS (ES2015+) - Lab guide.pdf
+        - 6 - 13, self-study : Map, Set  

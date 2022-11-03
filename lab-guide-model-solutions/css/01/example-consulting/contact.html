@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/utils.css">
+        <link rel="stylesheet" href="styles/app.css">
+        <link rel="stylesheet" href="styles/nav.css">
+        <link rel="stylesheet" href="styles/form.css">
+        <title>Contact us | Example Consulting</title>
+    </head>
+    <body>
+        <nav class="main-menu">
+            <div class="container">
+                <a href="index.html">
+                    <img src="logo/logo_transparent.png" class="brand-image" />
+                </a>
+                <ul class="nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="container">
+            <h1>Example Consulting Pvt. Ltd.</h1>
+            <hr />
+            <section>
+                <h2>Contact us</h2>
+                <p>
+                    <div>
+                        Phone: <a href="tel:+001-123-456-7890">+001-123-456-7890</a>
+                    </div>
+                    <div>
+                        Email: <a href="email:hello@example.com">hello@example.com</a>
+                    </div>
+                </p>
+            </section>
+            <section>
+                <h2>Drop a message</h2>
+                <p>
+                    Please drop us a messge by filling out this form, and we will get back to you within 2 working days.
+                </p>
+                <form action="/send-message" method="post">
+                    <div class="required-indicator-message">Fields marked with <span class="required-indicator" aria-hidden="true">*</span> are required</div>
+                    
+                    <div class="form-group">
+                        <label for="name" class="control-label">
+                            Your Name
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <div class="form-control-wrapper">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="control-label">
+                            Your Email
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <div class="form-control-wrapper">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="john.doe@example.com" required />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service" class="control-label">
+                            What are you looking to build?
+                            <span class="required-indicator" aria-hidden="true">*</span>
+                        </label>
+                        <div class="form-control-wrapper">
+                            <select id="service" name="service" class="form-control" required>
+                                <option value="">-- Choose one --</option>
+                                <option value="blog">Blog</option>
+                                <option value="store">Online store</option>
+                                <option value="game">Game</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <fieldset>
+                            <legend for="email" class="control-label">
+                                Platforms you plan to support
+                                <span class="required-indicator" aria-hidden="true">*</span>
+                            </legend>
+                            <div class="form-control-wrapper">
+                                <label><input type="checkbox" name="platform" id="web" value="web" checked> Web</label>
+                                <label><input type="checkbox" name="platform" id="mobile" value="mobile"> Mobile</label>
+                                <label><input type="checkbox" name="platform" id="desktop" value="desktop"> Desktop</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name" class="control-label">
+                            Message
+                        </label>
+                        <div class="form-control-wrapper">
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="reset" value="Reset" />
+                        <input type="submit" value="Send message" />
+                    </div>
+                </form>
+            </section>
+        </main>
+        <footer class="container">
+            <hr />
+            &copy; example.com
+        </footer>
+    </body>
+</html>

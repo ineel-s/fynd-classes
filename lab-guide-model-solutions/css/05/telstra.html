@@ -1,0 +1,171 @@
+<!-- https://www.telstra.com.au/ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .container {
+                margin: 0 2em;
+            }
+
+            .row {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-between;
+                gap: 20px;
+            }
+
+            .col {
+                flex: 1 1 0;
+            }
+
+            .col-1 {
+                flex-basis: 0;
+            }
+
+            .col-2 {
+                flex-basis: 100%;
+            }
+
+            .card-vertical,
+            .card-horizontal {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .card-vertical {
+                flex-direction: column;
+            }
+
+            .card-horizontal {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .card-vertical .card-img {
+                width: 100%;
+            }
+            
+            .card-horizontal .card-img {
+                max-width: 35%;
+            }
+
+            .mt-3 {
+                margin-top: 20px;
+            }
+            
+            .mb-3 {
+                margin-bottom: 20px;
+            }
+
+            h3, h4 {
+                margin-top: 0;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            h4 {
+                font-size: 1.25em;
+            }
+            
+            @media ( min-width: 992px ) {
+                .container {
+                    width: 940px;
+                    margin: 0 auto;
+                }
+
+                .row {
+                    flex-flow: row nowrap;
+                }
+
+                .col-1 {
+                    flex-basis: 25%;
+                }
+                
+                .col-2 {
+                    flex-basis: 50%;
+                }
+            }
+
+            @media ( min-width: 1280px ) {
+                .container {
+                    width: 1200px;
+                }
+
+                h3 {
+                    font-size: 1.25em;
+                }
+
+                h4 {
+                    font-size: 1.5em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <section class="container">
+            <h2>Latest updates</h2>
+            
+            <div class="row">
+                <div class="col col-1">
+                    <div class="card card-vertical">
+                        <img src="images/telstra-1.png" alt="" class="card-img" />
+                        <div class="card-body">
+                            <h3>5G from Telstra</h3>
+                            <h4>Discover the power of Australia's best 5G</h4>
+                            <p>
+                                5G will change how we experience the world. Fast downloads are just the beginning.
+                            </p>
+                            <a href="#">Find out how &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="card card-vertical">
+                        <img src="images/telstra-2.png" alt="" class="card-img" />
+                        <div class="card-body">
+                            <h3>News</h3>
+                            <h4>Supporting customers in Victoria</h4>
+                            <p>
+                                With increased COVID-19 restrictions in Victoria, we want to help our eligible customers stay connected.
+                            </p>
+                            <a href="#">COVID-19 support for Victoria &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="card card-horizontal mb-3">
+                        <img src="images/telstra-3.png" alt="" class="card-img" />
+                        <div class="card-body">
+                            <h3>News</h3>
+                            <h4>Get extra data and lock in the price of your plan for 12 months for eligible customers</h4>
+                        </div>
+                    </div>
+                    <div class="card card-horizontal mt-3 mb-3">
+                        <img src="images/telstra-4.png" alt="" class="card-img" />
+                        <div class="card-body">
+                            <h3>News</h3>
+                            <h4>We're proud to announce we've been certified carbon neutral</h4>
+                        </div>
+                    </div>
+                    <div class="card card-horizontal mt-3">
+                        <img src="images/telstra-5.png" alt="" class="card-img" />
+                        <div class="card-body">
+                            <h3>Better connected</h3>
+                            <h4>The way we live is changing, so we're making changes too</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

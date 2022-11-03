@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Theming | Button</title>
+        <style>
+            /**
+                You can optionally use BEM syntax for naming the classes for the block/element etc.
+                Block-Element-Modifier (BEM)
+                Reference: https://getbem.com/naming/
+            */
+            .btn {
+                display: inline-block;
+                padding: 1em;
+                border: 0;
+                border-radius: 4px;
+                color: ivory;
+                font-family: inherit;
+                font-size: 1em;
+                cursor: pointer;
+
+                /* styles specifically for links styled as buttons */
+                text-decoration: none;
+            }
+
+            .btn-primary {
+                background-color: rgb(0, 0, 128);
+            }
+
+            .btn-primary:hover {
+                background-color: rgb(0, 0, 96);
+            }
+            
+            .btn-secondary {
+                background-color: rgb(128, 128, 0);
+            }
+            
+            .btn-secondary:hover {
+                background-color: rgb(96, 96, 0);
+            }
+
+            .btn-error {
+                background-color: rgb(220, 20, 60);
+            }
+            
+            .btn-error:hover {
+                background-color: rgb(192, 16, 40);
+            }
+
+            .btn:active {
+                outline: 3px solid rgba(128, 128, 128, 0.5);
+            }
+
+            .btn-fixed {
+                width: 120px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="btn btn-primary btn-fixed">Buy now!</button>
+        <button class="btn btn-secondary btn-fixed">Ok! Got it! Great!</button>
+        <button class="btn btn-error">Delete</button>
+        <a href="https://www.google.com" class="btn btn-primary">Google search</a>
+    </body>
+</html>

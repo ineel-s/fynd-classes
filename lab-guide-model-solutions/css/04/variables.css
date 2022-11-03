@@ -1,0 +1,12 @@
+:root {
+    --default-color: #ddd;
+    --default-color-dark: #bbb;
+    --default-color-outline: rgba(128, 128, 128, 0.5);
+    --primary-color: rgb(0, 0, 128);
+    --primary-color-dark: rgb(0, 0, 96);
+    --secondary-color: rgb(128, 128, 0);
+    --secondary-color-dark: rgb(96, 96, 0);
+    --error-color: rgb(220, 20, 60);
+    --error-color-dark: rgb(192, 16, 40);
+    --border-radius-default: 4px;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Theming | Panel</title>
+        <style>
+            /**
+                You can optionally use BEM syntax for naming the classes for the block/element etc.
+                Block-Element-Modifier (BEM)
+                Reference: https://getbem.com/naming/
+            */
+            .panel {
+                border: 1px solid #bbb;
+                border-radius: 4px;
+            }
+
+            .panel-primary {
+                border-color: navy;
+            }
+            
+            .panel-secondary {
+                border-color: olive;
+            }
+
+            .panel-error {
+                border-color: crimson;
+            }
+
+            .panel-heading,
+            .panel-body {
+                padding: 1em;
+            }
+            
+            .panel-heading {
+                background-color: #ddd;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+            }
+
+            .panel-title {
+                margin: 0;
+                font-size: 1rem;
+            }
+
+            .panel-primary .panel-heading {
+                background-color: navy;
+                color: ivory;
+            }
+            
+            .panel-secondary .panel-heading {
+                background-color: olive;
+                color: ivory;
+            }
+
+            .panel-error .panel-heading {
+                background-color: crimson;
+                color: ivory;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="panel"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">What is CSS?</h2>
+            </div>
+            <div class="panel-body">CSS is a language for styling web pages. It stands for Cascading StyleSheets.</div>
+        </div>
+        <div class="panel panel-primary"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">What is CSS?</h2>
+            </div>
+            <div class="panel-body">CSS is a language for styling web pages. It stands for Cascading StyleSheets.</div>
+        </div>
+        <div class="panel panel-secondary"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">What is CSS?</h2>
+            </div>
+            <div class="panel-body">CSS is a language for styling web pages. It stands for Cascading StyleSheets.</div>
+        </div>
+        <div class="panel panel-error"> <!-- Block (Widget) -->
+            <div class="panel-heading"> <!-- Element -->
+                <h2 class="panel-title">What is CSS?</h2>
+            </div>
+            <div class="panel-body">CSS is a language for styling web pages. It stands for Cascading StyleSheets.</div>
+        </div>
+    </body>
+</html>
