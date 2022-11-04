@@ -36,6 +36,6 @@ p
         ( error ) => { // called when p rejects
             console.log( error.message );
         }
-    )
+    );
 
 console.log( 'last line' );
