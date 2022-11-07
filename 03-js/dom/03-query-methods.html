@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Query methods</title>
+    </head>
+    <body>
+        <main>
+            <section id="section-1">
+                <h2>Section 1</h2>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit neque porro magni error deleniti consectetur reiciendis incidunt culpa. Voluptatem laborum atque accusamus? Rerum voluptates dolores nihil distinctio id quaerat animi.
+                </p>
+                <p class="conclusion">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit neque porro magni error deleniti consectetur reiciendis incidunt culpa. Voluptatem laborum atque accusamus? Rerum voluptates dolores nihil distinctio id quaerat animi.
+                </p>
+            </section>
+            <section id="section-2">
+                <h2>Section 2</h2>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit neque porro magni error deleniti consectetur reiciendis incidunt culpa. Voluptatem laborum atque accusamus? Rerum voluptates dolores nihil distinctio id quaerat animi.
+                </p>
+                <p class="conclusion">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit neque porro magni error deleniti consectetur reiciendis incidunt culpa. Voluptatem laborum atque accusamus? Rerum voluptates dolores nihil distinctio id quaerat animi.
+                </p>
+            </section>
+        </main>
+
+        <script>
+            const section1 = document.getElementById( 'section-1' );
+            console.log( section1 );
+
+            // select the first DOM node that matches the CSS selector
+            console.log( document.querySelector( '.conclusion' ) );
+            
+            // select all the DOM nodes that match the CSS selector
+            console.log( document.querySelectorAll( '.conclusion' ) ); // NodeList - an array-like object (has forEach)
+
+            document.querySelectorAll( '.conclusion' ).forEach(
+                node => console.log( node.nodeName )
+            );
+
+            // we can use any complex CSS selector
+            console.log( document.querySelector( '#section-2 > .conclusion' ) );
+
+            // querySelector(), querySelectorAll() can be used on any DOM node - not only document DOM node
+            // the search is restricted to that subtree rooted at that DOM node
+            const section2 = document.querySelector( '#section-2' ); // document.getElementById( 'section-2' );
+            console.log( section2.querySelector( '.conclusion' ) ); // searches for element with class conclusion within section2
+            console.log( section2.querySelectorAll( '.conclusion' ) ); // [ p ]
+            console.log( section2.querySelectorAll( 'p' ) ); // [ p, p ]
+        </script>
+    </body>
+</html>

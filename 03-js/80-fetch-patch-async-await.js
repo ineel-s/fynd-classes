@@ -1,6 +1,13 @@
 // Since we are not handling error (no try..catch), an error that is thrown will stop the function, and the promise returned by makeRequest (note that it is async and hence a promise is returned), will reject with that error.
-const makeRequest = async ( url, method, requestBody ) => {
+const makeRequest = async ( url, method, requestBody, queryString = '' ) => {
     let options;
+
+    if( queryString ) {
+        // https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
+        const searchParams = new URLSearchParams( queryString ); // does URL encoding
+        url = url + '?' + searchParams;
+        console.log( url );
+    }
 
     if( requestBody ) {
         options = {
@@ -37,7 +44,7 @@ const workshop = {
 };
 
 // Please put this code in an "async function and IIFE it" if you like
-makeRequest( `https://workshops-server.herokuapp.com/workshops/12`, 'PATCH', workshop )
+makeRequest( `https://workshops-server.herokuapp.com/workshops/12`, 'PATCH', workshop, '_page=1&workshop category=frontend' ) // this is using query string without URL encoding
     .then(
         data => console.log( data )
     )

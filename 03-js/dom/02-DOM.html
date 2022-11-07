@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document Object Model</title>
+    </head>
+    <body>
+        <div>Check the console for logs</div>
+
+        <script>
+            // Explore...
+            // document.documentElement.childNodes -> usually not used
+            // parentNode, nextElementSibling, preventElementSibling 
+
+            console.log( window.document );
+            console.log( document );
+            
+            // "DOM nodes" -> an object is created by the browser for every HTML element
+            // console.log( node ) prints the DOM nodes as HTML
+            // console.dir( node ) prints the DOM nodes as an object
+            console.dir( document.documentElement ); // html root element
+            console.dir( document.head ); // head element
+            console.dir( document.body ); // body element
+
+            // HTMLCollection is an array-like object
+            console.log( document.documentElement.children );
+            console.log( document.documentElement.children.length ); // 2
+            console.log( document.documentElement.children[0] ); // head
+            console.log( document.documentElement.children[1] ); // body
+
+            // this is preferred when we access the DOM node repeatedly
+            const body = document.documentElement.children[1];
+
+            // How do we access the DOM node for the div on the page?
+            console.log( body.children[0] ); // div
+            
+            // How do we access the DOM node for the script on the page?
+            console.log( body.children[1] ); // script
+        </script>
+    </body>
+</html>

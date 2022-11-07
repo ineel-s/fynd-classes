@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document Object Model</title>
+    </head>
+    <body>
+        <script>
+            console.log( window );
+            console.log( window.innerHeight, window.outerHeight );
+            console.log( window.document );
+            
+            // this is a "blocking function" -> till you take action, the dialogs prevent rest of JS code from running
+            alert( 'Hello' ); // Explore - confirm(), prompt()
+            window.alert( 'Hello' ); // all global function / variables etc. are actually properties of the window object
+
+            var x = 100; // global variables created with var keyword become properties of the window object
+            console.log( window.x ); // 100
+        </script>
+    </body>
+</html>
