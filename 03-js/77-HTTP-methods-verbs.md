@@ -1,0 +1,30 @@
+# HTTP methods / verbs
+- Browser makes HTTP requests to fetch HTML page, CSS, JS, font files, images, and ALSO data
+- HTTP requests are classfied based on the __method__ / __verb__
+    - GET (the kind of request made when we type the URL in the browser address bar)
+    - POST (can also be done through form submissions)
+    - PUT
+    - PATCH
+    - DELETE
+- They convey some meaning to the backend
+- Web APIs help integrate frontend app with backend app. Web APIs are built usually using a REST architecture
+    - __Resource__
+        - An entity for which data is stored in the backend. Eg. A single workshop, a list of workshops.
+        - Every resource MUST have (at least one) unique URL.
+        - Example: https://workshops-server.herokuapp.com/workshops - A "list of workshops"
+        - https://workshops-server.herokuapp.com/workshops/2 - A single workshop whose id = 2
+        - https://workshops-server.herokuapp.com/workshops/2/sessions - A "list of sessions for the workshop with id = 2"
+        - https://workshops-server.herokuapp.com/sessions - A "list of session for all workshops"
+- Semantics of methods
+    - GET - request for data from the backend - GET https://workshops-server.herokuapp.com/workshops - Gets the list of workshops
+    - POST - create a new resource - POST https://workshops-server.herokuapp.com/workshops - Add a new workshop to the list of workshops
+    - PUT - Updates ALL details of a resource - PUT https://workshops-server.herokuapp.com/workshops/2
+    - PATCH - Updates a subset of the details of a resource - PATCH https://workshops-server.herokuapp.com/workshops/2
+    - DELETE - Delete a resource - DELETE https://workshops-server.herokuapp.com/workshops/2
+    - In POST, PUT, PATCH we need to send data (generally)
+- HTTP response code - indicates the status of the requested operation
+    - 200 -> successfully found and returned the requested resource
+    - 201 -> created a new resource (POST request)
+    - 204 -> operation was successful, but NO data is sent in the response body
+    - 404 -> requested resource was not found
+    - 500 -> internal server error (nothing wrong from frontend side - the error was in backend)

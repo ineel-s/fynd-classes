@@ -1,3 +1,7 @@
+const employment = {
+    role: 'Accountant',
+    dept: 'Finance'
+}
 const john = {
     name: 'John Doe',
     'company name': 'Fynd',
@@ -9,7 +13,8 @@ const john = {
     emails: [
         'john.doe@gmail.com',
         'john.doe@fynd.com'
-    ]
+    ],
+    ...employment
 };
 
 const johnCopy = {
