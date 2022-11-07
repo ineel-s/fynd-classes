@@ -36,3 +36,6 @@
 - Nov 3
     - 04-JS (ES2015+) - Lab guide.pdf
         - 6 - 13, self-study : Map, Set  
+- Nov 7
+    - 04-JS (ES2015+) - Lab guide.pdf
+        - 14 - 16
