@@ -18,6 +18,8 @@
         "imageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/JQuery_logo.svg/524px-JQuery_logo.svg.png"
     };
 
+    // code to show the loading message...
+
     try {
         // we are adding a workshop to the "list of workshops"
         const response = await fetch( 
@@ -35,9 +37,12 @@
             throw new Error( response.statusText );
         }
 
+        // code to hide the loading message...
+
         const data = await response.json();
         console.log( data );
     } catch( error ) {
+        // code to show the error message...
         console.log( error.message )
     }
 })();

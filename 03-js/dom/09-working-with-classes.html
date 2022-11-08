@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Working with classes</title>
+        <style>
+            .message {
+                font-size: 1.25em;
+                padding: 1em;
+                border-radius: 5px;
+            }
+
+            .message-info {
+                background-color: lightblue;
+            }
+            
+            .message-danger {
+                background-color: lightpink;
+            }
+
+            .hide {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="status-message"></div>
+
+        <script>
+            // Explore: Similar to add() we have remove(), contains(), toggle() etc.
+            const statusMessage = document.getElementById( 'status-message' );
+
+            statusMessage.classList.add( 'message' );
+            
+            statusMessage.textContent = 'Loading products...Please wait...';
+            
+            setTimeout(
+                () => {
+                    statusMessage.classList.add( 'message-info' );
+                },
+                2000
+            );
+
+            // how can we hide this message? We can use display CSS properties
+            setTimeout(
+                () => {
+                    statusMessage.classList.add( 'hide' );
+                },
+                5000
+            );
+        </script>
+    </body>
+</html>

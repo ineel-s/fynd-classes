@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Working with attributes</title>
+    </head>
+    <body>
+        <img
+            src="images/bugs-bunny.jpeg"
+            alt="Bugs Bunny"
+            title="favorite cartoon"
+            data-creator="Walt Disney"
+        />
+
+        <script>
+            // Explore: clearTimeout, setInterval, clearInterval
+            // Explore: hasAttribute(), removeAttribute()
+            setTimeout(
+                () => {
+                    const imgEl = document.querySelector( 'img' );
+                    
+                    // standard HTML element attributes are available as properties on their DOM nodes
+                    imgEl.src = 'images/mickey-mouse.jpeg';
+                    imgEl.alt = 'Mickey mouse';
+
+                    console.log( imgEl.title );
+
+                    // getAttribute() is used to read the value of both standard nd non-standard attributes
+                    console.log( imgEl.getAttribute( 'data-creator' ) );
+
+                    // setAttribute() is used to set both standard and non-standard attribute values
+                    imgEl.setAttribute( 'data-creator', 'Stan Lee' );
+                },
+                5000
+            );
+        </script>
+    </body>
+</html>

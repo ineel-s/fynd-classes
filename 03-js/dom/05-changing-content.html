@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>createElement, createTextNode</title>
+    </head>
+    <body>
+        <p id="message-1"></p>
+
+        <script>
+            // Explore: insertBefore(), remove(), clone()
+            const message1 = document.getElementById( 'message-1' );
+
+            // we shall create DOM nodes explicitly instead of innerHTML resulting in automatic creation of DOM nodes
+            const helloText = document.createTextNode( 'Hello ' ); // creates a text node
+            const strongEl = document.createElement( 'strong' ); // creates an element node
+            const domText = document.createTextNode( 'DOM' );
+            
+            // sets the domText as the last child of strongEl
+            // parentNode.appendChild( childNode );
+            strongEl.appendChild( domText );
+
+            message1.appendChild( helloText );
+            message1.appendChild( strongEl );
+        </script>
+    </body>
+</html>

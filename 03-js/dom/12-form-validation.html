@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Form validation</title>
+    </head>
+    <body>
+        <form>
+            <input type="email" id="email" name="email" />
+            <input type="password" id="password" name="password" />
+            <div class="error-message" id="password-errors"></div>
+            <button>Login</button>
+        </form>
+
+        <script>
+            const passwordEl = document.getElementById( 'password' );
+            const passwordErrorsEl = document.getElementById( 'password-errors' );
+            
+            const validatePassword = () => {
+                
+                let errors = []; // to hold the error message
+
+                // Inputs elements have value property - the current value they hold. Other kind of element do not have value property
+                const password = passwordEl.value;
+                console.log( password );
+
+                // minimum 8 characters
+                if( password.length < 8 ) {
+                    errors.push( 'Minimum 8 characters' );
+                }
+
+                // > 1 uppercase
+                // /[A-Z]/ -> new RegExp( '[A-Z]' )
+                if( /[A-Z]/.test( password ) === false ) {
+                    errors.push( 'At least 1 uppercase' );
+                }
+
+                // > 1 lowercase
+                if( /[a-z]/.test( password ) === false ) {
+                    errors.push( 'At least 1 lowercase' );
+                }
+                
+                // > 1 special character
+                if( /[&%$#@!~}{}[\];:]/.test( password ) === false ) {
+                    errors.push( 'At least 1 special character' );
+                }
+
+                // > 1 digit
+                if( /[0-9]/.test( password ) === false ) {
+                    errors.push( 'At least 1 digit' );
+                }
+
+                return errors.join( ', ' );
+            };
+
+            document.querySelector( 'form' ).addEventListener( 'submit', function( event ) {
+                event.preventDefault(); // we will do Ajax-based form submission
+                
+                const passwordErrors = validatePassword();
+                
+                if( passwordErrors ) {
+                    passwordErrorsEl.textContent = passwordErrors;
+                } else {
+                    // code to submit the form...
+                    // fetch( ... )
+                }
+            });
+        </script>
+    </body>
+</html>

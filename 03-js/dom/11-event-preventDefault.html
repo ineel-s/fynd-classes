@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Preventing browser default action</title>
+    </head>
+    <body>
+        <!-- Browser has default handling for certain event - examples: link click, form submit -->
+        <a href="https://www.google.com">Google search</a>
+
+        <form action="/login"> <!-- 'submit' event fires on the form element -->
+            <input type="email" name="email" />
+            <button>Submit</button> <!-- 'click' event fires on submit button -->
+        </form>
+        
+        <button>button</button> <!-- no default handling -->
+
+        <script>
+            const link = document.querySelector( 'a' );
+            link.addEventListener( 'click', function( event ) {
+                event.preventDefault(); // Hey browser! do not carry out default handling
+            });
+
+            // we are prevent handling for 'submit' event fired on the 'form'
+            document.querySelector( 'form' ).addEventListener( 'submit', function( event ) {
+                event.preventDefault();
+            });
+        </script>
+    </body>
+</html>

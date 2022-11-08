@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- EXERCISE: Event flow - Bubbling, capture : https://javascript.info/bubbling-and-capturing -->
+        <!-- EXERCISE: Event delegation : https://javascript.info/event-delegation -->
+        <!-- inline event handling. The event object has details of the event  -->
+        <button id="button-1" onclick="console.log( event );">Refresh to see latest cricket score</button>
+        <button id="button-2">Refresh to see latest cricket score</button>
+        <button id="button-3">Refresh to see latest cricket score</button>
+        <button id="button-4">Refresh to see latest cricket score</button>
+
+        <script>
+            const button2 = document.getElementById( 'button-2' );
+            const button3 = document.getElementById( 'button-3' );
+            const button4 = document.getElementById( 'button-4' );
+            
+            // generally we DO NOT use arrow function for event handler (a "this" is set -> )
+            function handleClick( event ) { // this function is referred to as "event handler"
+                console.log( 'handleClick' );
+                console.log( event );
+                console.log( this ); // the element on which the event occured (button2)
+                console.log( event.target );
+            };
+            
+            function handleClick2( event ) { // this function is referred to as "event handler"
+                console.log( 'handleClick2' );
+                console.log( event );
+                console.log( this ); // the element on which the event occured (button2)
+                console.log( event.target );
+            };
+
+            // You cannot set up more than 1 event handler using the on<event> property
+
+            button2.onclick = handleClick;
+            button3.onclick = handleClick;
+            button3.onclick = handleClick2;
+
+            button4.addEventListener( 'click', function( event ) {
+                console.log( 'function 1' );
+            });
+
+            button4.addEventListener( 'click', function( event ) {
+                console.log( 'function 2' );
+            });
+
+            button4.addEventListener( 'click', function( event ) {
+                console.log( 'function 3' );
+            });
+        </script>
+    </body>
+</html>
