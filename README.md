@@ -1,3 +1,9 @@
+## Fynd FSD Training
+Oct 2022 Fynd Academy batch
+
+## Meetings app backend
+- http://mymeetingsapp.herokuapp.com/
+
 ## Workshops App - Videos
 ## Workshops App (video)
 - [Getting started with the Online Star project](https://corporate-trainings.s3.amazonaws.com/cts/getting-started-with-the-online-star-project.mp4)
