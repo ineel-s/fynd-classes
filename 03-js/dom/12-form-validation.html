@@ -5,26 +5,61 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Form validation</title>
+        <style>
+            .error-message {
+                color: crimson;
+            }
+        </style>
     </head>
     <body>
         <form>
-            <input type="email" id="email" name="email" />
-            <input type="password" id="password" name="password" />
+            <input type="email" id="email" name="email" placeholder="email" />
+            <div class="error-message" id="email-errors"></div>
+            <input type="password" id="password" name="password" placeholder="password" />
             <div class="error-message" id="password-errors"></div>
             <button>Login</button>
         </form>
 
         <script>
+            // RegExp example for mobile number validation
+            // /^[6789][0-9]{9}$/.test( '6234567890abc' ); // false
+            // /^[6789][0-9]{9}$/.test( '6234567890' ); // true
+
+            const emailEl = document.getElementById( 'email' );
             const passwordEl = document.getElementById( 'password' );
+            const emailErrorsEl = document.getElementById( 'email-errors' );
             const passwordErrorsEl = document.getElementById( 'password-errors' );
+
+            const validateEmail = () => {
+                
+                let errors = []; // to hold the error message
+
+                const email = emailEl.value.trim();
+
+                if( email === '' ) {
+                    errors.push( 'Email is required' );
+                    return errors[0];
+                }
+
+                if( !/^[A-Za-z][A-Za-z0-9_\.\-]*@(fynd\.com|gofynd.com|fynd.academy)$/.test( email ) ) {
+                    errors.push( 'Email should be a valid fynd email address' );
+                }
+
+                return errors.join( ', ' );
+            };
             
             const validatePassword = () => {
                 
                 let errors = []; // to hold the error message
 
                 // Inputs elements have value property - the current value they hold. Other kind of element do not have value property
-                const password = passwordEl.value;
+                const password = passwordEl.value.trim();
                 console.log( password );
+
+                if( password === '' ) {
+                    errors.push( 'Password is required' );
+                    return errors[0];
+                }
 
                 // minimum 8 characters
                 if( password.length < 8 ) {
@@ -43,7 +78,7 @@
                 }
                 
                 // > 1 special character
-                if( /[&%$#@!~}{}[\];:]/.test( password ) === false ) {
+                if( /[&%$#@!~}{}\[\];:]/.test( password ) === false ) {
                     errors.push( 'At least 1 special character' );
                 }
 
@@ -59,13 +94,26 @@
                 event.preventDefault(); // we will do Ajax-based form submission
                 
                 const passwordErrors = validatePassword();
+                const emailErrors = validateEmail();
                 
-                if( passwordErrors ) {
-                    passwordErrorsEl.textContent = passwordErrors;
-                } else {
-                    // code to submit the form...
-                    // fetch( ... )
+                emailErrorsEl.textContent = emailErrors;
+                passwordErrorsEl.textContent = passwordErrors;
+
+                // do not proceed if there are errors
+                if( passwordErrors || emailErrors ) {
+                    return;
                 }
+            
+                // all good!
+                // collect the values in the way the backend expects
+                // code to submit the form...
+                const credentials = {
+                    email: emailEl.value.trim(),
+                    password: passwordEl.value.trim()
+                };
+                
+                // POST credentials to the appropriate backend API
+                // fetch( ... )
             });
         </script>
     </body>
