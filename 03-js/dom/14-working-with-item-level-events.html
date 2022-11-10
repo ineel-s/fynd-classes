@@ -12,7 +12,7 @@
         <form id="add-contact-form">
             <input type="text" id="name" placeholder="Contact name" />
             <input type="tel" id="phone" placeholder="Phone" />
-            <button>Add contact</button>
+            <button class="btn-add-contact">Add contact</button>
         </form>
 
         <table id="contacts-table">
@@ -21,12 +21,15 @@
                     <td>S. No.</td>
                     <td>Name</td>
                     <td>Contact</td>
+                    <td>Actions</td>
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
 
         <script>
+            // EXERCISE: RIght now the contacts are lost when we refresh the page. Make necessary changes so that the contacts are updated in the localStorage. When we load the page, the initial set of contacts should be set from the value stored in localStorage.
+            // EXERCISE: How to use event delegation pattern to implement the delete contact functionality
             const contactForm = document.getElementById( 'add-contact-form' );
             const contactsTable = document.getElementById( 'contacts-table' );
             const nameEl = document.getElementById( 'name' );
@@ -45,12 +48,33 @@
                                 <td>${idx + 1}</td>
                                 <td>${name}</td>
                                 <td>${phone}</td>
+                                <td>
+                                    <button class="btn-delete-contact">Delete</button>
+                                </td>
                             </tr>
                         `
                     }
                 );
 
+                // when we reset innerHTML, the DOM nodes will get recreated, and the event listeners set on it will be lost
                 tbody.innerHTML = str;
+
+                // set up necessary event handlers again for all the rows
+                // setup delete handler for each delete button on the page
+                const deleteButtons = document.querySelectorAll( '.btn-delete-contact' );
+                deleteButtons.forEach(
+                    ( button, idx ) => { // gets called for every item
+                        button.addEventListener( 'click', function() {
+                            // we can get hold of the idx of that item due to closure
+                            alert( `delete button clicked; idx = ${idx}` );
+
+                            // removed the required contact from contacts
+                            contacts.splice( idx, 1 );
+
+                            showContacts( contacts );
+                        });
+                    }
+                );
             };
 
             contactForm.addEventListener( 'submit', function( event ) {

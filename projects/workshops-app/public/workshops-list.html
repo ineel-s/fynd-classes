@@ -35,81 +35,19 @@
                 <h1>List of Workshops</h1>
                 <button class="float-right btn-details">Hide details</button>
             </header>
+            
             <hr />
-            <ul class="list-unstyled workshops-list">
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png" alt="Angular JS Bootcamp" />
-
-                        <h2 class="workshops-list-item-title">Angular JS Bootcamp</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png" alt="React JS Masterclass"  />
-
-                        <h2 class="workshops-list-item-title">React JS Masterclass</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png" alt="Angular JS Bootcamp" />
-
-                        <h2 class="workshops-list-item-title">Angular JS Bootcamp</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png" alt="React JS Masterclass"  />
-
-                        <h2 class="workshops-list-item-title">React JS Masterclass</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png" alt="Angular JS Bootcamp" />
-
-                        <h2 class="workshops-list-item-title">Angular JS Bootcamp</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png" alt="React JS Masterclass"  />
-
-                        <h2 class="workshops-list-item-title">React JS Masterclass</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png" alt="Angular JS Bootcamp" />
-
-                        <h2 class="workshops-list-item-title">Angular JS Bootcamp</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png" alt="React JS Masterclass"  />
-
-                        <h2 class="workshops-list-item-title">React JS Masterclass</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png" alt="Angular JS Bootcamp" />
-
-                        <h2 class="workshops-list-item-title">Angular JS Bootcamp</h2>
-                    </a>
-                </li>
-                <li class="workshops-list-item">
-                    <a href="/workshop-details.html">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/640px-React-icon.svg.png" alt="React JS Masterclass"  />
-
-                        <h2 class="workshops-list-item-title">React JS Masterclass</h2>
-                    </a>
-                </li>
-            </ul>
+            
+            <div id="status-message"></div>
+            
+            <button id="previous-page">Previous page</button>
+            <button id="next-page">Next page</button>
+            
+            <ul class="list-unstyled workshops-list"></ul>
         </main>
 
-        <script src="/js/nav.js"></script>
+        <!-- we are treating the script as a module - it will thus not create any global variables -->
+        <script src="/js/nav.js" type="module"></script>
+        <script src="/js/pages/workshops-list.js" type="module"></script>
     </body>
 </html>

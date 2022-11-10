@@ -41,7 +41,7 @@ const fetchAndShowWorkshops = async () => {
 
     try {
         const searchParams = new URLSearchParams( `_page=${_page}` ); // does URL encoding
-        url = `https://workshops-server.herokuapp.com/workshops?${searchParams}`;
+        let url = `https://workshops-server.herokuapp.com/workshops?${searchParams}`;
 
         const response = await fetch( url );
 
