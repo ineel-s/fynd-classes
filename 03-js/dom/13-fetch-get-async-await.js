@@ -36,11 +36,14 @@ const showWorkshops = workshops => {
     workshopsList.innerHTML = str;
 };
 
-(async () => {
+const fetchAndShowWorkshops = async () => {
     setMessage( 'Loading workshops...Please wait...', 'lightblue' );
 
     try {
-        const response = await fetch( `https://workshops-server.herokuapp.com/workshops?_page=${_page}` );
+        const searchParams = new URLSearchParams( `_page=${_page}` ); // does URL encoding
+        url = `https://workshops-server.herokuapp.com/workshops?${searchParams}`;
+
+        const response = await fetch( url );
 
         if( !response.ok ) {
             throw new Error( response.statusText );
@@ -55,4 +58,12 @@ const showWorkshops = workshops => {
     } catch( error ) {
         setMessage( error.message, 'lightpink' );
     }
-})();
+};
+
+// on page load, we need to fetch and show
+fetchAndShowWorkshops();
+
+document.getElementById( 'next-page' ).addEventListener( 'click', function() {
+    _page++;
+    fetchAndShowWorkshops();
+});

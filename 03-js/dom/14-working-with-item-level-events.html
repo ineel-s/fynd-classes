@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Phone book</h1>
+        <hr />
+        <form id="add-contact-form">
+            <input type="text" id="name" placeholder="Contact name" />
+            <input type="tel" id="phone" placeholder="Phone" />
+            <button>Add contact</button>
+        </form>
+
+        <table id="contacts-table">
+            <thead>
+                <tr>
+                    <td>S. No.</td>
+                    <td>Name</td>
+                    <td>Contact</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <script>
+            const contactForm = document.getElementById( 'add-contact-form' );
+            const contactsTable = document.getElementById( 'contacts-table' );
+            const nameEl = document.getElementById( 'name' );
+            const phoneEl = document.getElementById( 'phone' );
+
+            const contacts = []; // we shall maintain the set of contacts in this array
+
+            const showContacts = contacts => {
+                let str = '';
+                const tbody = contactsTable.querySelector( 'tbody' );
+
+                contacts.forEach(
+                    ( { name, phone }, idx ) => {
+                        str += `
+                            <tr>
+                                <td>${idx + 1}</td>
+                                <td>${name}</td>
+                                <td>${phone}</td>
+                            </tr>
+                        `
+                    }
+                );
+
+                tbody.innerHTML = str;
+            };
+
+            contactForm.addEventListener( 'submit', function( event ) {
+                event.preventDefault();
+
+                // Ideally we need to do validations. Here we are skipping it!
+
+                const contact = {
+                    name: nameEl.value.trim(),
+                    phone: phoneEl.value.trim()
+                };
+
+                // add to contacts array
+                contacts.push( contact );
+
+                showContacts( contacts );
+            });
+        </script>
+    </body>
+</html>
