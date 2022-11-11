@@ -1,5 +1,13 @@
-const ajax = async ( url, method, requestBody, queryString = '' ) => {
-    let options;
+import { KEY_TOKEN } from "../services/auth.js";
+
+const ajaxWithAuth = ( url, method, requestBody, queryString = '' ) => {
+    return ajax( url, method, requestBody, queryString, {
+        'Authorization': `Bearer ${localStorage.getItem( KEY_TOKEN )}`
+    });
+};
+
+const ajax = async ( url, method, requestBody, queryString = '', headers ) => {
+    let options = {};
 
     if( queryString ) {
         // https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
@@ -10,13 +18,19 @@ const ajax = async ( url, method, requestBody, queryString = '' ) => {
 
     if( requestBody ) {
         options = {
+            ...options,
             body: JSON.stringify( requestBody ),
+        }
+    }
+
+    if( headers ) {
+        options = {
+            ...options,
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                ...headers
             }
         }
-    } else {
-        options = {};
     }
 
     // we are updating the workshop with id = 12
@@ -36,4 +50,7 @@ const ajax = async ( url, method, requestBody, queryString = '' ) => {
     return data;
 }
 
-export default ajax;
+export {
+    ajaxWithAuth,
+    ajax as default
+};

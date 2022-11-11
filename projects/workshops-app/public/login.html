@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Workshops List | Workshops App</title>
+        <title>Login</title>
         
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,900;1,100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/external/@fortawesome/fontawesome-free/css/all.min.css">
@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="/css/utils.css">
         <link rel="stylesheet" href="/css/app.css">
         <link rel="stylesheet" href="/css/nav.css">
-        <link rel="stylesheet" href="/css/pages/workshops-list.css">
+        
+        <!-- page styles go in here -->
     </head>
     <body>
         <nav class="main-menu">
@@ -24,31 +25,24 @@
                         <button class="fa-solid fa-bars main-menu-toggler"></button>
                     </div>
                 </li>
-                <li class="main-menu-link"><a href="/">Home</a></li>
-                <li class="main-menu-link"><a href="/workshops-list.html" class="active">Workshops List</a></li>
+                <li class="main-menu-link"><a href="/" class="active">Home</a></li>
+                <li class="main-menu-link"><a href="/workshops-list.html">Workshops List</a></li>
                 <li class="main-menu-link"><a href="/feedback.html">Feedback</a></li>
                 <li class="main-menu-link"><a href="/login.html">Login</a></li>
             </ul>
         </nav>
 
         <main class="container mt-4">
-            <header class="page-heading">
-                <h1>List of Workshops</h1>
-                <button class="float-right btn-details">Hide details</button>
-            </header>
-            
+            <h1>Login</h1>
             <hr />
-            
-            <div id="status-message"></div>
-            
-            <button id="previous-page">Previous page</button>
-            <button id="next-page">Next page</button>
-            
-            <ul class="list-unstyled workshops-list"></ul>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="email" value="john.doe@example.com" />
+                <input type="password" id="password" />
+                <button type="submit">Login</button>
+            </form>
         </main>
 
-        <!-- we are treating the script as a module - it will thus not create any global variables -->
         <script src="/js/nav.js" type="module"></script>
-        <script src="/js/pages/workshops-list.js" type="module"></script>
+        <script src="/js/pages/login.js" type="module"></script>
     </body>
 </html>
