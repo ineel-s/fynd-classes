@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="meetings-list">
+            <div class="meeting">
+                <h2>Meeting 1</h2>
+                <button class="btn-excuse-yourself">Excuse</button>
+            </div>
+            <div class="meeting">
+                <h2>Meeting 2</h2>
+                <button class="btn-excuse-yourself">Excuse</button>
+            </div>
+        </div>
+
+        <script>
+            document.querySelectorAll( '.btn-excuse-yourself' ).forEach(
+                btn => btn.addEventListener( 'click', function( event ) {
+                    const btn = event.target;
+                    console.log( btn ); // or "this"
+
+                    // API call to excuse yourself...
+
+                    // ...after that
+                    const meetingEl = btn.closest( '.meeting' );
+                    console.log( meetingEl );
+
+                    // Use .remove() to remove an element
+                })
+            );
+        </script>
+    </body>
+</html>
