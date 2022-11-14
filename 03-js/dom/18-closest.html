@@ -8,11 +8,11 @@
     </head>
     <body>
         <div class="meetings-list">
-            <div class="meeting">
+            <div class="meeting" data-id="1001">
                 <h2>Meeting 1</h2>
                 <button class="btn-excuse-yourself">Excuse</button>
             </div>
-            <div class="meeting">
+            <div class="meeting" data-id="1002">
                 <h2>Meeting 2</h2>
                 <button class="btn-excuse-yourself">Excuse</button>
             </div>
@@ -25,11 +25,11 @@
                     console.log( btn ); // or "this"
 
                     // API call to excuse yourself...
+                    const meetingEl = btn.closest( '.meeting' );
+                    console.log( meetingEl.getAttribute( 'data-id' ) );
 
                     // ...after that
-                    const meetingEl = btn.closest( '.meeting' );
                     console.log( meetingEl );
-
                     // Use .remove() to remove an element
                 })
             );
