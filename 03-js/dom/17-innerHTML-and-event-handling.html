@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>innerHTML and event handling</title>
+    </head>
+    <body>
+        <div class="meetings-list"></div>
+
+        <script>
+            const meetingsList = document.querySelector( '.meetings-list' );
+
+            const addMeeting = ( { name } ) => {
+                const meetingDivEl = document.createElement( 'div' );
+                meetingDivEl.classList.add( 'meeting' );
+
+                meetingDivEl.innerHTML = `<h2>${name}</h2>`;
+
+                // we are not setting innerHTML of meetingsList. So the event handlers set on the divs inside it are not affected
+                meetingsList.appendChild( meetingDivEl );
+
+                meetingDivEl.addEventListener( 'click', function() {
+                    alert( name );
+                });
+            }
+
+            const meetings = [
+                { name: 'Meeting 1' },
+                { name: 'Meeting 2' },
+                { name: 'Meeting 3' }
+            ];
+
+            meetings.forEach( meeting => addMeeting( meeting ) );
+        </script>
+    </body>
+</html>

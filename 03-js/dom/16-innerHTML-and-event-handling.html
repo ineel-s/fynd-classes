@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>innerHTML and event handling</title>
+    </head>
+    <body>
+        <div class="meetings-list"></div>
+
+        <script>
+            const meetingsList = document.querySelector( '.meetings-list' );
+
+            const addMeeting = ( { name } ) => {
+                let str = `
+                    <div class="meeting">
+                        <h2>${name}</h2>
+                    </div>
+                `;
+
+                // any event listeners set inside the meetings list elements will be lost
+                // the HTML is getting recreated - all old event listeners are lost
+                meetingsList.innerHTML = meetingsList.innerHTML + str;
+
+                meetingsList.lastElementChild.addEventListener( 'click', function() {
+                    alert( name );
+                });
+            }
+
+            const meetings = [
+                { name: 'Meeting 1' },
+                { name: 'Meeting 2' },
+                { name: 'Meeting 3' }
+            ];
+
+            meetings.forEach( meeting => addMeeting( meeting ) );
+        </script>
+    </body>
+</html>
