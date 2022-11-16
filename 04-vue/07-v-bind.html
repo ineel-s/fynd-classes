@@ -51,7 +51,11 @@
                     <div class="card">
                         <h1>{{workshop.name}}</h1>
                         <span class="badge">{{workshop.category}}</span>
-                        <img class="card-img" :src="workshop.imageUrl" :alt="workshop.name" />
+                        <img
+                            class="card-img"
+                            v-bind:src="workshop.imageUrl"
+                            :alt="workshop.name"
+                        />
                         <div v-html="workshop.description"></div>
                     </div>
                 `

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conditional rendering</title>
+        <style>
+            .panel {
+                border: 1px solid navy;
+                border-radius: 5px;
+            }
+
+            .panel-heading,
+            .panel-body {
+                padding: 1em;
+            }
+
+            .panel-heading {
+                background-color: navy;
+                color: ivory;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                data: {
+
+                },
+                methods: {
+                    
+                },
+                template: `
+                    <div class="panel">
+                        <div class="panel-heading">
+                            What is Vue?
+                        </div>
+                        <div class="panel-body">
+                            It is a JS library to build UI of frontend web apps
+                        </div>
+                    </div>
+                `
+            })
+        </script>
+    </body>
+</html>
