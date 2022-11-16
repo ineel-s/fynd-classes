@@ -19,7 +19,9 @@
                     plan: 'pro'
                 },
                 methods: {
-                    
+                    switchPlan( plan ) {
+                        this.plan = plan;
+                    }
                 },
                 template: `
                     <div>
@@ -33,7 +35,10 @@
                         <div v-else>
                             You get to use features a, b, c
                         </div>
-                        <!-- Add 3 buttons to switch to Free / Premium / Pro (manage the plan change using) --->
+                        <!-- Add 3 buttons to switch to Free / Premium / Pro (manage the plan change using 1 method) --->
+                        <button @click="switchPlan( 'free' )">Switch to free</button>
+                        <button @click="switchPlan( 'premium' )">Switch to premium</button>
+                        <button @click="switchPlan( 'pro' )">Switch to pro</button>
                     </div>
                 `
             })
