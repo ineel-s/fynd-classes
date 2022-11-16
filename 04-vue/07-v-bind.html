@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                data: {
+                    workshop: {
+                        id: 1,
+                        name: "Angular JS Bootcamp",
+                        category: "frontend",
+                        description: "<p><strong>AngularJS</strong> (also written as <strong>Angular.js</strong>) is a JavaScript-based open-source front-end web application framework mainly maintained by Google and by a community of individuals and corporations to address many of the challenges encountered in developing single-page applications.</p><p>It aims to simplify both the development and the testing of such applications by providing a framework for client-side model–view–controller (MVC) and model–view–viewmodel (MVVM) architectures, along with components commonly used in rich Internet applications. (This flexibility has led to the acronym MVW, which stands for \"model-view-whatever\" and may also encompass model–view–presenter and model–view–adapter.)</p>",
+                        location: {
+                            address: "Tata Elxsi, Prestige Shantiniketan",
+                            city: "Bangalore",
+                            state: "Karnataka"
+                        },
+                        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/2000px-AngularJS_logo.svg.png"
+                    }
+                },
+                template: `
+                    <div class="card">
+                        <h1>{{workshop.name}}</h1>
+                        <span class="badge">{{workshop.category}}</span>
+                        <div v-html="workshop.description"></div>
+                    </div>
+                `
+            })
+        </script>
+    </body>
+</html>
