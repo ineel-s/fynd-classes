@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello Vue</title>
+    </head>
+    <body>
+        <!-- Define the UI through HTML (NOT the normal approach)-->
+        <div id="root">
+            Hello {{name}}
+            <button @click="changeName">
+                Change name
+            </button>
+        </div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            // "root instance"
+            new Vue({
+                el: '#root',
+                data: {
+                    name: 'John'
+                },
+                methods: {
+                    changeName() {
+                        this.name = 'Jane';
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
