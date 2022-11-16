@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Using template property</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                template: `
+                    <section>
+                        Hello {{name}}
+                        <button @click="changeName( name === 'John' ? 'Jane' : 'John' )">Change name</button>
+                    </section>
+                `,
+                data: {
+                    name: 'John'
+                },
+                methods: {
+                    changeName( name ) {
+                        this.name = name;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -9,10 +9,18 @@
     <body>
         <!-- Define the UI through HTML (NOT the normal approach)-->
         <div id="root">
-            Hello {{name}}
-            <button @click="changeName">
-                Change name
-            </button>
+            <section>
+                Hello {{name}}
+                <button @click="changeName">
+                    Change name
+                </button>
+            </section>
+            <hr />
+            <section>
+                Address: {{address.city}}, {{address.state}}
+                <br />
+                <button @click="changeAddress( 'Gurugram', 'Haryana' )">Change address</button>
+            </section>
         </div>
 
         <script type="module">
@@ -21,12 +29,22 @@
             // "root instance"
             new Vue({
                 el: '#root',
-                data: {
-                    name: 'John'
+                data: { // "state" -> any data that changes with passage of time
+                    name: 'John',
+                    address: {
+                        city: 'Mumbai',
+                        state: 'Maharashtra'
+                    }
                 },
-                methods: {
+                methods: { // "this" is the "data" object (state)
                     changeName() {
                         this.name = 'Jane';
+                    },
+                    changeAddress( city, state ) {
+                        this.address = {
+                            city, // city: city,
+                            state // state: state
+                        };
                     }
                 }
             })
