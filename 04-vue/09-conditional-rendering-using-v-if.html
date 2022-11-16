@@ -56,7 +56,8 @@
                         <div class="panel-heading" @click="toggle">
                             What is Vue?
                         </div>
-                        <div :class="'panel-body ' + ( isOpen ? '' : 'hide' )">
+                        <!-- v-if will "remove" the DOM node if the condition is false -->
+                        <div class="panel-body" v-if="isOpen">
                             It is a JS library to build UI of frontend web apps
                         </div>
                     </div>
