@@ -4,7 +4,26 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title></title>
+        <title>v-bind directive</title>
+        <style>
+            .card {
+                padding: 1em;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .card-img {
+                width: 100%;
+            }
+
+            .badge {
+                display: inline-block;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: navy;
+                color: white;
+            }
+        </style>
     </head>
     <body>
         <div id="root"></div>
@@ -32,6 +51,7 @@
                     <div class="card">
                         <h1>{{workshop.name}}</h1>
                         <span class="badge">{{workshop.category}}</span>
+                        <img class="card-img" :src="workshop.imageUrl" :alt="workshop.name" />
                         <div v-html="workshop.description"></div>
                     </div>
                 `
