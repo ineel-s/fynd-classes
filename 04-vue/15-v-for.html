@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-for | Rendering lists</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                data: {
+                    cities: [
+                        'Mumbai',
+                        'Gurugram',
+                        'Bengaluru',
+                        'Ahmedabad'
+                    ]
+                },
+                methods: {
+                    
+                },
+                template: `
+                    <section>
+                        <h1>Fynd Office Locations</h1>
+                        <hr />
+                        <ol>
+                            <li v-for="city in cities">{{city}}</li>
+                        </ol>
+                        <label id="preferred-location">Preferred location</label>
+                        <!-- Create a dropdown with the options being the cities -->
+                    </section>
+                `
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-model for inputs (2-way data-binding)</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                data: {
+                    credentials: {
+                        email: '',
+                        password: ''
+                    }
+                },
+                methods: {
+                    login( event, page ) {
+                        // event.preventDefault();
+
+                        console.log( JSON.stringify( this.credentials ) );
+
+                        // validate...
+
+                        // send to backend...
+
+                        // reset input values
+                        // when state updates, v-model makes sure that the inputs also follow the update
+                        this.credentials.email = '';
+                        this.credentials.password = '';
+                    },
+                    clickedLogin( event ) {
+                        console.log( 'login button clicked' );
+                    }
+                },
+                template: `
+                    <section>
+                        <h1>Login</h1>
+                        <hr />
+                        <form @submit.prevent="login( $event, 'dummy_page_argument' )">
+                            <div>
+                                <input
+                                    type="email"
+                                    placeholder="your email"
+                                    v-model.trim="credentials.email"
+                                />
+                                {{credentials.email}}
+                            </div>
+                            <div>
+                                <input
+                                    type="password"
+                                    placeholder="your password"
+                                    v-model.trim="credentials.password"
+                                />
+                                {{credentials.password}}
+                            </div>
+                            <button type="submit" @click.shift="clickedLogin">Login</button>
+                        </form>
+                    </section>
+                `,
+            })
+        </script>
+    </body>
+</html>
