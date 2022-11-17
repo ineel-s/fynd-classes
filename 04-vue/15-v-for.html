@@ -21,11 +21,23 @@
                         'Bengaluru',
                         'Ahmedabad'
                     ],
-                    newCity: ''
+                    city: '',
+                    preferredCity: 'Mumbai'
                 },
                 methods: {
                     addNewCity() {
-                        this.cities.push( this.newCity );
+                        this.cities.push( this.city );
+                        this.preferredCity = this.city;
+                    },
+                    removeCity() {
+                        // method 1: Delete an item using indexOf and splice
+                        const idx = this.cities.indexOf( this.city ); // -1
+
+                        if( idx !== -1 ) {
+                            this.cities.splice( idx, 1 );
+                        }
+
+                        // method 2: EXERCISE: How can we use array's filter method to delete an item
                     }
                 },
                 template: `
@@ -34,12 +46,16 @@
                         <hr />
                         
                         <ol>
+                            <!-- <li v-for="( city, idx ) in cities">{{id}} - {{city}}</li> -->
                             <li v-for="city in cities">{{city}}</li>
                         </ol>
                         
                         <h2>Preferred location</h2>
                         <label for="preferred-location">Select your preferred location</label>
-                        <select id="preferred-location">
+                        <select
+                            id="preferred-location"
+                            v-model="preferredCity"
+                        >
                             <option value="">-- Select location --</option>
                             <option v-for="city of cities" :value="city">{{city}}</option>
                         </select>
@@ -50,10 +66,10 @@
                             type="text"
                             placeholder="City"
                             id="edit-location"
-                            v-model="newCity"
+                            v-model="city"
                         />
                         <button @click="addNewCity">Add</button>
-                        <button>Remove city</button>
+                        <button @click="removeCity">Remove</button>
                     </section>
                 `
             })

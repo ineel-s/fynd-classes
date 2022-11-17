@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-for | Rendering lists</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            /**
+             * WITHOUT key
+             * -----------
+             * When Vue has to re-render lists...
+             * <li>Mumbai</li> 
+             * <li>Gurugram</li> 
+             * <li>Bengaluru</li> 
+             * <li>Ahmedabad</li> 
+             *
+             * Virtual DOM -> An logical representation of the DOM that Vue maintains, and it uses it to know what to change in the actual DOM
+             * During re-rendering (new city added), it needs to show this...
+             * <li>Bhopal</li> 
+             * <li>Mumbai</li> 
+             * <li>Gurugram</li> 
+             * <li>Bengaluru</li> 
+             * <li>Ahmedabad</li> 
+             * 
+             * So, what DOM manipulations are done? 5 in this case
+             * <li>Mumbai</li> -> <li>Bhopal</li>
+             * <li>Gurugram</li> -> <li>Mumbai</li>
+             * ...
+             * 
+             * WITH key
+             * -----------
+             * When Vue has to re-render lists...
+             * <li key="Mumbai">Mumbai</li> 
+             * <li key="Gurugram">Gurugram</li> 
+             * <li key="Bengaluru">Bengaluru</li> 
+             * <li key="Ahmedabad">Ahmedabad</li> 
+             *
+             * During re-rendering (new city added), it needs to show this...
+             * <li key="Bhopal">Bhopal</li> 
+             * <li key="Mumbai">Mumbai</li>
+             * <li key="Gurugram">Gurugram</li> 
+             * <li key="Bengaluru">Bengaluru</li> 
+             * <li key="Ahmedabad">Ahmedabad</li> 
+             * 
+             * So, what DOM manipulations are done? 1 li node is created
+             * <li key="Bhopal">Bhopal</li> -> 1 li DOM node is created
+             * <li key="Mumbai">Mumbai</li> -> same old Mumbai li node
+             * <li key="Gurugram">Gurugram</li>  -> same old Gurugram node
+             * <li key="Bengaluru">Bengaluru</li> -> ...
+             * <li key="Ahmedabad">Ahmedabad</li> -> ...
+             * ...
+             */
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                data: {
+                    cities: [
+                        'Mumbai',
+                        'Gurugram',
+                        'Bengaluru',
+                        'Ahmedabad'
+                    ],
+                    city: '',
+                },
+                methods: {
+                    addNewCity() {
+                        this.cities.unshift( this.city );
+                    }
+                },
+                template: `
+                    <section>
+                        <h1>Fynd Office Locations</h1>
+                        <hr />
+                        
+                        <ol>
+                            <!-- <li v-for="( city, idx ) in cities">{{id}} - {{city}}</li> -->
+                            <!-- set the key attribute to something unique AND it should be the same for an item across renders -->
+                            <li v-for="city in cities" :key="city">{{city}}</li>
+                        </ol>
+                        
+                        <h2>Preferred location</h2>
+                        <label for="preferred-location">Select your preferred location</label>
+                        <select
+                            id="preferred-location"
+                        >
+                            <option value="">-- Select location --</option>
+                            <option v-for="city of cities" :value="city">{{city}}</option>
+                        </select>
+                        
+                        <h2>Edit available locations</h2>
+                        <label for="edit-location">City</label>
+                        <input
+                            type="text"
+                            placeholder="City"
+                            id="edit-location"
+                            v-model="city"
+                        />
+                        <button @click="addNewCity">Add</button>
+                    </section>
+                `
+            })
+        </script>
+    </body>
+</html>
