@@ -20,10 +20,13 @@
                         'Gurugram',
                         'Bengaluru',
                         'Ahmedabad'
-                    ]
+                    ],
+                    newCity: ''
                 },
                 methods: {
-                    
+                    addNewCity() {
+                        this.cities.push( this.newCity );
+                    }
                 },
                 template: `
                     <section>
@@ -41,10 +44,16 @@
                             <option v-for="city of cities" :value="city">{{city}}</option>
                         </select>
                         
-                        <h2>Request new location</h2>
-                        <label for="request-location">Request another location</label>
-                        <input type="text" placeholder="New location" id="request-location" />
-                        <button>Add</button>
+                        <h2>Edit available locations</h2>
+                        <label for="edit-location">City</label>
+                        <input
+                            type="text"
+                            placeholder="City"
+                            id="edit-location"
+                            v-model="newCity"
+                        />
+                        <button @click="addNewCity">Add</button>
+                        <button>Remove city</button>
                     </section>
                 `
             })
