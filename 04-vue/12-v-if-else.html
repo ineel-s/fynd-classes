@@ -36,9 +36,9 @@
                             You get to use features a, b, c
                         </div>
                         <!-- Add 3 buttons to switch to Free / Premium / Pro (manage the plan change using 1 method) --->
-                        <button @click="switchPlan( 'free' )">Switch to free</button>
-                        <button @click="switchPlan( 'premium' )">Switch to premium</button>
-                        <button @click="switchPlan( 'pro' )">Switch to pro</button>
+                        <button @click="switchPlan( 'free' )" v-if="plan !== 'free'">Switch to free</button>
+                        <button @click="switchPlan( 'premium' )" v-if="plan !== 'premium'">Switch to premium</button>
+                        <button @click="switchPlan( 'pro' )" v-if="plan !=='pro'">Switch to pro</button>
                     </div>
                 `
             })
