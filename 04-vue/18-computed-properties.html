@@ -16,18 +16,23 @@
                 el: '#root',
                 data: {
                     firstName: 'John',
-                    lastName: 'Doe'
+                    lastName: 'Doe',
+                    city: 'Mumbai'
                 },
                 computed: { // computed properties (derived state) are defined using methods
                     // fullName property will be re-computed whenever the state variables it uses, change
                     // i.e. in this case - when firstName / lastName changes
+                    // it WILL NOT be called when city changes
                     fullName() {
+                        console.log( 'recomputed' );
                         // Explore accessor methods, Proxy class of JS
                         return `${this.firstName} ${this.lastName}`;
                     }
                 },
                 methods: {
-                    
+                    changeCity( city ) {
+                        this.city = city;
+                    }
                 },
                 template: `
                     <section>
@@ -44,6 +49,8 @@
                         <div>
                             Your full name: {{fullName}}
                         </div>
+                        City: {{city}}
+                        <button @click="changeCity( 'New Delhi' )">Change city to New Delhi</button>
                     </section>
                 `
             })
