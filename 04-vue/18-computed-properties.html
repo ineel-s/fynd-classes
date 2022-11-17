@@ -32,6 +32,10 @@
                 methods: {
                     changeCity( city ) {
                         this.city = city;
+                    },
+                    getFullName() {
+                        console.log( 'getFullName called' );
+                        return `${this.firstName} ${this.lastName}`;
                     }
                 },
                 template: `
@@ -47,7 +51,10 @@
                             placeholder="Your last name"
                         />
                         <div>
-                            Your full name: {{fullName}}
+                            Your full name (computed property): {{fullName}}
+                        </div>
+                        <div>
+                            Your full name (using method call): {{getFullName()}}
                         </div>
                         City: {{city}}
                         <button @click="changeCity( 'New Delhi' )">Change city to New Delhi</button>

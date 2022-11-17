@@ -60,3 +60,6 @@ Oct 2022 Fynd Academy batch
 - Nov 7
     - 04-JS (ES2015+) - Lab guide.pdf
         - 14 - 16
+- Nov 17
+    - 05-Vue_JS_Lab_Guide
+        - 1, 2, 4, 5, 6
