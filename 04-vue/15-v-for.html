@@ -29,11 +29,22 @@
                     <section>
                         <h1>Fynd Office Locations</h1>
                         <hr />
+                        
                         <ol>
                             <li v-for="city in cities">{{city}}</li>
                         </ol>
-                        <label id="preferred-location">Preferred location</label>
-                        <!-- Create a dropdown with the options being the cities -->
+                        
+                        <h2>Preferred location</h2>
+                        <label for="preferred-location">Select your preferred location</label>
+                        <select id="preferred-location">
+                            <option value="">-- Select location --</option>
+                            <option v-for="city of cities" :value="city">{{city}}</option>
+                        </select>
+                        
+                        <h2>Request new location</h2>
+                        <label for="request-location">Request another location</label>
+                        <input type="text" placeholder="New location" id="request-location" />
+                        <button>Add</button>
                     </section>
                 `
             })
