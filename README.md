@@ -63,3 +63,7 @@ Oct 2022 Fynd Academy batch
 - Nov 17
     - 05-Vue_JS_Lab_Guide
         - 1, 2, 4, 5, 6
+- Nov 18
+    - PanelBody implementation
+    - 05-Vue_JS_Lab_Guide
+        - Q. 10
