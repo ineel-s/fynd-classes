@@ -45,18 +45,26 @@
                         return cats;
                     },
                     filteredTechnologies() {
+                        if( this.selectedCategory === '' ) {
+                            return this.technologies;
+                        }
 
+                        return this.technologies.filter(
+                            technology => technology.category === this.selectedCategory
+                        );
                     }
                 },
                 template: `
                     <section>
-                        <select>
+                        <select v-model="selectedCategory">
+                            <option value="">-- Select category to filter --</option>
                             <option v-for="category in categories" :key="category" :value="category">
                                 {{category}}
                             </option>
                         </select>
+                        You selected: {{selectedCategory}}
                         <ol>
-                            <li v-for="tech in technologies" :key="tech.id">{{tech.name}}</li>
+                            <li v-for="tech in filteredTechnologies" :key="tech.id">{{tech.name}}</li>
                         </ol>
                     </section>
                 `
