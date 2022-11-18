@@ -31,12 +31,37 @@
         <div id="root"></div>
 
         <script type="module">
-            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+            // minified Vue JS file does not warn on prop type violations
+            // Vue JS devtools will not work with minified Vue JS file included - so we need to use non-minified version
+            // import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.js';
+
+            const PanelHeading = {
+                props: {
+                    heading: {
+                        type: String,
+                        required: true
+                    },
+                    tg: {
+                        type: Function,
+                        default: () => {} // no operation function!
+                    }
+                },
+                template: `
+                    <div class="panel-heading" @click="tg">
+                        {{heading}}
+                    </div>
+                `
+            };
 
             // This is the definition for a reusable component
             const Panel = {
-                props: [ 'question', 'answer' ], // never change props inside your component
-                data() {
+                props: [ 'heading', 'body' ], // never change props inside your component. Read/Interpolate them like you read/interpolate data of the component.
+                components: {
+                    // PanelHeading: PanelHeading
+                    PanelHeading
+                },
+                data() { // a method that returns an object with data
                     return {
                         isOpen: true
                     };
@@ -48,11 +73,9 @@
                 },
                 template: `
                     <div class="panel">
-                        <div class="panel-heading" @click="toggle">
-                            {{question}}
-                        </div>
+                        <PanelHeading :heading="heading" :tg="toggle" />
                         <div class="panel-body" v-if="isOpen">
-                            {{answer}}
+                            {{body}}
                         </div>
                     </div>
                 `
@@ -68,19 +91,31 @@
                 data: {
                     panels: [
                         {
-                            question: 'What is Vue?',
-                            answer: 'It is a JS library to build UI of frontend web apps'
+                            id: 1,
+                            heading: 'What is Vue', // try pass a number like 123 and check if warning appears in console
+                            body: 'It is a JS library to build UI of frontend web apps'
                         },
                         {
-                            question: 'What is Node?',
-                            answer: 'It is a JS runtime that can be used to build backend of web apps'
+                            id: 2,
+                            heading: 'What is Node?',
+                            body: 'It is a JS runtime that can be used to build backend of web apps'
+                        },
+                        {
+                            id: 3,
+                            heading: 'What is MongoDB?',
+                            body: 'It is a NoSQL DB'
                         }
                     ]
                 },
                 template: `
                     <section>
-                        <QnA :question="panels[0].question" :answer="panels[0].answer"></QnA>
-                        <QnA :question="panels[1].question" :answer="panels[1].answer"></QnA>
+                        <QnA
+                            v-for="panel in panels"
+                            :key="panel.id"
+                            :heading="panel.heading"
+                            :body="panel.body"
+                        >
+                        </QnA>
                     </section>
                 `
             });
