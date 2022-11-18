@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Components (small composable, reusable, customizable pieces of the UI)</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .panel {
+                border: 1px solid navy;
+                border-radius: 5px;
+            }
+
+            .panel-heading,
+            .panel-body {
+                padding: 1em;
+            }
+
+            .panel-heading {
+                background-color: navy;
+                color: ivory;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            // This is the definition for a reusable component
+            const Panel = {
+                props: [ 'question', 'answer' ], // never change props inside your component
+                data() {
+                    return {
+                        isOpen: true
+                    };
+                },
+                methods: {
+                    toggle() {
+                        this.isOpen = !this.isOpen;
+                    }
+                },
+                template: `
+                    <div class="panel">
+                        <div class="panel-heading" @click="toggle">
+                            {{question}}
+                        </div>
+                        <div class="panel-body" v-if="isOpen">
+                            {{answer}}
+                        </div>
+                    </div>
+                `
+            };
+
+            new Vue({
+                el: '#root',
+                components: { // locally registering the components
+                    QnA: Panel
+                    // Panel: Panel
+                    // Panel
+                },
+                data: {
+                    panels: [
+                        {
+                            question: 'What is Vue?',
+                            answer: 'It is a JS library to build UI of frontend web apps'
+                        },
+                        {
+                            question: 'What is Node?',
+                            answer: 'It is a JS runtime that can be used to build backend of web apps'
+                        }
+                    ]
+                },
+                template: `
+                    <section>
+                        <QnA :question="panels[0].question" :answer="panels[0].answer"></QnA>
+                        <QnA :question="panels[1].question" :answer="panels[1].answer"></QnA>
+                    </section>
+                `
+            });
+        </script>
+    </body>
+</html>
