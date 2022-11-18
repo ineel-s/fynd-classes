@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computed properties</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+
+            new Vue({
+                el: '#root',
+                data: {
+                    technologies: [
+                        { id: 1, name: 'HTML', category: 'frontend' },
+                        { id: 2, name: 'CSS', category: 'frontend' },
+                        { id: 3, name: 'JavaScript', category: 'frontend' },
+                        { id: 4, name: 'Vue', category: 'frontend' },
+                        { id: 5, name: 'Node', category: 'backend' },
+                        { id: 6, name: 'Express', category: 'backend' },
+                        { id: 7, name: 'MongoDB', category: 'database' },
+                        { id: 8, name: 'MySQL', category: 'database' }
+                    ]
+                },
+                methods: {
+                    
+                },
+                computed: {
+                    // set up a 'categories' array which is computed
+                },
+                template: `
+                    <section>
+                        <select>
+                            <!-- your code to show the categories -->
+                        </select>
+                        <ol>
+                            <li v-for="tech of technologies" :key="tech.id">{{tech.name}}</li>
+                        </ol>
+                    </section>
+                `
+            })
+        </script>
+    </body>
+</html>
