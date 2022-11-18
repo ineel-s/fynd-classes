@@ -24,25 +24,43 @@
                         { id: 6, name: 'Express', category: 'backend' },
                         { id: 7, name: 'MongoDB', category: 'database' },
                         { id: 8, name: 'MySQL', category: 'database' }
-                    ]
+                    ],
+                    selectedCategory: ''
                 },
                 methods: {
                     
                 },
                 computed: {
-                    // set up a 'categories' array which is computed
+                    categories() {
+                        const cats = [];
+
+                        this.technologies.forEach(
+                            tech => {
+                                if( cats.includes( tech.category ) === false ) {
+                                    cats.push( tech.category );
+                                }
+                            }
+                        );
+
+                        return cats;
+                    },
+                    filteredTechnologies() {
+
+                    }
                 },
                 template: `
                     <section>
                         <select>
-                            <!-- your code to show the categories -->
+                            <option v-for="category in categories" :key="category" :value="category">
+                                {{category}}
+                            </option>
                         </select>
                         <ol>
-                            <li v-for="tech of technologies" :key="tech.id">{{tech.name}}</li>
+                            <li v-for="tech in technologies" :key="tech.id">{{tech.name}}</li>
                         </ol>
                     </section>
                 `
-            })
+            });
         </script>
     </body>
 </html>
