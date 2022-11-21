@@ -13,7 +13,6 @@
             import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
             import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
 
-            // every component/root instance we can use the store as this.$store
             Vue.use( Vuex ); // this.$store access within components
 
             const store = new Vuex.Store({
@@ -36,7 +35,7 @@
                 },
                 el: '#root',
                 // store: store,
-                store, // you need to setup the store reference in the root instance
+                store, // you need to setup the store reference in the root instance - every component/root instance we can use the store as this.$store
                 computed: {
                     counter() {
                         return this.$store.state.value;
