@@ -31,9 +31,6 @@
         <div id="root"></div>
 
         <script type="module">
-            // minified Vue JS file does not warn on prop type violations
-            // Vue JS devtools will not work with minified Vue JS file included - so we need to use non-minified version
-            // import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
             import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.js';
 
             const PanelHeading = {
@@ -41,14 +38,15 @@
                     heading: {
                         type: String,
                         required: true
-                    },
-                    tg: {
-                        type: Function,
-                        default: () => {} // no operation function!
+                    }
+                },
+                methods: {
+                    requestToggle() {
+                        this.$emit( 'tg' ); // fires a "Custom event" called "tg" on the parent
                     }
                 },
                 template: `
-                    <div class="panel-heading" @click="tg">
+                    <div class="panel-heading" @click="requestToggle">
                         {{heading}}
                     </div>
                 `
@@ -72,15 +70,13 @@
                 `
             };
 
-            // This is the definition for a reusable component
             const Panel = {
-                props: [ 'heading', 'body' ], // never change props inside your component. Read/Interpolate them like you read/interpolate data of the component.
+                props: [ 'heading', 'body' ],
                 components: {
-                    // PanelHeading: PanelHeading
                     PanelHeading,
                     PanelBody
                 },
-                data() { // a method that returns an object with data
+                data() {
                     return {
                         isOpen: true
                     };
@@ -92,7 +88,7 @@
                 },
                 template: `
                     <div class="panel">
-                        <PanelHeading :heading="heading" :tg="toggle" />
+                        <PanelHeading :heading="heading" @tg="toggle" />
                         <PanelBody :body="body" :isOpen="isOpen" />
                     </div>
                 `
