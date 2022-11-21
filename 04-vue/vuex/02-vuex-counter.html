@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Counter example</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+            import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+
+            Vue.use( Vuex ); // this.$store access within components
+
+            const store = new Vuex.Store({
+                state: {
+                    value: 0
+                },
+                mutations: {
+                    decrement( state ) {
+                        --state.value;
+                    },
+                    increment( state ) {
+                        ++state.value;
+                    }
+                }
+            });
+
+            new Vue({
+                el: '#root',
+                computed: {
+                    counter() { // counter is re-computed when store.state.value changes
+                        return store.state.value;
+                    }
+                },
+                methods: {
+                    decrement() {
+                        store.commit( 'decrement' );
+                    },
+                    increment() {
+                        store.commit( 'increment' )
+                    }
+                },
+                template: `
+                    <div>
+                        <button @click="decrement">-</button>
+                        <span>{{counter}}</span>
+                        <button @click="increment">+</button>
+                    </div>
+                `
+            })
+        </script>
+    </body>
+</html>

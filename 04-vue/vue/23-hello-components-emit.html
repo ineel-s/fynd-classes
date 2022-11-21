@@ -42,7 +42,7 @@
                 },
                 methods: {
                     requestToggle() {
-                        this.$emit( 'tg' ); // fires a "Custom event" called "tg" on the parent
+                        this.$emit( 'tg', { x: 100, y: 200 } ); // fires a "Custom event" called "tg" on the parent
                     }
                 },
                 template: `
@@ -82,12 +82,14 @@
                     };
                 },
                 methods: {
-                    toggle() {
+                    toggle( event ) {
                         this.isOpen = !this.isOpen;
+                        console.log( event );
                     }
                 },
                 template: `
                     <div class="panel">
+                        <!-- <PanelHeading :heading="heading" @tg="toggle( $event )" /> -->
                         <PanelHeading :heading="heading" @tg="toggle" />
                         <PanelBody :body="body" :isOpen="isOpen" />
                     </div>
