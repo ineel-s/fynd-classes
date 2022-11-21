@@ -13,7 +13,7 @@
             import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
             import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
 
-            // every component/root insatnce we can use the store as this.$store
+            // every component/root instance we can use the store as this.$store
             Vue.use( Vuex ); // this.$store access within components
 
             const store = new Vuex.Store({
@@ -21,16 +21,19 @@
                     value: 0
                 },
                 mutations: {
-                    decrement( state ) {
-                        --state.value;
+                    decrement( state, payload = 1 ) {
+                        state.value -= payload;
                     },
-                    increment( state ) {
-                        ++state.value;
+                    increment( state, payload = 1 ) {
+                        state.value += payload;
                     }
                 }
             });
 
             new Vue({
+                data: {
+                    changeBy: 1
+                },
                 el: '#root',
                 // store: store,
                 store, // you need to setup the store reference in the root instance
@@ -41,12 +44,14 @@
                 },
                 methods: {
                     increment() {
-                        this.$store.commit( 'increment' )
+                        this.$store.commit( 'increment', this.changeBy );
                     }
                 },
                 template: `
                     <div>
-                        <button @click="$store.commit( 'decrement' )">-</button>
+                        <input type="number" v-model.number="changeBy" />
+                        {{changeBy}}
+                        <button @click="$store.commit( 'decrement', changeBy )">-</button>
                         <span>{{counter}}</span>
                         <button @click="increment">+</button>
                     </div>

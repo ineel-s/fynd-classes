@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Counter example</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+            import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+
+            // every component/root instance we can use the store as this.$store
+            Vue.use( Vuex ); // this.$store access within components
+
+            const store = new Vuex.Store({
+                state: {
+                    value: 0
+                },
+                mutations: {
+                    decrement( state, payload = 1 ) {
+                        state.value -= payload;
+                    },
+                    increment( state, payload = 1 ) {
+                        state.value += payload;
+                    }
+                },
+                // in mutations we should not do anything asynchronous - it can have only synchronous code - the moment we commit a mutation, the value it sets changes
+                // the first argument is a "context" object which includes state among other things
+                actions: {
+                    decrement( { commit }, payload = 1 ) {
+                        setTimeout(
+                            () => {
+                                commit( 'decrement', payload );
+                            },
+                            2000
+                        );
+                    },
+                    increment( { commit }, payload = 1 ) {
+                        setTimeout(
+                            () => {
+                                commit( 'increment', payload );
+                            },
+                            2000
+                        );
+                    }
+                }
+            });
+
+            new Vue({
+                data: {
+                    changeBy: 1
+                },
+                el: '#root',
+                // store: store,
+                store, // you need to setup the store reference in the root instance
+                computed: {
+                    counter() {
+                        return this.$store.state.value;
+                    }
+                },
+                methods: {
+                    increment() {
+                        this.$store.dispatch( 'increment', this.changeBy );
+                    }
+                },
+                template: `
+                    <div>
+                        <input type="number" v-model.number="changeBy" />
+                        {{changeBy}}
+                        <button @click="$store.dispatch( 'decrement', changeBy )">-</button>
+                        <span>{{counter}}</span>
+                        <button @click="increment">+</button>
+                    </div>
+                `
+            })
+        </script>
+    </body>
+</html>
