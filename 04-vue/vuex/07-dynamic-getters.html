@@ -34,13 +34,26 @@
                     numWorkshops( state ) {
                         return state.workshops.length;
                     },
-                    // EXERCISE: Define numOnlineWorkshops, numInPersonWorkshops as getters, and use them to show the results in WorkshopsList
-                    numOnlineWorkshops( state ) {
-                        return state.workshops.filter( w => w.modes.online ).length;
+                    // apart from state (i.e. workshops), we need extra information ("mode" we are looking for) -> go in for a dynamic getter. It is written as a getter that returns an (inner) function. The inner function gets the extra information ("mode")
+                    numWorkshopsWithMode( state ) {
+                        return ( mode ) => {
+                            return state.workshops.filter( w => w.modes[mode] ).length;
+                        }
                     },
-                    numInPersonWorkshops( state ) {
-                        return state.workshops.filter( w => w.modes.inPerson ).length;
-                    }
+                    categories( state ) {
+                        const cats = [];
+
+                        state.workshops.forEach(
+                            w => {
+                                if( cats.includes( w.category ) === false ) {
+                                    cats.push( w.category );
+                                }
+                            }
+                        );
+
+                        return cats;
+                    },
+                    // Create a dynamic getter getWorkshopsInCategory ("category" is the input form outside)
                 },
                 mutations: {
                     setLoading( state, loading ) {
@@ -70,6 +83,11 @@
             });
 
             const WorkshopsList = {
+                data() {
+                    return {
+                        selectedCategory: ''
+                    }
+                },
                 methods: {
                     getBadgeClass( workshop, mode ) {
                         return workshop.modes[mode] ? 'bg-success' : 'bg-secondary';
@@ -89,12 +107,12 @@
                         // use getters property instead of state!
                         return this.$store.getters.numWorkshops;
                     },
-                    numOnlineWorkshops() {
-                        return this.$store.getters.numOnlineWorkshops;
+                    numWorkshopsWithMode() {
+                        return this.$store.getters.numWorkshopsWithMode;
                     },
-                    numInPersonWorkshops() {
-                        return this.$store.getters.numInPersonWorkshops;
-                    },
+                    categories() {
+                        return this.$store.getters.categories;
+                    }
                 },
                 template: `
                     <div class="container my-4">
@@ -113,11 +131,18 @@
                                 Number of workshops = {{numWorkshops}}
                             </div>
                             <div class="alert alert-secondary">
-                                Number of online workshops = {{numOnlineWorkshops}}
+                                Number of online workshops = {{numWorkshopsWithMode( 'online' )}}
                             </div>
                             <div class="alert alert-secondary">
-                                Number of in-person workshops = {{numInPersonWorkshops}}
+                                Number of in-person workshops = {{numWorkshopsWithMode( 'inPerson' )}}
                             </div>
+                            <select v-model="selectedCategory">
+                                <option value="">-- Select category to filter --</option>
+                                <option v-for="category in categories" :key="category" :value="category">
+                                    {{category}}
+                                </option>
+                            </select>
+                            You selected: {{selectedCategory}}
                             <div class="row">
                                 <div class="col-12 col-sm-6 col-lg-4 d-flex" v-for="workshop in workshops" :key="workshop.id">
                                     <div class="card w-100 p-3 my-3 d-flex flex-column justify-content-between">
