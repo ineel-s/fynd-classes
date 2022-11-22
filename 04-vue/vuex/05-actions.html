@@ -28,8 +28,8 @@
                     increment( state, payload = 1 ) {
                         state.value += payload;
                     },
-                    setProcessing( state, payload ) {
-                        state.processing = payload;
+                    setProcessing( state, payload ) { // extra properties are gathered into payload
+                        state.processing = payload.processing;
                     }
                 },
                 // in mutations we should not do anything asynchronous - it can have only synchronous code - the moment we commit a mutation, the value it sets changes
@@ -37,7 +37,13 @@
                 actions: {
                     decrement( { commit }, payload = 1 ) {
                         // we start processing...
-                        commit( 'setProcessing', true );
+                        // commit( 'setProcessing', true );
+
+                        // alternative syntax of committing a mutation -> pass an object with type: mutation_name and any extra properties
+                        commit({
+                            type: 'setProcessing',
+                            processing: true
+                        });
 
                         setTimeout(
                             () => {
@@ -49,7 +55,10 @@
                     },
                     increment( { commit }, payload = 1 ) {
                         // we start processing...
-                        commit( 'setProcessing', true );
+                        commit({
+                            type: 'setProcessing',
+                            processing: true
+                        })
 
                         setTimeout(
                             () => {

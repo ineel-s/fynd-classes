@@ -104,28 +104,35 @@
                     }
                 },
                 computed: {
-                    loading() {
-                        return this.$store.state.loading;
-                    },
-                    workshops() {
-                        return this.$store.state.workshops;
-                    },
-                    error() {
-                        return this.$store.state.error;
-                    },
-                    numWorkshops() {
-                        // use getters property instead of state!
-                        return this.$store.getters.numWorkshops;
-                    },
-                    numWorkshopsWithMode() {
-                        return this.$store.getters.numWorkshopsWithMode;
-                    },
-                    categories() {
-                        return this.$store.getters.categories;
-                    },
-                    getWorkshopsInCategory() {
-                        return this.$store.getters.getWorkshopsInCategory;
-                    },
+                    /*
+                     * // array form
+                     * Vuex.mapState( [ 'loading', 'workshops', 'error' ] ) -> {
+                            loading() {
+                                return this.$store.state.loading;
+                            },
+                            ...
+                     }
+                     */
+                    /*
+                        // object form of the state mapper is useful if computed property name is different from the state property name
+                        ...Vuex.mapState({
+                           processing: 'loading'
+                        }),
+                    */
+                    ...Vuex.mapState( [ 'loading', 'workshops', 'error' ] ),
+                    
+                    
+                    
+                    // array form of getter mapper
+                    ...Vuex.mapGetters( [ 'numWorkshopsWithMode', 'getWorkshopsInCategory' ] ),
+                    
+                    // cats() {
+                    //     return this.$store.getters.categories;
+                    // },
+                    ...Vuex.mapGetters({
+                        cats: 'categories'
+                    })
+                    
                 },
                 template: `
                     <div class="container my-4">
@@ -141,7 +148,7 @@
                         </div>
                         <div v-if="!loading && !error && workshops.length !== 0">
                             <div class="alert alert-secondary">
-                                Number of workshops = {{numWorkshops}}
+                                Number of workshops = {{numberOfWorkshops}}
                             </div>
                             <div class="alert alert-secondary">
                                 Number of online workshops = {{numWorkshopsWithMode( 'online' )}}
@@ -151,7 +158,7 @@
                             </div>
                             <select v-model="selectedCategory">
                                 <option value="">-- Select category to filter --</option>
-                                <option v-for="category in categories" :key="category" :value="category">
+                                <option v-for="category in cats" :key="category" :value="category">
                                     {{category}}
                                 </option>
                             </select>
