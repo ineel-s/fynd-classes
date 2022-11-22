@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mounting lifecycle method and fetching data on component load</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <!-- a global called "axios" is created -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.js"></script>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.js';
+            import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+
+            Vue.use( Vuex );
+
+            const getWorkshops = async () => {
+                const response = await axios.get( `http://workshops-server.herokuapp.com/workshops` );
+                return response.data;
+            };
+
+            const store = new Vuex.Store({
+                state: {
+                    workshops: [],
+                    loading: false,
+                    error: null
+                },
+                getters: { // "computed" properties of the store's state
+                    numWorkshops( state ) {
+                        return state.workshops.length;
+                    },
+                    // numOnlineWorkshops, numInPersonWorkshops
+                },
+                mutations: {
+                    setLoading( state, loading ) {
+                        state.loading = loading;
+                    },
+                    setWorkshops( state, workshops ) {
+                        state.workshops = workshops;
+                    },
+                    setError( state, error ) {
+                        state.error = error;
+                    }
+                },
+                actions: {
+                    async fetchWorkshops( { commit } ) {
+                        commit( 'setLoading', true );
+
+                        try {
+                            const workshops = await getWorkshops();
+                            commit( 'setWorkshops', workshops );
+                        } catch( error ) {
+                            commit( 'setError', error );
+                        } finally {
+                            commit( 'setLoading', false );
+                        }
+                    }
+                }
+            });
+
+            const WorkshopsList = {
+                methods: {
+                    getBadgeClass( workshop, mode ) {
+                        return workshop.modes[mode] ? 'bg-success' : 'bg-secondary';
+                    }
+                },
+                computed: {
+                    loading() {
+                        return this.$store.state.loading;
+                    },
+                    workshops() {
+                        return this.$store.state.workshops;
+                    },
+                    error() {
+                        return this.$store.state.error;
+                    },
+                    numWorkshops() {
+                        // use getters property instead of state!
+                        return this.$store.getters.numWorkshops;
+                    }
+                },
+                template: `
+                    <div class="container my-4">
+                        <h1>List of workshops</h1>
+                        <hr />
+                        <div class="d-flex justify-content-center" v-if="loading">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="alert alert-danger" role="alert" v-if="error">
+                            {{error.message}}
+                        </div>
+                        <div v-if="!loading && !error && workshops.length !== 0">
+                            <div class="alert alert-secondary">Number of workshops = {{numWorkshops}}</div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-4 d-flex" v-for="workshop in workshops" :key="workshop.id">
+                                    <div class="card w-100 p-3 my-3 d-flex flex-column justify-content-between">
+                                        <img :src="workshop.imageUrl" class="card-img-top" :alt="workshop.name">
+                                        <div class="card-body" style="flex-grow: 0;">
+                                            <h5 class="card-title">{{workshop.name}}</h5>
+                                            <div class="card-text">
+                                                <div>
+                                                    <span class="badge text-bg-primary">{{workshop.category}}</span>
+                                                </div>
+                                                <div>
+                                                    <span class="badge" :class="getBadgeClass( workshop, 'online' )">Online</span>
+                                                    <span class="badge" :class="getBadgeClass( workshop, 'inPerson' )">In-person</span>
+                                                </div>
+                                                <div>
+                                                    {{workshop.location.address}},
+                                                    {{workshop.location.city}},
+                                                    {{workshop.location.state}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                // "lifecycle methods" -> this is called when the component shows up for the first time and the DOM is ready
+                async mounted() {
+                    this.$store.dispatch( 'fetchWorkshops' );
+                }
+            };
+            
+            new Vue({
+                el: '#root',
+                store,
+                components: {
+                    WorkshopsList
+                },
+                template: `
+                    <WorkshopsList />
+                `
+            })
+        </script>
+    </body>
+</html>
