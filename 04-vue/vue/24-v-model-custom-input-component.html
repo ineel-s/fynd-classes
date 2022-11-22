@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Binding component with input</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import Vue from 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.14/vue.esm.browser.min.js';
+            import Vuex from 'https://cdnjs.cloudflare.com/ajax/libs/vuex/3.6.2/vuex.esm.browser.js';
+            import { Fragment } from 'https://unpkg.com/vue-fragment@1/src/index.js';
+
+            console.log( Fragment );
+
+            const FormControl = {
+                props: {
+                    type: {
+                        type: String,
+                        default: 'text'
+                    },
+                    value: { // initial value of input
+                        type: String,
+                        default: ''
+                    },
+                    label: {
+                        type: String,
+                        required: true
+                    },
+                    id: {
+                        type: String,
+                        required: true
+                    }
+                },
+                emits: [ 'input' ],
+                template: `
+                    <Fragment>
+                        <label :for="id">{{label}}</label>
+                        <input
+                            :type="type"
+                            :id="id"
+                            :value="value"
+                            @input="$emit( 'input', $event.target.value )"
+                        />
+                    </Fragment>
+                `
+            };
+
+            new Vue({
+                el: '#root',
+                components: {
+                    FormControl
+                },
+                data: {
+                    login: {
+                        email: '',
+                        password: '',
+                        age: 18
+                    }
+                },
+                methods: {
+                    doLogin() {
+                        console.log( this.login );
+                    }
+                },
+                template: `
+                    <form @submit.prevent="doLogin">
+                        <FormControl
+                            label="Email"
+                            id="email"
+                            v-model="login.email"
+                        />
+                        <FormControl
+                            type="password"
+                            label="password"
+                            id="password"
+                            v-model="login.password"
+                        />
+                        <FormControl
+                            label="age"
+                            id="age"
+                            v-model.number="login.age"
+                        />
+                        <button>Login</button>
+                    </form>
+                `
+            })
+        </script>
+    </body>
+</html>

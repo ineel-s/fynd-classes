@@ -86,7 +86,10 @@
                         <input type="number" v-model.number="changeBy" />
                         {{changeBy}}
                         <button @click="$store.dispatch( 'decrement', changeBy )" :disabled="processing">-</button>
-                        <span>{{counter}}</span>
+                        <span v-if="!processing">{{counter}}</span>
+                        <span v-else class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </span>
                         <button @click="increment" :disabled="processing">+</button>
                     </div>
                 `
