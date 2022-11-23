@@ -1,3 +1,6 @@
+// we simply want to run the init.js by including it
+import './init';
+
 import Vue from 'vue'
 import App from './App.vue'
 
