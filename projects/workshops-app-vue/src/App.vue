@@ -2,7 +2,9 @@
     <div>
         <AppMenu />
         <div class="container my-4">
-            <WorkshopsList />
+            <!-- <AppHome /> -->
+            <!-- <WorkshopsList /> -->
+            <router-view></router-view>
         </div>
     </div>
 </template>

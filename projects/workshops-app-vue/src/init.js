@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Router from 'vue-router';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
@@ -9,3 +10,5 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
+Vue.use(Router)
