@@ -1,11 +1,11 @@
 <template>
     <div>
         <AppMenu />
-        <div class="container my-4">
+        <b-container class="my-4">
             <!-- <AppHome /> -->
             <!-- <WorkshopsList /> -->
             <router-view></router-view>
-        </div>
+        </b-container>
     </div>
 </template>
 

@@ -16,7 +16,9 @@
                 v-for="workshop in workshops"
                 :key="workshop.id"
             >
-                <div
+                <!-- :to="'/workshops/' + workshop.id" -->
+                <router-link
+                    :to="{ name: 'workshop-details', params: { id: workshop.id } }"
                     class="
                         card
                         w-100
@@ -25,6 +27,8 @@
                         d-flex
                         flex-column
                         justify-content-between
+                        text-reset
+                        text-decoration-none
                     "
                 >
                     <img
@@ -33,7 +37,7 @@
                         :alt="workshop.name"
                     />
                     <div class="card-body" style="flex-grow: 0">
-                        <h5 class="card-title">{{ workshop.name }}</h5>
+                        <h5 class="card-title basic-details">{{ workshop.name }}</h5>
                         <div class="card-text">
                             <div>
                                 <span class="badge text-bg-primary">{{
@@ -59,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>

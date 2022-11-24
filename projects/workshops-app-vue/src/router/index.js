@@ -1,6 +1,7 @@
 import Router from 'vue-router';
 import AppHome from '@/components/pages/AppHome.vue';
 import WorkshopsList from '@/components/pages/WorkshopsList/WorkshopsList.vue';
+import WorkshopDetails from '@/components/pages/WorkshopDetails/WorkshopDetails.vue';
 
 /**
  * EXERCISE: Read up on History API of browser
@@ -17,6 +18,11 @@ const router = new Router({
             name: 'workshops-list',
             path: '/workshops',
             component: WorkshopsList
+        },
+        {
+            name: 'workshop-details',
+            path: '/workshops/:id',
+            component: WorkshopDetails
         }
     ]
 });
