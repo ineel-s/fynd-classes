@@ -23,9 +23,9 @@
                     <b-row>
                         <b-col cols="6" lg="3" class="basic-details">
                             <div class="mb-2">
-                                {{workshop.startDate | date}}
+                                {{workshop.startDate | date( 'indian' )}}
                                 -
-                                {{workshop.endDate | date}}
+                                {{workshop.endDate | date( 'indian' )}}
                             </div>
                             <div>
                                 {{workshop.time}}
@@ -49,6 +49,16 @@
                     </b-row>
                 </b-col>
             </b-row>
+        </div>
+
+        <div class="my-5" v-if="workshop">
+            <div class="mb-2">
+                <router-link :to="{ name: 'sessions-list', params: { sessions: workshop.sessions } }" class="mr-3">List of sessions</router-link>
+                <router-link :to="{ name: 'add-session' }">Add a session</router-link>
+            </div>
+
+            <!-- Hey router! show the child component here -->
+            <router-view :id="workshop.id" :sessions="workshop.sessions"></router-view>
         </div>
     </div>
 </template>

@@ -2,6 +2,8 @@ import Router from 'vue-router';
 import AppHome from '@/components/pages/AppHome.vue';
 import WorkshopsList from '@/components/pages/WorkshopsList/WorkshopsList.vue';
 import WorkshopDetails from '@/components/pages/WorkshopDetails/WorkshopDetails.vue';
+import SessionsList from '@/components/pages/WorkshopDetails/SessionsList.vue';
+import AddSession from '@/components/pages/WorkshopDetails/AddSession.vue';
 
 /**
  * EXERCISE: Read up on History API of browser
@@ -22,7 +24,19 @@ const router = new Router({
         {
             name: 'workshop-details',
             path: '/workshops/:id',
-            component: WorkshopDetails
+            component: WorkshopDetails,
+            children: [
+                {
+                    name: 'sessions-list',
+                    path: '', // be careful not to add the leading /
+                    component: SessionsList
+                },
+                {
+                    name: 'add-session',
+                    path: 'add', // be careful not to add the leading /
+                    component: AddSession
+                }
+            ]
         }
     ]
 });

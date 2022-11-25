@@ -19,50 +19,9 @@
                 <!-- :to="'/workshops/' + workshop.id" -->
                 <router-link
                     :to="{ name: 'workshop-details', params: { id: workshop.id } }"
-                    class="
-                        card
-                        w-100
-                        p-3
-                        my-3
-                        d-flex
-                        flex-column
-                        justify-content-between
-                        text-reset
-                        text-decoration-none
-                    "
+                    class="text-reset text-decoration-none d-flex"
                 >
-                    <img
-                        :src="workshop.imageUrl"
-                        class="card-img-top"
-                        :alt="workshop.name"
-                    />
-                    <div class="card-body" style="flex-grow: 0">
-                        <h5 class="card-title basic-details">{{ workshop.name }}</h5>
-                        <div class="card-text">
-                            <div>
-                                <span class="badge text-bg-primary">{{
-                                    workshop.category
-                                }}</span>
-                            </div>
-                            <div>
-                                <span
-                                    class="badge"
-                                    :class="getBadgeClass(workshop, 'online')"
-                                    >Online</span
-                                >
-                                <span
-                                    class="badge"
-                                    :class="getBadgeClass(workshop, 'inPerson')"
-                                    >In-person</span
-                                >
-                            </div>
-                            <div>
-                                {{ workshop.location.address }},
-                                {{ workshop.location.city }},
-                                {{ workshop.location.state }}
-                            </div>
-                        </div>
-                    </div>
+                    <WorkshopsListItem :workshop="workshop" />
                 </router-link>
             </div>
         </div>
@@ -72,20 +31,19 @@
 <script>
 // @ -> src folder
 import { getWorkshops } from '@/services/workshops';
+import WorkshopsListItem from './WorkshopsListItem.vue';
 
 export default {
     name: "WorkshopsList",
+    components: {
+        WorkshopsListItem
+    },
     data() {
         return {
             workshops: [],
             loading: false,
             error: null,
         };
-    },
-    methods: {
-        getBadgeClass(workshop, mode) {
-            return workshop.modes[mode] ? "bg-success" : "bg-secondary";
-        },
     },
     // "lifecycle methods" -> this is called when the component shows up for the first time and the DOM is ready
     async mounted() {
