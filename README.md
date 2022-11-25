@@ -5,6 +5,9 @@ Oct 2022 Fynd Academy batch
 - http://mymeetingsapp.herokuapp.com/
 
 ## Workshops App - Videos
+## Vue JS Authentication (video)
+https://www.one-tab.com/page/dHcBWignRr2nsHxV_P0KXw
+
 ## Workshops App (video)
 - [Getting started with the Online Star project](https://corporate-trainings.s3.amazonaws.com/cts/getting-started-with-the-online-star-project.mp4)
 - [Part 1 - Fetching list of workshops](https://corporate-trainings.s3.amazonaws.com/cts/workshops-app-part-1.mp4)
