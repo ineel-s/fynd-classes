@@ -15,6 +15,10 @@ const addSession = async ( newSessionDetails ) => {
     const response = await axios.post(
         `${apiBaseUrl}/sessions`,
         newSessionDetails,
+        // watch the https://www.one-tab.com/page/dHcBWignRr2nsHxV_P0KXw to implement authentication using Vuex store
+        // headers: {
+        //     Authorization: ''
+        // }
         {
             headers: {
                 'Content-Type': 'application/json'

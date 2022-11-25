@@ -12,7 +12,11 @@ const getWorkshopById = async ( id ) => {
         {
             params: { // this will do URL-encoding
                 _embed: 'sessions' // ?_embed=sessions
-            }
+            },
+            // watch the https://www.one-tab.com/page/dHcBWignRr2nsHxV_P0KXw to implement authentication using Vuex store
+            // headers: {
+            //     Authorization: ''
+            // }
         }
     );
     return response.data;
