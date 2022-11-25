@@ -70,3 +70,7 @@ https://www.one-tab.com/page/dHcBWignRr2nsHxV_P0KXw
     - PanelBody implementation
     - 05-Vue_JS_Lab_Guide
         - Q. 10
+- Nov 25
+    - Explore
+        - Mixins: https://v2.vuejs.org/v2/guide/mixins.html
+        - Slots (till Named Slots): https://v2.vuejs.org/v2/guide/components-slots.html

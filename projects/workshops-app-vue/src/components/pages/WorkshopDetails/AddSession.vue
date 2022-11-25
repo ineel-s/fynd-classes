@@ -190,6 +190,7 @@ export default {
     validations: {
         form: {
             sequenceId: {
+                // required: required,
                 required,
                 minValue: minValue(1)
             },
@@ -218,6 +219,7 @@ export default {
     },
     methods: {
         validateState(name) {
+            // $dirty -> has the user typed within the input 
             const { $dirty, $error } = this.$v.form[name];
             return $dirty ? !$error : null;
         },

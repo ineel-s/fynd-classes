@@ -53,8 +53,19 @@
 
         <div class="my-5">
             <div class="mb-2">
-                <router-link :to="{ name: 'sessions-list', params: { sessions: workshop.sessions } }" class="mr-3">List of sessions</router-link>
-                <router-link :to="{ name: 'add-session' }">Add a session</router-link>
+                <router-link
+                    :to="{ name: 'sessions-list', params: { sessions: workshop.sessions } }"
+                    class="mr-3"
+                    exact-active-class="active"
+                >
+                    List of sessions
+                </router-link>
+                <router-link
+                    :to="{ name: 'add-session' }"
+                    exact-active-class="active"
+                >
+                    Add a session
+                </router-link>
             </div>
 
             <!-- Hey router! show the child component here -->
@@ -141,5 +152,8 @@ export default {
 .basic-details {
     font-size: 0.8em;
     /* color: crimson; */
+}
+.active {
+    color: crimson;
 }
 </style>
