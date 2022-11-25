@@ -8,16 +8,16 @@
             <ul class="list-group">
                 <li
                     class="list-group-item"
-                    v-for="(session) in sessions"
+                    v-for="(session, idx) in sessions"
                     :key="session.id"
                 >
                     <div class="row">
-                        <div class="col-1">
-                            <!-- <AppVotingWidget
+                        <div class="col-1 d-flex justify-content-center">
+                            <app-voting-widget
                                   :votes="session.upvoteCount"
                                   @upvote="castVote( session, 'upvote', $event, idx )"
                                   @downvote="castVote( session, 'downvote', $event, idx )"
-                              /> -->
+                            />
                         </div>
                         <div class="col-11">
                             <div class="lead">{{ session.name }}</div>
@@ -49,7 +49,8 @@ export default {
         sessions: {
             type: Array,
             default: () => []
-        }
+        },
+        vote: Function
     },
     methods: {
         getBadgeClass(level) {
@@ -59,10 +60,13 @@ export default {
                 "badge-warning": level === "Advanced",
             };
         },
+        castVote( session, voteType, event, idx ) {
+            this.vote( session, voteType, event, idx );
+        }
     },
     mounted() {
         console.log( this.$route.params );
-    },
+    }
 };
 </script>
   

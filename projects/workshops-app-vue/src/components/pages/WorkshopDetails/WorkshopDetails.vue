@@ -51,29 +51,39 @@
             </b-row>
         </div>
 
-        <div class="my-5" v-if="workshop">
+        <div class="my-5">
             <div class="mb-2">
                 <router-link :to="{ name: 'sessions-list', params: { sessions: workshop.sessions } }" class="mr-3">List of sessions</router-link>
                 <router-link :to="{ name: 'add-session' }">Add a session</router-link>
             </div>
 
             <!-- Hey router! show the child component here -->
-            <router-view :id="workshop.id" :sessions="workshop.sessions"></router-view>
+            <router-view
+                :id="workshop.id"
+                :sessions="workshop.sessions"
+                :vote="vote"
+                :updateSession="updateSession"
+            >
+            </router-view>
         </div>
     </div>
 </template>
 
 <script>
+import Vue from 'vue';
 import { getWorkshopById } from "@/services/workshops";
+import { vote } from "@/services/sessions";
 
 export default {
     name: "WorkshopDetails",
     data() {
         return {
             id: "",
-            loading: false,
+            loading: true,
             error: null,
-            workshop: null,
+            workshop: {
+                sessions: []
+            },
         };
     },
     // methods: {
@@ -83,6 +93,31 @@ export default {
     //         return d.toDateString();
     //     }
     // },
+    methods: {
+        async vote( session, voteType, event, idx ) {
+            // console.log( session, voteType, event );
+
+            try {
+                const updatedSession = await vote( voteType, session.id );
+            
+                // eslint-disable-next-line vue/no-mutating-props
+                this.workshop.sessions.splice( idx, 1, updatedSession );
+                Vue.$toast.open({
+                    message: `Your vote for <strong>${updatedSession.name}</strong> was registered`,
+                    duration: 5000
+                });
+            } catch( error ) {
+                Vue.$toast.open({
+                    type: 'error',
+                    message: error.message,
+                    duration: 5000
+                });
+            }
+        },
+        async updateSession( session ) {
+            this.workshop.sessions.push( session );
+        }
+    },
     async mounted() {
         // console.log( this.$router ); // this is the router object - useful for redirection to another page etc.
         console.log(this.$route); // useful for query and path params

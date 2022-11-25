@@ -25,12 +25,12 @@
                 </div>
                 <div>
                     <span
-                        class="badge"
+                        class="badge mr-2 text-white"
                         :class="getBadgeClass(workshop, 'online')"
                         >Online</span
                     >
                     <span
-                        class="badge"
+                        class="badge text-white"
                         :class="getBadgeClass(workshop, 'inPerson')"
                         >In-person</span
                     >

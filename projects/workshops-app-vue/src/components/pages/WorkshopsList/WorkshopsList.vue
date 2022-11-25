@@ -18,8 +18,8 @@
             >
                 <!-- :to="'/workshops/' + workshop.id" -->
                 <router-link
-                    :to="{ name: 'workshop-details', params: { id: workshop.id } }"
-                    class="text-reset text-decoration-none d-flex"
+                    :to="{ name: 'sessions-list', params: { id: workshop.id } }"
+                    class="text-reset text-decoration-none d-flex w-100"
                 >
                     <WorkshopsListItem :workshop="workshop" />
                 </router-link>
