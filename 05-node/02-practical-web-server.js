@@ -1,4 +1,16 @@
 const http = require( 'http' );
+// const Config = require( './02-pages' ); // module.exports from the file
+const {
+    Pages: {
+        home,
+        about,
+        pageNotFound
+    }
+} = require( './02-pages' ); // use relative path(. or ..) for your own modules
+
+// SAME as module.exports in 02-pages.js
+// { Pages: { ... } }
+// console.log( Config );
 
 const server = http.createServer(
     ( request, response ) => {
@@ -6,46 +18,13 @@ const server = http.createServer(
 
         switch( url ) {
             case '/':
-                response.end(
-                    `
-                        <!doctype html>
-                        <html>
-                            <head><title>Home</title></head>
-                            <body>
-                                <h1>Home</h1>
-                                <hr />
-                            </body>
-                        </html>
-                    `
-                );
+                response.end( home );
                 break;
             case '/about':
-                response.end(
-                    `
-                        <!doctype html>
-                        <html>
-                            <head><title>About</title></head>
-                            <body>
-                                <h1>About</h1>
-                                <hr />
-                            </body>
-                        </html>
-                    `
-                );
+                response.end( about );
                 break;
             default:
-                response.end(
-                    `
-                        <!doctype html>
-                        <html>
-                            <head><title>Not found</title></head>
-                            <body>
-                                <h1>Not found</h1>
-                                <hr />
-                            </body>
-                        </html>
-                    `
-                );
+                response.end( pageNotFound );
         }
     }
 );
