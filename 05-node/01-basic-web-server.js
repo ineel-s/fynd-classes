@@ -4,9 +4,9 @@
 const http = require( 'http' ); // Common JS
 
 const server = http.createServer(
-    ( req, res ) => { // request handler function - called whenever request comes in
-        res.write( 'Hello Node. ' );
-        res.end( 'Bye for now' ); // or res.end()
+    ( request, response ) => { // request handler function - called whenever request comes in
+        response.write( 'Hello nodemon. ' );
+        response.end( 'Bye for now' ); // or response.end()
     }
 );
 
