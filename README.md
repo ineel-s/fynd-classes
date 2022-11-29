@@ -74,3 +74,7 @@ https://www.one-tab.com/page/dHcBWignRr2nsHxV_P0KXw
     - Explore
         - Mixins: https://v2.vuejs.org/v2/guide/mixins.html
         - Slots (till Named Slots): https://v2.vuejs.org/v2/guide/components-slots.html
+- Nov 29
+    - Whatever exercise is given along with demos
+    - 06-Nodejs - Lab Guide
+        - Q. 2, 9, 12
