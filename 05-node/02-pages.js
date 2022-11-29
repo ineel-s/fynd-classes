@@ -19,6 +19,29 @@ const Pages = {
             </body>
         </html>
     `,
+    aboutDetailed: `
+        <!doctype html>
+        <html>
+            <head><title>About</title></head>
+            <body>
+                <h1>About</h1>
+                <hr />
+                <p>
+                    We are a leading provider of IT services.
+                </p>
+            </body>
+        </html>
+    `,
+    about: `
+        <!doctype html>
+        <html>
+            <head><title>About</title></head>
+            <body>
+                <h1>About</h1>
+                <hr />
+            </body>
+        </html>
+    `,
     pageNotFound: `
         <!doctype html>
         <html>
