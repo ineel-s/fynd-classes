@@ -1,3 +1,4 @@
+// DISADVANTAGE: We need to have whatever contents we need to write entirely in memory, and write it to the file in one go
 const fs = require( 'fs/promises' );
 const path = require( 'path' );
 
