@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <Style>
+            .panel {
+                border: 1px solid blue;
+                border-radius: 5px;
+                margin: 10px 0;
+            }
+
+            .panel-heading, .panel-body {
+                padding: 10px;
+            }
+
+            .panel-heading {
+                background-color: blue;
+                color: white;
+            }
+        </Style>
+    </head>
+    <body>
+        <div class="panel">
+            <div class="panel-heading">
+                Hello world
+            </div>
+            <div class="panel-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rerum voluptates rem? Porro vel excepturi eveniet aperiam dolorum cupiditate quod, perferendis exercitationem praesentium tempora minus labore aspernatur dolor consequatur similique.
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                Hello world
+            </div>
+            <div class="panel-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id rerum voluptates rem? Porro vel excepturi eveniet aperiam dolorum cupiditate quod, perferendis exercitationem praesentium tempora minus labore aspernatur dolor consequatur similique.
+            </div>
+        </div>
+        <Script>
+            const panelHeadings = document.querySelectorAll( '.panel-heading' );
+
+            panelHeadings.forEach(
+                function( panelHeading ) {
+                    panelHeading.addEventListener( 'click', function( event ) {
+                        const panelBody = this.nextElementSibling;
+                        if( panelBody.style.display === 'none' ) {
+                            panelBody.style.display = 'block';
+                        } else {
+                            panelBody.style.display = 'none';
+                        }
+                    });
+                }
+            );
+        </Script>
+    </body>
+</html>

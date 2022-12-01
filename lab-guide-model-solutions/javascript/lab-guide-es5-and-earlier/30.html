@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Simple calculator</h1>
+        <hr />
+        <input type="text" id="number-1" />
+        <select id="operation">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="text" id="number-2" />
+        <button id="calculate">Calculate result</button>
+
+        <span id="result"></span>
+
+        <script>
+            var number1 = document.getElementById( 'number-1' );
+            var number2 = document.getElementById( 'number-2' );
+            var operation = document.getElementById( 'operation' );
+            var calculate = document.getElementById( 'calculate' );
+            var result = document.getElementById( 'result' );
+
+            function calculateResult() {
+                var val1 = parseFloat( number1.value );
+                var val2 = parseFloat( number2.value );
+
+                switch( operation.value ) {
+                    case '+': result.innerHTML = val1 + val2; break;
+                    case '-': result.innerHTML = val1 - val2; break;
+                    case '*': result.innerHTML = val1 * val2; break;
+                    case '/': result.innerHTML = val1 / val2; break;
+                    default: result.innerHTML = 'unexpected input';
+                }
+            }
+
+            calculate.addEventListener( 'click', calculateResult );
+            number1.addEventListener( 'input', calculateResult );
+            number2.addEventListener( 'input', calculateResult );
+            operation.addEventListener( 'input', calculateResult );
+        </script>
+    </body>
+</html>
