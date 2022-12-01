@@ -10,7 +10,8 @@ app.get( '/', ( req, res ) => {
 });
 
 // app.use( router );
-app.use( require( './routes/workshops' ) );
+// /workshops -> base route for all paths handled by the router (called "mount path")
+app.use( '/workshops', require( './routes/workshops' ) );
 
 const PORT = process.env.PORT || 3000;
 

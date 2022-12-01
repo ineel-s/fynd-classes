@@ -2,7 +2,7 @@ const { Router } = require( 'express' );
 
 const router = Router();
 
-router.get( '/workshops', ( req, res ) => {
+router.get( '/', ( req, res ) => {
     res.json({
         status: 'success',
         data: [
@@ -11,5 +11,8 @@ router.get( '/workshops', ( req, res ) => {
         ]
     });
 });
+
+// EXERCISE: Add a POST /workshops request handler
+
 
 module.exports = router;
