@@ -4,14 +4,13 @@ const express = require( 'express' );
 const app = express();
 
 // app.<http_method>()
-app.get( '/', ( req, res ) => {
-    res.write( 'Hello Express' );
-    res.end( 'More to learn...' );
-});
+// app.get( '/', ( req, res ) => {
+//     res.end( 'This is the workshops server' );
+// });
 
-// app.use( router );
 // /workshops -> base route for all paths handled by the router (called "mount path")
-app.use( '/workshops', require( './routes/workshops' ) );
+app.use( '/', require( './routes/index.routes' ) );
+app.use( '/workshops', require( './routes/workshops.routes' ) );
 
 const PORT = process.env.PORT || 3000;
 
