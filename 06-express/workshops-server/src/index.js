@@ -6,8 +6,11 @@ const app = express();
 // app.<http_method>()
 app.get( '/', ( req, res ) => {
     res.write( 'Hello Express' );
-    res.end( 'More to learn...' )
+    res.end( 'More to learn...' );
 });
+
+// app.use( router );
+app.use( require( './routes/workshops' ) );
 
 const PORT = process.env.PORT || 3000;
 
