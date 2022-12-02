@@ -1,4 +1,5 @@
 const path = require( 'path' );
+const workshops = require( '../../data/workshops.json' );
 
 const getHome = ( req, res ) => {
     // HTTP Header added - 'Content-Type: 'text/html' (end() will not add this header)
@@ -12,6 +13,7 @@ const getWorkshopsList = ( req, res ) => {
     res.render( 'workshops-list', {
         appTitle: req.app.get( 'app_title' ),
         pageTitle: 'List of workshops!',
+        workshops
     } );
 };
 
