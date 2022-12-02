@@ -1,7 +1,13 @@
 const express = require( 'express' );
+const path = require( 'path' );
 
 // Create an application object
 const app = express();
+
+// set up the templating engine (ejs)
+app.set( 'app_title', 'Workshops App' ); // set()/get() helps use key-value pairs across the app
+app.set( 'view engine', 'ejs' );
+app.set( 'views', path.join( process.cwd(), 'views' ) );
 
 // app.<http_method>()
 // app.get( '/', ( req, res ) => {

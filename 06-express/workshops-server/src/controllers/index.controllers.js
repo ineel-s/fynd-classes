@@ -9,7 +9,10 @@ const getHome = ( req, res ) => {
 };
 
 const getWorkshopsList = ( req, res ) => {
-    res.sendFile( path.join( process.cwd(), 'views/workshops-list.html' ) )
+    res.render( 'workshops-list', {
+        appTitle: req.app.get( 'app_title' ),
+        pageTitle: 'List of workshops!',
+    } );
 };
 
 module.exports = {
