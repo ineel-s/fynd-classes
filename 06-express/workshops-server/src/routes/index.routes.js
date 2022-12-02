@@ -1,10 +1,9 @@
 const { Router } = require( 'express' );
+const IndexCtrl = require( '../controllers/index.controllers' );
 
 const router = Router();
 
 // router.<http_method>()
-router.get( '/', ( req, res ) => {
-    res.end( 'This is the workshops server' );
-});
+router.get( '/', IndexCtrl.getHome );
 
 module.exports = router;

@@ -1,3 +1,4 @@
+// Routes - File which sets up the routes to their corresponding controllers
 const { Router } = require( 'express' );
 const WorkshopsCtrl = require( '../controllers/workshops.controllers' );
 

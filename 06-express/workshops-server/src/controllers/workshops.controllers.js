@@ -1,3 +1,4 @@
+// Controllers - Functions that read the request, and send the response
 const getWorkshops = ( req, res ) => {
     res.json({
         status: 'success',
