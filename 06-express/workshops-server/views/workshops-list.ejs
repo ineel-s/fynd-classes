@@ -5,7 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><%= pageTitle %> | <%= appTitle %></title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css">
+        <!-- Asset path shall be specified with respect to the public folder (express static file server root) -->
+        <link rel="stylesheet" href="/external/css/bootstrap.css">
     </head>
     <body>
         <main class="container my-4">
@@ -35,5 +36,7 @@
                 <% }) %>
             </div>
         </main>
+
+        <script src="/external/js/bootstrap.js"></script>
     </body>
 </html>

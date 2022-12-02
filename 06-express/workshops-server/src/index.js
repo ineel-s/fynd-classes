@@ -11,6 +11,12 @@ app.set( 'app_title', 'Workshops App' );
 app.set( 'view engine', 'ejs' );
 app.set( 'views', path.join( process.cwd(), 'views' ) );
 
+// app.get( '/public/external/css/bootstrap.css', ( req, res ) => {
+//     res.sendFile( path.join( process.cwd(), '/public/external/css/bootstrap.css' ) );
+// } )
+// instead of setting up individual routes for CSS, JS, font files, images etc., we can use express static file server
+app.use( express.static( path.join( process.cwd(), 'public' ) ) );
+
 // app.<http_method>()
 // app.get( '/', ( req, res ) => {
 //     res.end( 'This is the workshops server' );
