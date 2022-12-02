@@ -19,6 +19,8 @@ app.use( express.static( path.join( process.cwd(), 'public' ) ) );
 
 // whenever the request body contains JSON data, Express will make that data available on req.body
 app.use( express.json() );
+// whenever the request body contains form data, Express will make that data available on req.body
+app.use( express.urlencoded( { extended: false } ) );
 
 // app.<http_method>()
 // app.get( '/', ( req, res ) => {
