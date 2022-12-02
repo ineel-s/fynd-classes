@@ -17,6 +17,9 @@ app.set( 'views', path.join( process.cwd(), 'views' ) );
 // instead of setting up individual routes for CSS, JS, font files, images etc., we can use express static file server
 app.use( express.static( path.join( process.cwd(), 'public' ) ) );
 
+// whenever the request body contains JSON data, Express will make that data available on req.body
+app.use( express.json() );
+
 // app.<http_method>()
 // app.get( '/', ( req, res ) => {
 //     res.end( 'This is the workshops server' );

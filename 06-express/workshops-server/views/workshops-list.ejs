@@ -17,12 +17,12 @@
                     workshops.forEach( workshop => {
                 %>
                     <div class="col-12 col-lg-4 d-flex my-3">
-                        <div class="card p-3">
+                        <div class="card p-3 d-flex flex-column justify-content-between w-100">
                             <img
                                 src="<%= workshop.imageUrl %>" class="card-img-top"
                                 alt="<%= workshop.name %>"
                             />
-                            <div class="card-body">
+                            <div class="card-body flex-grow-0">
                                 <h5 class="card-title">
                                     <%= workshop.name %>
                                 </h5>
