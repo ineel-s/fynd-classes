@@ -8,6 +8,11 @@ const getHome = ( req, res ) => {
     res.sendFile( path.join( process.cwd(), 'views/index.html' ) );
 };
 
+const getWorkshopsList = ( req, res ) => {
+    res.sendFile( path.join( process.cwd(), 'views/workshops-list.html' ) )
+};
+
 module.exports = {
-    getHome
+    getHome,
+    getWorkshopsList
 };

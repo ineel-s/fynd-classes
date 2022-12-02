@@ -5,5 +5,6 @@ const router = Router();
 
 // router.<http_method>()
 router.get( '/', IndexCtrl.getHome );
+router.get( '/pages/workshops', IndexCtrl.getWorkshopsList );
 
 module.exports = router;
