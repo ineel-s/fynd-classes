@@ -80,11 +80,48 @@ const postWorkshop = ( req, res ) => {
 };
 
 const patchWorkshop = ( req, res ) => {
+    const { id } = req.params;
+
+    const idInt = +id;
+
+    if( isNaN( idInt ) ) {
+        return res.status( 400 ).json({
+            status: 'error',
+            message: 'The workshop id must be a number'
+        });
+    }
+
+    // if the req.body is an empty object
+    if( Object.keys( req.body ).length === 0 ) {
+        return res.status( 400 ).json({
+            status: 'error',
+            message: `Request body is missing, and needs to have the new workshop's details`
+        });
+    }
+
+    const matchedIdx = workshops.findIndex( w => w.id === idInt );
+
+    if( matchedIdx === -1 ) {
+        res.status( 404 ).json({
+            status: 'error',
+            message: `A workshop with id = ${idInt} does not exist`
+        });
+        return;
+    }
+
+    const updatedWorkshop = {
+        ...workshops[matchedIdx], // current details of the matched workhop
+        ...req.body // new details (should be spread last)
+    };
+
+    // we need to replace workshop with updatedWorkshop
+    workshops.splice( matchedIdx, 1, updatedWorkshop );
+
     res.json({
-        status: 'error',
-        message: 'TBD'
+        status: 'success',
+        data: updatedWorkshop
     });
-}
+};
 
 module.exports = {
     getWorkshops,
