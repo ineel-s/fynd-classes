@@ -50,8 +50,19 @@ const getWorkshop = ( req, res ) => {
     });
 };
 
+// You can do schema-based validation of request body/query string/path parameters using a library like Joi/express validtor
+// https://joi.dev/api/?v=17.7.0
+// https://express-validator.github.io/docs/
 const postWorkshop = ( req, res ) => {
     console.log( req.body ); // data sent in the request body
+
+    // if the req.body is an empty object
+    if( Object.keys( req.body ).length === 0 ) {
+        return res.status( 400 ).json({
+            status: 'error',
+            message: `Request body is missing, and needs to have the new workshop's details`
+        });
+    }
 
     const workshop = {
         id: nextId,
