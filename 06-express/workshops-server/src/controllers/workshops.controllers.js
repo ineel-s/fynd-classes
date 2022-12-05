@@ -1,3 +1,5 @@
+// Controllers - Functions that read the request, and send the response
+
 // CRUD: Create-Read-Update-Delete operations
 /**
  * HTTP Method/verb     What is it used for?                    Example
@@ -9,13 +11,22 @@
  */
 const WorkshopsService = require( '../services/workshops.services' );
 
-// Controllers - Functions that read the request, and send the response
+// We use query string parameters to send data that is used to customize the response - eg. data as input for pagination, filtering, sorting
 const getWorkshops = ( req, res ) => {
-    const workshops = WorkshopsService.getWorkshops();
+    // we are skipping proper error checks for page number...
+    let { page } = req.query;
+
+    page = +page;
+
+    if( !page || isNaN( page ) ) {
+        page = 1;
+    }
+
+    const data = WorkshopsService.getWorkshops( page );
 
     res.json({
         status: 'success',
-        data: workshops
+        ...data
     });
 };
 

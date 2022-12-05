@@ -1,10 +1,15 @@
 const workshops = require( '../../data/workshops.json' );
+const { PAGE_SIZE } = require( '../config' );
 
 let nextId = 13;
 
 // In a real app, a query to the database would have been made in this method
-const getWorkshops = () => {
-    return workshops;
+const getWorkshops = ( page ) => {
+    const pagedWorkshops = workshops.slice( ( page - 1 ) * PAGE_SIZE, page * PAGE_SIZE )
+    return {
+        workshops: pagedWorkshops,
+        total: workshops.length
+    };
 };
 
 const getWorkshopById = ( idInt ) => {
