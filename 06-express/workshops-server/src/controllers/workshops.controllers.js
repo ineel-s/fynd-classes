@@ -7,13 +7,12 @@
  * PATCH                Update some details of a resource       Update name of a workshop
  * DELETE               Delete a resource                       Delete a workshop
  */
-
-const workshops = require( '../../data/workshops.json' );
-
-let nextId = 13;
+const WorkshopsService = require( '../services/workshops.services' );
 
 // Controllers - Functions that read the request, and send the response
 const getWorkshops = ( req, res ) => {
+    const workshops = WorkshopsService.getWorkshops();
+
     res.json({
         status: 'success',
         data: workshops
@@ -34,7 +33,7 @@ const getWorkshop = ( req, res ) => {
         // return; // do not continue further
     }
 
-    const match = workshops.find( w => w.id === idInt );
+    const match = WorkshopsService.getWorkshopById( idInt );
 
     if( !match ) {
         res.status( 404 ).json({
@@ -64,14 +63,7 @@ const postWorkshop = ( req, res ) => {
         });
     }
 
-    const workshop = {
-        id: nextId,
-        ...req.body
-    };
-
-    workshops.push( workshop );
-
-    nextId++;
+    const workshop = WorkshopsService.addWorkshop( req.body );
 
     res.status( 201 ).json({
         status: 'success',
@@ -99,9 +91,9 @@ const patchWorkshop = ( req, res ) => {
         });
     }
 
-    const matchedIdx = workshops.findIndex( w => w.id === idInt );
+    const updatedWorkshop = WorkshopsService.updateWorkshop( idInt, req.body );
 
-    if( matchedIdx === -1 ) {
+    if( updatedWorkshop === null ) {
         res.status( 404 ).json({
             status: 'error',
             message: `A workshop with id = ${idInt} does not exist`
@@ -109,17 +101,40 @@ const patchWorkshop = ( req, res ) => {
         return;
     }
 
-    const updatedWorkshop = {
-        ...workshops[matchedIdx], // current details of the matched workhop
-        ...req.body // new details (should be spread last)
-    };
-
-    // we need to replace workshop with updatedWorkshop
-    workshops.splice( matchedIdx, 1, updatedWorkshop );
-
     res.json({
         status: 'success',
         data: updatedWorkshop
+    });
+};
+
+const deleteWorkshop = ( req, res ) => {
+    const { id } = req.params;
+
+    const idInt = +id;
+
+    if( isNaN( idInt ) ) {
+        return res.status( 400 ).json({
+            status: 'error',
+            message: 'The workshop id must be a number'
+        });
+    }
+
+    const deletedWorkshop = WorkshopsService.deleteWorkshop( idInt );
+
+    if( deletedWorkshop === null ) {
+        res.status( 404 ).json({
+            status: 'error',
+            message: `A workshop with id = ${idInt} does not exist`
+        });
+        return;
+    }
+
+    // convention to pass 204 to convey success, but without explciit data sent in response body
+    // res.status( 204 ).json();
+
+    res.json({
+        status: 'success',
+        data: null
     });
 };
 
@@ -127,5 +142,6 @@ module.exports = {
     getWorkshops,
     getWorkshop,
     postWorkshop,
-    patchWorkshop
+    patchWorkshop,
+    deleteWorkshop
 };

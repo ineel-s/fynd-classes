@@ -9,5 +9,6 @@ router.get( '/:id', WorkshopsCtrl.getWorkshop );
 router.post( '/', WorkshopsCtrl.postWorkshop );
 // router.patch( '/:id/:action', WorkshopsCtrl.patchWorkshop );
 router.patch( '/:id', WorkshopsCtrl.patchWorkshop );
+router.delete( '/:id', WorkshopsCtrl.deleteWorkshop );
 
 module.exports = router;
