@@ -101,4 +101,46 @@ db.workshops.find(
         "location.city": 'Mumbai',
         attendees: "mark@fynd.com"
     }
-)
+);
+
+// Updating documents (updateOne() / updateMany())
+db.workshops.updateOne(
+    { // filter clause
+        name: 'Node'
+    },
+    { // update clause
+        $set: {
+            name: 'Node JS'
+        }
+    }
+);
+
+db.workshops.updateOne(
+    {
+        name: 'Node JS'
+    },
+    {
+        $set: {
+            "location.city": 'Pune',
+            "location.pinCode": 410100
+        }
+    }
+);
+
+db.workshops.updateOne(
+    {
+        _id: ObjectId( "638f5418fcaf85fda025208e" )
+    },
+    {
+        $push: {
+            attendees: 'elena@fynd.com'
+        }
+    }
+);
+
+// Delete documents (deleteOne() / deleteMany())
+db.workshops.deleteOne(
+    { // filter clause
+        name: 'JavaScript'
+    }
+);
