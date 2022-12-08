@@ -184,17 +184,77 @@ db.shows.updateOne(
 
 // i) Update all shows that have a scheduled screening on “Monday”, and replace the
 // item “Monday” with “monday” (lowercase). Hint: Use $ operator.
+db.shows.updateMany(
+    {
+        "schedule.days": "Monday"
+    },
+    {
+        $set: {
+            "schedule.days.$": "monday"
+        }
+    }
+);
 
 // ii) Update all shows with genre “Horror” by adding another genre “Supernatural”
+db.shows.updateMany(
+    {
+        genres: 'Horror'
+    },
+    {
+        $push: {
+            genres: 'Supernatural'
+        }
+    }
+)
 
 // iii) Update all shows with genre “Horror” by adding 2 other genres “Supernatural” and
 // “Spook” (you will need to use $each). Also explore how $sort and $slice can be used
 // in this case.
+db.shows.updateMany(
+    {
+        genres: 'Horror'
+    },
+    {
+        $push: {
+            genres: {
+                $each: [ 'Supernatural', 'Spook' ]
+            }
+        }
+    }
+)
 
 // iv) Remove the genre Supernatural from the first matching document
+db.shows.updateOne(
+    {
+        genres: 'Supernatural'
+    },
+    {
+        $pull: {
+            genres: 'Supernatural'
+        }
+    }
+);
 
 // v) Remove the last genre from every document
+db.shows.updateMany(
+    {},
+    {
+        $pop: {
+            genres: 1
+        }
+    }
+);
 
 // vi) Add genre Supernatural to all documents of genre Horror. However the
 // Supernatural genre should not be added if it already exists as a genre in the
 // document.
+db.shows.updateMany(
+    {
+        genres: 'Horror'
+    },
+    {
+        $addToSet: {
+            genres: 'Supernatural'
+        }
+    }
+)
