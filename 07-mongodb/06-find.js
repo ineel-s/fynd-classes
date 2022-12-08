@@ -389,15 +389,100 @@ db.exams.insertMany(
     ]
 )
 
-
 // i) Find all students who have a score of more 90% in some subject and have taken
 // up history
+db.exams.find(
+    {
+        "scores.name": "History",
+        "scores.score": {
+            $gte: 90
+        }
+    }
+);
+
 // ii) Find all students who have a score of more than 90% in history
-// iii) Find all students who have taken up exactly 2 subjects
+db.exams.find(
+    {
+        scores: {
+            $elemMatch: {
+                name: 'History',
+                score: {
+                    $gte: 90
+                }
+            }
+        }
+    }
+);
+
+// iii) Find all students who have taken up exactly 3 subjects
+db.exams.find(
+    {
+        scores: {
+            $size: 3
+        }
+    }
+);
+
+// projection helps avoid transferring unnecessary data
+db.exams.find(
+    { // filter clause (WHERE <condition>)
+        scores: {
+            $size: 3
+        }
+    },
+    { // projection clause (SELECT a, b, c, )
+        _id: false, // id is selected by default
+        name: true
+    }
+);
+
 // g) Projection operator - $, $slice
 // NOTE: This operator is used on the projection object (second argument) and not the
 // filter object (first argument) – it transforms arrays values that are projected.
 // i) Find all students who have taken up history and project the matching subject
 // details (i..e history)
+db.exams.find(
+    {
+        "scores.name": "History"
+    },
+    {
+        "scores.$": true
+    }
+);
+
 // ii) Find all students who have taken up history and project the first 2 subjects they
 // have in the document.
+db.exams.find(
+    {
+        "scores.name": "History"
+    },
+    {
+        scores: {
+            $slice: 2
+        }
+    }
+);
+
+// last 2 subjects
+db.exams.find(
+    {
+        "scores.name": "History"
+    },
+    {
+        scores: {
+            $slice: -2
+        }
+    }
+);
+
+// skip 1 element, return 3 elements
+db.exams.find(
+    {
+        "scores.name": "History"
+    },
+    {
+        scores: {
+            $slice: [ 1, 3 ]
+        }
+    }
+);
