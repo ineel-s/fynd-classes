@@ -23,41 +23,156 @@ db.shows.aggregate(
 ).toArray().length;
 
 // ii) Find all shows on HBO
+// 15 shows
+db.shows.aggregate(
+    [
+        {
+            $match: {
+                "network.name": "HBO"
+            }
+        }
+    ]
+).toArray().length;
 
 
 // b) Using $group to group documents by field values and produce a new collection
 // representing groups
 // i) Group shows by the name of network they are running on, and also find the number
 // of shows in each network
-// www.digdeeper.in © Prashanth Puranik puranik@digdeeper.in
+// using $sum: 1
+db.shows.aggregate(
+    [
+        {
+            $group: { // the output document looks like this object
+                _id: "$network.name",
+                numShows: {
+                    $sum: 1 // accumulate 1 for every item in the group
+                }
+            }
+        }
+    ]
+)
+
+// using $count: {}
+// this works ONLY on newer versions of MongoDB
+db.shows.aggregate(
+    [
+        {
+            $group: { // the output document looks like this object
+                _id: "$network.name",
+                numShows: {
+                    $count: {}
+                }
+            }
+        }
+    ]
+)
+
+// output
+[
+    { _id: 'Sundance TV', numShows: 2 },
+    { _id: 'Disney XD' },
+    { _id: 'Comedy Central' },
+    ...
+]
+
+
 // ii) Group shows by name of network and country they are running in, and also find the
 // number of shows, and average runtime of shows in each group (network+country
 // combination)
+db.shows.aggregate(
+    [
+        {
+            $group: {
+                _id: {
+                    name: "$network.name",
+                    country: "$network.country.code"
+                },
+                numShows: {
+                    $sum: 1
+                },
+                averageRuntime: {
+                    $avg: "$runtime"
+                }
+            }
+        }
+    ]
+)
+
 // iii) Repeat the above query but create a new field called “stats” in the output
 // documents. The “stats” field should have number of shows, and average runtime of
 // shows for the group.
+// Skipped (incorrect question apparently)
+
 // iv) Just like we can transform document to form new fields with subdocuments while
 // projecting, we can also create a new array. Using the $push operator in $group stage,
 // we can create a new array with one item per document in the group! This is a special
 // feature of MongoDB with no equivalent in SQL (you can calculate only aggregate
 // values like sum, average etc. there). Repeat the above exercise, and create an
 // additional field “names” that is an array of names of all shows in the group.
+db.shows.aggregate(
+    [
+        {
+            $group: {
+                _id: {
+                    name: "$network.name",
+                    country: "$network.country.code"
+                },
+                numShows: {
+                    $sum: 1
+                },
+                averageRuntime: {
+                    $avg: "$runtime"
+                },
+                showNames: { // array field with the names of the shows in this group
+                    $push: "$name"
+                }
+            }
+        }
+    ]
+)
+
 // v) Select all shows that are in English (“language” value), and then group them by their
 // type. The output should have the names of the group in the type field, along with
 // the number of shows in each group.
+db.shows.aggregate(
+    [
+        { // STAGE 1: Filtering
+            $match: {
+                language: "English (US)"
+            }
+        },
+        { // STAGE 2: Grouping, and forming aggregates
+            $group: {
+                _id: {
+                    type: "$type"
+                },
+                numShows: {
+                    $sum: 1
+                }
+            }
+        }
+    ]
+)
+
+
 // c) Using $match to filter grouped documents
 // SQL has a WHERE clause to filter records before grouping, and a HAVING clause
 // after grouping (which filters the grouped records based on some aggregate value
 // usually). In MongoDB, $match fulfils both these requirements.
 // i) Repeat the exercise grouping shows by network name and country. The final results
 // should show only the grouped documents of networks that have at least 5 shows.
+
 // ii) Repeat the same but show only groups with average runtime at less than 50.
 // d) Using $sort to sort documents
+
+
 // i) Group shows by name of network and country they are running in, and also find the
 // number of shows, and average runtime of shows in each group (network+country
 // combination). Now sort them by the number of shows (group with highest number
 // of shows appears first). If 2 networks are tied on number of shows, the one with the
 // lower average runtime appears first.
+
 // ii) Repeat the above exercise, but make sure groups are formed only on shows that are
 // “Running”
 // e) Using $project to create a new collection with only selected fields.
