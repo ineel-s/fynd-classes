@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "type": "Reality"
+  },
+  "numShows": 10
+},{
+  "_id": {
+    "type": "Animation"
+  },
+  "numShows": 9
+},{
+  "_id": {
+    "type": "Talk Show"
+  },
+  "numShows": 3
+},{
+  "_id": {
+    "type": "Scripted"
+  },
+  "numShows": 195
+}]

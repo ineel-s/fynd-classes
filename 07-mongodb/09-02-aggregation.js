@@ -162,23 +162,152 @@ db.shows.aggregate(
 // usually). In MongoDB, $match fulfils both these requirements.
 // i) Repeat the exercise grouping shows by network name and country. The final results
 // should show only the grouped documents of networks that have at least 5 shows.
+db.shows.aggregate(
+    [
+        {
+            $group: {
+                _id: {
+                    name: "$network.name",
+                    country: "$network.country.code"
+                },
+                numShows: {
+                    $sum: 1
+                },
+                averageRuntime: {
+                    $avg: "$runtime"
+                },
+                showNames: { // array field with the names of the shows in this group
+                    $push: "$name"
+                }
+            }
+        },
+        { // HAVING clause of SQL
+            $match: {
+                numShows: {
+                    $gte: 5
+                }
+            }
+        }
+    ]
+)
 
 // ii) Repeat the same but show only groups with average runtime at less than 50.
-// d) Using $sort to sort documents
+db.shows.aggregate(
+    [
+        {
+            $group: {
+                _id: {
+                    name: "$network.name",
+                    country: "$network.country.code"
+                },
+                numShows: {
+                    $sum: 1
+                },
+                averageRuntime: {
+                    $avg: "$runtime"
+                },
+                showNames: { // array field with the names of the shows in this group
+                    $push: "$name"
+                }
+            }
+        },
+        { // HAVING clause of SQL
+            $match: {
+                averageRuntime: {
+                    $lt: 50
+                }
+            }
+        }
+    ]
+)
 
+
+// d) Using $sort to sort documents
 
 // i) Group shows by name of network and country they are running in, and also find the
 // number of shows, and average runtime of shows in each group (network+country
 // combination). Now sort them by the number of shows (group with highest number
 // of shows appears first). If 2 networks are tied on number of shows, the one with the
 // lower average runtime appears first.
+db.shows.aggregate(
+    [
+        {
+            $group: {
+                _id: {
+                    name: "$network.name",
+                    country: "$network.country.code"
+                },
+                numShows: {
+                    $sum: 1
+                },
+                averageRuntime: {
+                    $avg: "$runtime"
+                },
+                showNames: { // array field with the names of the shows in this group
+                    $push: "$name"
+                }
+            }
+        },
+        {
+            $sort: {
+                numShows: -1,
+                averageRuntime: 1
+            }
+        }
+    ]
+)
 
-// ii) Repeat the above exercise, but make sure groups are formed only on shows that are
-// “Running”
+// ii) Repeat the above exercise, but make sure groups are formed only on shows that are "Running"
+db.shows.aggregate(
+    [
+        {
+            $match: {
+                status: 'Running'
+            }
+        },
+        {
+            $group: {
+                _id: {
+                    name: "$network.name",
+                    country: "$network.country.code"
+                },
+                numShows: {
+                    $sum: 1
+                },
+                averageRuntime: {
+                    $avg: "$runtime"
+                },
+                showNames: { // array field with the names of the shows in this group
+                    $push: "$name"
+                }
+            }
+        },
+        {
+            $sort: {
+                numShows: -1,
+                averageRuntime: 1
+            }
+        }
+    ]
+)
+
 // e) Using $project to create a new collection with only selected fields.
 // NOTE: Some useful operators would be $concat, $toDate, $year, $convert
 // i) Find the name, network name, schedule and runtime of all shows
-// www.digdeeper.in © Prashanth Puranik puranik@digdeeper.in
+db.shows.aggregate(
+    [
+        {
+            $project: {
+                showName: "$name",
+                networkName: "$network.name",
+                schedule: "$schedule",
+                runtime: "$runtime"
+            }
+        }
+    ]
+)
+
+
 // ii) Modify the above query so that the network name is reported along with the
 // network’s country code like so – “name (code)”, i.e. like “HBO (US)”
 // iii) Repeat the above query, but add premiered to the list of fields. However it should be
