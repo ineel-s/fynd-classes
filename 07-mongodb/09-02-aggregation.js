@@ -305,8 +305,39 @@ db.shows.aggregate(
             }
         }
     ]
-)
+);
 
+db.shows.aggregate(
+    [
+        {
+            $project: {
+                showName: "$name",
+                networkName: {
+                    $concat: [ "$network.name", " (", "$network.country.code" , ")" ]
+                },
+                schedule: "$schedule",
+                runtime: "$runtime",
+                premiered: { // typecast from string to proper date object
+                    $convert: {
+                        to: "date",
+                        input: "$premiered"
+                    }
+                }
+            }
+        },
+        {
+            $project: {
+                showName: 1, // same as showName: "$showName"
+                networkName: 1,
+                schedule: 1,
+                runtime: 1,
+                premieredYear: {
+                    $year: "$premiered"
+                }
+            }
+        }
+    ]
+);
 
 // ii) Modify the above query so that the network name is reported along with the
 // network’s country code like so – “name (code)”, i.e. like “HBO (US)”

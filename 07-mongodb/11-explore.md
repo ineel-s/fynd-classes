@@ -1,0 +1,3 @@
+- Clustering
+- Sharding - breaking collection into multiple smaller collections each stored on different servers in thhe cluster
+- Replication - duplication of data across multiple servers in the cluster
