@@ -8,7 +8,11 @@ let nextId = 13;
 
 const getWorkshops = ( page ) => {
     // find returns a Promise
-    return Workshop.find();
+    // return Workshop.find().skip( ( page - 1 ) * PAGE_SIZE ).limit( PAGE_SIZE );
+    const query = Workshop.find();
+    query.skip( ( page - 1 ) * PAGE_SIZE ).limit( PAGE_SIZE );
+
+    return query.exec();
 };
 
 const getWorkshopById = ( _id ) => {
