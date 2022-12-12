@@ -10,10 +10,16 @@ class Person {
         this.age = age;
     }
 
+    // static xyz() {
+
+    // }
+
     celebrateBirthday() {
         this.age++;
     }
 }
+
+// Person.xyz();
 
 const john = new Person( 'John', 32 );
 john.celebrateBirthday();

@@ -1,14 +1,15 @@
-const mongoose = require( 'mongoose' );
 const workshops = require( '../../data/workshops.json' );
 const { PAGE_SIZE } = require( '../config' );
 
-const Workshop = mongoose.model( 'Workshop' );
-
 let nextId = 13;
 
+// In a real app, a query to the database would have been made in this method
 const getWorkshops = ( page ) => {
-    // find returns a Promise
-    return Workshop.find();
+    const pagedWorkshops = workshops.slice( ( page - 1 ) * PAGE_SIZE, page * PAGE_SIZE )
+    return {
+        workshops: pagedWorkshops,
+        total: workshops.length
+    };
 };
 
 const getWorkshopById = ( idInt ) => {
