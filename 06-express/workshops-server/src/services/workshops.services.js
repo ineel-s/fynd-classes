@@ -11,8 +11,12 @@ const getWorkshops = ( page ) => {
     return Workshop.find();
 };
 
-const getWorkshopById = ( idInt ) => {
-    return workshops.find( w => w.id === idInt );
+const getWorkshopById = ( _id ) => {
+    // return Workshop.findOne({
+    //     // _id: _id
+    //     _id
+    // });
+    return Workshop.findById( _id );
 };
 
 const addWorkshop = ( newWorkshopDetails ) => {

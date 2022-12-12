@@ -17,21 +17,10 @@ const getWorkshops = async ( req, res ) => {
     });
 };
 
-const getWorkshop = ( req, res ) => {
+const getWorkshop = async ( req, res ) => {
     const { id } = req.params;
 
-    const idInt = +id;
-
-    if( isNaN( idInt ) ) {
-        // 400 -> Bad Request
-        return res.status( 400 ).json({
-            status: 'error',
-            message: 'The workshop id must be a number'
-        });
-        // return; // do not continue further
-    }
-
-    const match = WorkshopsService.getWorkshopById( idInt );
+    const match = await WorkshopsService.getWorkshopById( id );
 
     if( !match ) {
         res.status( 404 ).json({
