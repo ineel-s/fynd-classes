@@ -66,16 +66,21 @@ const postWorkshop = async ( req, res ) => {
             data: workshop
         });
     } catch( error ) {
-        console.log( error.name );
-        
-        res.status( 400 ).json({
-            status: 'error',
-            message: error.message
-        });
-
         // validation failure
+        if( error.name === 'ValidationError' ) {
+            return res.status( 400 ).json({
+                status: 'error',
+                message: error.message
+            });
+        }
 
         // db error
+        if( error.name === 'MongoServerError' ) {
+            return res.status( 500 ).json({
+                status: 'error',
+                message: error.message
+            });
+        }
     }
 };
 
