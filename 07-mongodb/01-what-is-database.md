@@ -21,7 +21,7 @@
     - RBDMS (Relational (Tabular) Database Management System) is good for structured data
         - store data in the form of tables
         - Meetings app "database"
-        - In RDBMS every entity has a propert schema
+        - In RDBMS every entity has a proper schema
         - A "row" repesents a single meeting (for example in the Meetings table), columns will represent the fields
     - Examples
         - PostGreSQL, MySQL, Oracle SQL, SQLite

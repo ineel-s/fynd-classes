@@ -1,5 +1,6 @@
 const express = require( 'express' );
 const path = require( 'path' );
+const { connect } = require( './db/init' );
 
 // Create an application object
 const app = express();
@@ -34,6 +35,12 @@ app.use( '/workshops', require( './routes/workshops.routes' ) );
 const PORT = process.env.PORT || 3000;
 
 // creates a web server and starts that internally
-app.listen( PORT, () => {
-    console.log( `server started on - http://localhost:${PORT}` );
-});
+connect()
+    .then(() => {
+        app.listen( PORT, () => {
+            console.log( `server started on - http://localhost:${PORT}` );
+        });
+    })
+    .catch(error => {
+        process.exit( 1 );
+    });
