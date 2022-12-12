@@ -50,10 +50,7 @@ const getWorkshop = ( req, res ) => {
 // You can do schema-based validation of request body/query string/path parameters using a library like Joi/express validtor
 // https://joi.dev/api/?v=17.7.0
 // https://express-validator.github.io/docs/
-const postWorkshop = ( req, res ) => {
-    console.log( req.body ); // data sent in the request body
-
-    // if the req.body is an empty object
+const postWorkshop = async ( req, res ) => {
     if( Object.keys( req.body ).length === 0 ) {
         return res.status( 400 ).json({
             status: 'error',
@@ -61,12 +58,25 @@ const postWorkshop = ( req, res ) => {
         });
     }
 
-    const workshop = WorkshopsService.addWorkshop( req.body );
+    try {
+        const workshop = await WorkshopsService.addWorkshop( req.body );
 
-    res.status( 201 ).json({
-        status: 'success',
-        data: workshop
-    });
+        res.status( 201 ).json({
+            status: 'success',
+            data: workshop
+        });
+    } catch( error ) {
+        console.log( error.name );
+        
+        res.status( 400 ).json({
+            status: 'error',
+            message: error.message
+        });
+
+        // validation failure
+
+        // db error
+    }
 };
 
 const patchWorkshop = ( req, res ) => {

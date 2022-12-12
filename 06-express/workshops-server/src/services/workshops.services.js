@@ -16,16 +16,7 @@ const getWorkshopById = ( idInt ) => {
 };
 
 const addWorkshop = ( newWorkshopDetails ) => {
-    const workshop = {
-        id: nextId,
-        ...newWorkshopDetails
-    };
-
-    workshops.push( workshop );
-
-    nextId++;
-
-    return workshop;
+    return Workshop.create( newWorkshopDetails );
 };
 
 const updateWorkshop = ( idInt, workshopDetails ) => {
