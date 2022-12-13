@@ -30,22 +30,16 @@ const addWorkshop = ( newWorkshopDetails ) => {
     return Workshop.create( newWorkshopDetails );
 };
 
-const updateWorkshop = ( idInt, workshopDetails ) => {
-    const matchedIdx = workshops.findIndex( w => w.id === idInt );
-
-    if( matchedIdx === -1 ) {
-        return null;
-    }
-
-    const updatedWorkshop = {
-        ...workshops[matchedIdx], // current details of the matched workhop
-        ...workshopDetails // new details (should be spread last)
-    };
-
-    // we need to replace workshop with updatedWorkshop
-    workshops.splice( matchedIdx, 1, updatedWorkshop );
-
-    return updatedWorkshop;
+const updateWorkshop = ( id, workshopDetails ) => {
+    /*
+        1. By default, the data passed (workshopDetails) is put within $set
+        {
+            $set: workshopDetails
+        }
+        2. By default, the existing workshop document shall be the resolved value
+        3. By default, no validation checks are done on update
+    */
+    return Workshop.findByIdAndUpdate( id, workshopDetails );
 };
 
 const deleteWorkshop = ( idInt ) => {

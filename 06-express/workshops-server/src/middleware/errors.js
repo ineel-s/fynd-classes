@@ -8,22 +8,16 @@ const resourceNotFound = ( req, res, next ) => {
 
 // Express considers this as an error handling middleware because it has 4 formal parameters
 const errorHandler = ( err, req, res, next ) => {
-    // Not found
-    if( err.name === Errors.NotFound ) {
-        err.status = 404;
-    }
+    // map of error names to status codes
+    const Status = {
+        [Errors.BadRequest]: 400,
+        [Errors.NotFound]: 404,
+        [Errors.ValidationError]: 400,
+        [Errors.MongoServerError]: 500,
+        [Errors.CastError]: 400,
+    };
 
-    // validation failure
-    if( err.name === Errors.ValidationError ) {
-        err.status = 400;
-    }
-
-    // db error
-    if( err.name === Errors.MongoServerError ) {
-        err.status = 500
-    }
-
-    res.status( err.status || 500 ).json({
+    res.status( Status[err.name] || 500 ).json({
         status: 'error',
         message: err.message
     });

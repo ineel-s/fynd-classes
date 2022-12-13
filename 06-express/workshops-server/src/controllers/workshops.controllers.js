@@ -1,6 +1,7 @@
 const WorkshopsService = require( '../services/workshops.services' );
 const { Errors } = require( '../constants' );
 
+// GET /workshops?page=2
 const getWorkshops = async ( req, res ) => {
     let { page } = req.query;
 
@@ -18,6 +19,7 @@ const getWorkshops = async ( req, res ) => {
     });
 };
 
+// GET /workshops/:id
 const getWorkshop = async ( req, res, next ) => {
     const { id } = req.params;
 
@@ -38,7 +40,7 @@ const getWorkshop = async ( req, res, next ) => {
     });
 };
 
-// You can do schema-based validation of request body/query string/path parameters using a library like Joi/express validtor
+// You can do schema-based validation of request body/query string/path parameters using a library like Joi/express-validator
 // https://joi.dev/api/?v=17.7.0
 // https://express-validator.github.io/docs/
 const postWorkshop = async ( req, res, next ) => {
@@ -61,40 +63,33 @@ const postWorkshop = async ( req, res, next ) => {
     }
 };
 
-const patchWorkshop = ( req, res ) => {
+const patchWorkshop = async ( req, res, next ) => {
     const { id } = req.params;
-
-    const idInt = +id;
-
-    if( isNaN( idInt ) ) {
-        return res.status( 400 ).json({
-            status: 'error',
-            message: 'The workshop id must be a number'
-        });
-    }
 
     // if the req.body is an empty object
     if( Object.keys( req.body ).length === 0 ) {
-        return res.status( 400 ).json({
-            status: 'error',
-            message: `Request body is missing, and needs to have the new workshop's details`
-        });
+        const error = new Error( `Request body is missing, and needs to have the new workshop's details` );
+        error.name = Errors.BadRequest;
+        return next( error );
     }
 
-    const updatedWorkshop = WorkshopsService.updateWorkshop( idInt, req.body );
+    try {
+        const updatedWorkshop = await WorkshopsService.updateWorkshop( id, req.body );
 
-    if( updatedWorkshop === null ) {
-        res.status( 404 ).json({
-            status: 'error',
-            message: `A workshop with id = ${idInt} does not exist`
+        if( updatedWorkshop === null ) {
+            const error = new Error( `A workshop with id = ${id} does not exist` );
+            error.name = Errors.NotFound;
+            
+            return next( error );
+        }
+
+        res.json({
+            status: 'success',
+            data: updatedWorkshop
         });
-        return;
+    } catch( error ) {
+        next( error );
     }
-
-    res.json({
-        status: 'success',
-        data: updatedWorkshop
-    });
 };
 
 const deleteWorkshop = ( req, res ) => {
