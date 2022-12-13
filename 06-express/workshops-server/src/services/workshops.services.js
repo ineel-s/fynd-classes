@@ -10,9 +10,12 @@ const getWorkshops = ( page ) => {
     // find returns a Promise
     // return Workshop.find().skip( ( page - 1 ) * PAGE_SIZE ).limit( PAGE_SIZE );
     const query = Workshop.find();
-    query.skip( ( page - 1 ) * PAGE_SIZE ).limit( PAGE_SIZE );
+    
+    query
+        .skip( ( page - 1 ) * PAGE_SIZE )
+        .limit( PAGE_SIZE );
 
-    return query.exec();
+    return query.exec(); // I think - return query; is sufficient
 };
 
 const getWorkshopById = ( _id ) => {

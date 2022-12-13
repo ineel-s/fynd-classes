@@ -12,6 +12,10 @@ app.set( 'app_title', 'Workshops App' );
 app.set( 'view engine', 'ejs' );
 app.set( 'views', path.join( process.cwd(), 'views' ) );
 
+// add the logger as a middleware using app.use() - the ORDER MATTERS
+app.use( require( './middleware/logger' ).logger );
+app.use( require( './middleware/logger' ).logger2 );
+
 // app.get( '/public/external/css/bootstrap.css', ( req, res ) => {
 //     res.sendFile( path.join( process.cwd(), '/public/external/css/bootstrap.css' ) );
 // } )
