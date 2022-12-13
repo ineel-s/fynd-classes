@@ -39,21 +39,11 @@ const updateWorkshop = ( id, workshopDetails ) => {
         2. By default, the existing workshop document shall be the resolved value
         3. By default, no validation checks are done on update
     */
-    return Workshop.findByIdAndUpdate( id, workshopDetails );
+    return Workshop.findByIdAndUpdate( id, workshopDetails/*, { returnOrginal : false } */ );
 };
 
-const deleteWorkshop = ( idInt ) => {
-    const matchedIdx = workshops.findIndex( w => w.id === idInt );
-
-    if( matchedIdx === -1 ) {
-        return null;
-    }
-
-    const deletedWorkshop = workshops[matchedIdx];
-
-    workshops.splice( matchedIdx, 1 );
-
-    return deletedWorkshop;
+const deleteWorkshop = ( id ) => {
+    return Workshop.findByIdAndDelete( id );
 };
 
 module.exports = {

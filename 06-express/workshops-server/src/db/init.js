@@ -1,5 +1,9 @@
 const mongoose = require( 'mongoose' );
 
+// global configurations for queries
+mongoose.set( 'returnOriginal', false );
+mongoose.set( 'runValidators', true );
+
 // create the models
 require( '../models/Workshop' );
 

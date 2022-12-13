@@ -31,7 +31,7 @@ const getWorkshop = async ( req, res, next ) => {
         const match = await WorkshopsService.getWorkshopById( id );
 
         if( !match ) {
-            const error = new Error( `A workshop with id = ${idInt} does not exist` );
+            const error = new Error( `A workshop with id = ${id} does not exist` );
             error.name = Errors.NotFound;
         
             // since we are passing an error object, the error handler middleware is called
@@ -100,35 +100,28 @@ const patchWorkshop = async ( req, res, next ) => {
     }
 };
 
-const deleteWorkshop = ( req, res ) => {
+const deleteWorkshop = async ( req, res, next ) => {
     const { id } = req.params;
 
-    const idInt = +id;
+    try {
+        const deletedWorkshop = await WorkshopsService.deleteWorkshop( id );
 
-    if( isNaN( idInt ) ) {
-        return res.status( 400 ).json({
-            status: 'error',
-            message: 'The workshop id must be a number'
+        if( deletedWorkshop === null ) {
+            const error = new Error( `A workshop with id = ${id} does not exist` );
+            error.name = Errors.NotFound;
+            return next( error );
+        }
+
+        // convention to pass 204 to convey success, but without explicit data sent in response body
+        // res.status( 204 ).json();
+
+        res.json({
+            status: 'success',
+            data: null
         });
+    } catch( error ) {
+        next( error );
     }
-
-    const deletedWorkshop = WorkshopsService.deleteWorkshop( idInt );
-
-    if( deletedWorkshop === null ) {
-        res.status( 404 ).json({
-            status: 'error',
-            message: `A workshop with id = ${idInt} does not exist`
-        });
-        return;
-    }
-
-    // convention to pass 204 to convey success, but without explciit data sent in response body
-    // res.status( 204 ).json();
-
-    res.json({
-        status: 'success',
-        data: null
-    });
 };
 
 module.exports = {
