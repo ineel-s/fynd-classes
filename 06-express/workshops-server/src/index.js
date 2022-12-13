@@ -1,5 +1,7 @@
+const fs = require( 'fs' );
 const express = require( 'express' );
 const path = require( 'path' );
+const morgan = require( 'morgan' );
 const { connect } = require( './db/init' );
 
 // Create an application object
@@ -11,6 +13,11 @@ app.set( 'app_title', 'Workshops App' );
 // set up the templating engine (ejs)
 app.set( 'view engine', 'ejs' );
 app.set( 'views', path.join( process.cwd(), 'views' ) );
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+// morgan - a request logger
+app.use( morgan( 'combined', { stream: accessLogStream } ) );
 
 // add the logger as a middleware using app.use() - the ORDER MATTERS
 app.use( require( './middleware/logger' ).logger );
