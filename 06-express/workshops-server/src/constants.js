@@ -1,9 +1,9 @@
 const Errors = {
     BadRequest: 'BadRequest',
-    NotFound: 'NotFound',
-    ValidationError: 'ValidationError',
+    CastError: 'CastError',
     MongoServerError: 'MongoServerError',
-    CastError: 'CastError'
+    NotFound: 'NotFound',
+    ValidationError: 'ValidationError'
 };
 
 module.exports = {

@@ -11,10 +11,10 @@ const errorHandler = ( err, req, res, next ) => {
     // map of error names to status codes
     const Status = {
         [Errors.BadRequest]: 400,
-        [Errors.NotFound]: 404,
-        [Errors.ValidationError]: 400,
-        [Errors.MongoServerError]: 500,
         [Errors.CastError]: 400,
+        [Errors.MongoServerError]: 500,
+        [Errors.NotFound]: 404,
+        [Errors.ValidationError]: 400
     };
 
     res.status( Status[err.name] || 500 ).json({

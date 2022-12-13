@@ -11,33 +11,41 @@ const getWorkshops = async ( req, res ) => {
         page = 1;
     }
 
-    const workshops = await WorkshopsService.getWorkshops( page );
+    try {
+        const workshops = await WorkshopsService.getWorkshops( page );
 
-    res.json({
-        status: 'success',
-        data: workshops
-    });
+        res.json({
+            status: 'success',
+            data: workshops
+        });
+    } catch( error ) {
+        next( error );
+    }
 };
 
 // GET /workshops/:id
 const getWorkshop = async ( req, res, next ) => {
     const { id } = req.params;
 
-    const match = await WorkshopsService.getWorkshopById( id );
+    try {
+        const match = await WorkshopsService.getWorkshopById( id );
 
-    if( !match ) {
-        const error = new Error( `A workshop with id = ${idInt} does not exist` );
-        error.name = Errors.NotFound;
-       
-        // since we are passing an error object, the error handler middleware is called
+        if( !match ) {
+            const error = new Error( `A workshop with id = ${idInt} does not exist` );
+            error.name = Errors.NotFound;
+        
+            // since we are passing an error object, the error handler middleware is called
+            next( error );
+            return;
+        }
+
+        res.json({
+            status: 'success',
+            data: match
+        });
+    } catch( error ) {
         next( error );
-        return;
     }
-
-    res.json({
-        status: 'success',
-        data: match
-    });
 };
 
 // You can do schema-based validation of request body/query string/path parameters using a library like Joi/express-validator
