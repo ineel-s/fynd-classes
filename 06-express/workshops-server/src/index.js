@@ -43,6 +43,10 @@ app.use( express.urlencoded( { extended: false } ) );
 app.use( '/', require( './routes/index.routes' ) );
 app.use( '/workshops', require( './routes/workshops.routes' ) );
 
+// we set up error handling in the final set of middleware
+app.use( require( './middleware/errors' ).resourceNotFound );
+app.use( require( './middleware/errors' ).errorHandler );
+
 const PORT = process.env.PORT || 3000;
 
 // creates a web server and starts that internally

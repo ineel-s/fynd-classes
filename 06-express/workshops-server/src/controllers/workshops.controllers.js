@@ -17,16 +17,17 @@ const getWorkshops = async ( req, res ) => {
     });
 };
 
-const getWorkshop = async ( req, res ) => {
+const getWorkshop = async ( req, res, next ) => {
     const { id } = req.params;
 
     const match = await WorkshopsService.getWorkshopById( id );
 
     if( !match ) {
-        res.status( 404 ).json({
-            status: 'error',
-            message: `A workshop with id = ${idInt} does not exist`
-        });
+        const error = new Error( `A workshop with id = ${idInt} does not exist` );
+        error.name = 'NotFound';
+       
+        // since we are passing an error object, the error handler middleware is called
+        next( error );
         return;
     }
 
@@ -39,7 +40,7 @@ const getWorkshop = async ( req, res ) => {
 // You can do schema-based validation of request body/query string/path parameters using a library like Joi/express validtor
 // https://joi.dev/api/?v=17.7.0
 // https://express-validator.github.io/docs/
-const postWorkshop = async ( req, res ) => {
+const postWorkshop = async ( req, res, next ) => {
     if( Object.keys( req.body ).length === 0 ) {
         return res.status( 400 ).json({
             status: 'error',
@@ -55,21 +56,7 @@ const postWorkshop = async ( req, res ) => {
             data: workshop
         });
     } catch( error ) {
-        // validation failure
-        if( error.name === 'ValidationError' ) {
-            return res.status( 400 ).json({
-                status: 'error',
-                message: error.message
-            });
-        }
-
-        // db error
-        if( error.name === 'MongoServerError' ) {
-            return res.status( 500 ).json({
-                status: 'error',
-                message: error.message
-            });
-        }
+        next( error );
     }
 };
 
