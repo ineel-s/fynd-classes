@@ -1,4 +1,5 @@
 const WorkshopsService = require( '../services/workshops.services' );
+const { Errors } = require( '../constants' );
 
 const getWorkshops = async ( req, res ) => {
     let { page } = req.query;
@@ -24,7 +25,7 @@ const getWorkshop = async ( req, res, next ) => {
 
     if( !match ) {
         const error = new Error( `A workshop with id = ${idInt} does not exist` );
-        error.name = 'NotFound';
+        error.name = Errors.NotFound;
        
         // since we are passing an error object, the error handler middleware is called
         next( error );

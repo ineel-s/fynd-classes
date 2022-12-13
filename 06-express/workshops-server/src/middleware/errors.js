@@ -1,3 +1,5 @@
+const { Errors } = require( '../constants' );
+
 const resourceNotFound = ( req, res, next ) => {
     const error = new Error( 'API not supported' );
     error.name = 'NotFound';
@@ -7,17 +9,17 @@ const resourceNotFound = ( req, res, next ) => {
 // Express considers this as an error handling middleware because it has 4 formal parameters
 const errorHandler = ( err, req, res, next ) => {
     // Not found
-    if( err.name === 'NotFound' ) {
+    if( err.name === Errors.NotFound ) {
         err.status = 404;
     }
 
     // validation failure
-    if( err.name === 'ValidationError' ) {
+    if( err.name === Errors.ValidationError ) {
         err.status = 400;
     }
 
     // db error
-    if( err.name === 'MongoServerError' ) {
+    if( err.name === Errors.MongoServerError ) {
         err.status = 500
     }
 
