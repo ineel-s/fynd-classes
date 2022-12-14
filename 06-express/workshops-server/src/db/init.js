@@ -5,6 +5,7 @@ mongoose.set( 'returnOriginal', false );
 mongoose.set( 'runValidators', true );
 
 // create the models
+require( '../models/User' );
 require( '../models/Workshop' );
 
 const connect = async () => {

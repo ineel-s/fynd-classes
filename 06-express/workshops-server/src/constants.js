@@ -3,7 +3,9 @@ const Errors = {
     CastError: 'CastError',
     MongoServerError: 'MongoServerError',
     NotFound: 'NotFound',
-    ValidationError: 'ValidationError'
+    ValidationError: 'ValidationError',
+    Unauthorized: 'Unauthorized',
+    InternalServerError: 'InternalServerError'
 };
 
 module.exports = {

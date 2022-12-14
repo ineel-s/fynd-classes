@@ -14,7 +14,9 @@ const errorHandler = ( err, req, res, next ) => {
         [Errors.CastError]: 400,
         [Errors.MongoServerError]: 500,
         [Errors.NotFound]: 404,
-        [Errors.ValidationError]: 400
+        [Errors.ValidationError]: 400,
+        [Errors.Unauthorized]: 401,
+        [Errors.InternalServerError]: 500
     };
 
     res.status( Status[err.name] || 500 ).json({
