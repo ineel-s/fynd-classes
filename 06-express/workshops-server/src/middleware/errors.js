@@ -12,6 +12,7 @@ const errorHandler = ( err, req, res, next ) => {
     const Status = {
         [Errors.BadRequest]: 400,
         [Errors.CastError]: 400,
+        [Errors.Forbidden]: 403,
         [Errors.MongoServerError]: 500,
         [Errors.NotFound]: 404,
         [Errors.ValidationError]: 400,

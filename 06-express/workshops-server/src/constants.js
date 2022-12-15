@@ -5,7 +5,8 @@ const Errors = {
     NotFound: 'NotFound',
     ValidationError: 'ValidationError',
     Unauthorized: 'Unauthorized',
-    InternalServerError: 'InternalServerError'
+    InternalServerError: 'InternalServerError',
+    Forbidden: 'Forbidden'
 };
 
 module.exports = {

@@ -2,7 +2,8 @@ const WorkshopsService = require( '../services/workshops.services' );
 const { Errors } = require( '../constants' );
 
 // GET /workshops?page=2
-const getWorkshops = async ( req, res ) => {
+const getWorkshops = async ( req, res, next ) => {
+    console.log( 'controller : ', res.locals.claims );
     let { page } = req.query;
 
     page = +page;

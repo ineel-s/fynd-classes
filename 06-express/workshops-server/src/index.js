@@ -4,7 +4,9 @@ const fs = require( 'fs' );
 const express = require( 'express' );
 const path = require( 'path' );
 const morgan = require( 'morgan' );
+const cors = require( 'cors' );
 const { connect } = require( './db/init' );
+
 
 // Create an application object
 const app = express();
@@ -17,6 +19,11 @@ app.set( 'view engine', 'ejs' );
 app.set( 'views', path.join( process.cwd(), 'views' ) );
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+// setup CORS
+app.use( cors({
+    origin: 'http://localhost:3000',
+}));
 
 // morgan - a request logger
 app.use( morgan( 'combined', { stream: accessLogStream } ) );
@@ -50,7 +57,7 @@ app.use( '/auth', require( './routes/auth.routes' ) );
 app.use( require( './middleware/errors' ).resourceNotFound );
 app.use( require( './middleware/errors' ).errorHandler );
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.SERVER_PORT || 3000;
 
 // creates a web server and starts that internally
 connect()

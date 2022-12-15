@@ -9,7 +9,7 @@ const multer = require( 'multer' );
 
 const jwt = require('./services/jwt');
 
-const port = process.env.PORT || 8001;
+const port = 8001;
 
 const fs = require('fs');
 const path = require('path');

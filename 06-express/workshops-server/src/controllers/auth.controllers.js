@@ -40,7 +40,7 @@ const login = async ( req, res, next ) => {
         if( !user ) {
             const error = new Error( 'Invalid credentials' );
             error.name = Errors.Unauthorized;
-            next( error );
+            return next( error );
         }
 
         // generate JWT
@@ -49,15 +49,25 @@ const login = async ( req, res, next ) => {
             role: user.role
         };
 
-        jwt.sign( process.env.JWT_SECRET )
+        jwt.sign( claims, process.env.JWT_SECRET, { expiresIn: '7d' }, ( err, token ) => {
+            if( err ) {
+                err.name = Errors.InternalServerError;
+                return next( err );
+            }
 
-        res.json({
-            status: 'success',
-            data: user
+            res.json({
+                status: 'success',
+                data: {
+                    email: user.email,
+                    role: user.role,
+                    token
+                }
+            });
         });
     } catch( error ) {
         const err = new Error( 'Something went wrong during login' );
         err.name = Errors.InternalServerError;
+        return next( err );
     }
 };
 
