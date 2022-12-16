@@ -14,5 +14,7 @@ router.post( '/', authenticate, authorize( 'admin' ), WorkshopsCtrl.postWorkshop
 // router.patch( '/:id/:action', authenticate, WorkshopsCtrl.patchWorkshop );
 router.patch( '/:id', authenticate, WorkshopsCtrl.patchWorkshop );
 router.delete( '/:id', authenticate, WorkshopsCtrl.deleteWorkshop );
+router.get( '/:id/topics', WorkshopsCtrl.getTopics );
+router.post( '/:id/topics', WorkshopsCtrl.postTopic );
 
 module.exports = router;

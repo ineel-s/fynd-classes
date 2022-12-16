@@ -1,4 +1,5 @@
 const WorkshopsService = require( '../services/workshops.services' );
+const TopicsService = require( '../services/topics.services' );
 const { Errors } = require( '../constants' );
 
 // GET /workshops?page=2
@@ -125,10 +126,47 @@ const deleteWorkshop = async ( req, res, next ) => {
     }
 };
 
+// Sample: http://localhost:3000/workshops/62ed150ad0d302eca77f0f38/topics
+const getTopics = async ( req, res, next ) => {
+    const workshopId = req.params.id;
+
+    try {
+        const topics = await TopicsService.getTopics( workshopId );
+        res.status( 200 ).json({
+            status: 'success',
+            data: topics
+        });
+    } catch( error ) {
+        next( error );
+    }
+};
+
+const postTopic = async ( req, res, next ) => {
+    const workshop = req.params.id;
+    const topic = {
+        // workshop: workshop,
+        workshop,
+        ...req.body
+    };
+    
+    try {
+        let updatedTopic = await TopicsService.addTopic( topic );
+        
+        res.status( 201 ).json({
+            status: 'success',
+            data: updatedTopic
+        });
+    } catch( error ) {
+        next( error )
+    }
+};
+
 module.exports = {
     getWorkshops,
     getWorkshop,
     postWorkshop,
     patchWorkshop,
-    deleteWorkshop
+    deleteWorkshop,
+    getTopics,
+    postTopic
 };

@@ -51,6 +51,7 @@ app.use( express.urlencoded( { extended: false } ) );
 // /workshops -> base route for all paths handled by the router (called "mount path")
 app.use( '/', require( './routes/index.routes' ) );
 app.use( '/workshops', require( './routes/workshops.routes' ) );
+app.use( '/topics', require( './routes/topics.routes' ) );
 app.use( '/auth', require( './routes/auth.routes' ) );
 
 // we set up error handling in the final set of middleware

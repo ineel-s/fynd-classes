@@ -7,6 +7,7 @@ mongoose.set( 'runValidators', true );
 // create the models
 require( '../models/User' );
 require( '../models/Workshop' );
+require( '../models/Topic' );
 
 const {
     DB_HOST,
