@@ -9,6 +9,7 @@ const WorkshopsCtrl = require( '../controllers/workshops.controllers' );
 const router = Router();
 
 router.get( '/', authenticate, WorkshopsCtrl.getWorkshops );
+router.get( '/categorize', authenticate, WorkshopsCtrl.categorize );
 router.get( '/:id', authenticate, WorkshopsCtrl.getWorkshop );
 router.post( '/', authenticate, authorize( 'admin' ), WorkshopsCtrl.postWorkshop );
 // router.patch( '/:id/:action', authenticate, WorkshopsCtrl.patchWorkshop );

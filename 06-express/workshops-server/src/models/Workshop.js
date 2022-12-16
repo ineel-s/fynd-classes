@@ -60,6 +60,9 @@ const workshopsSchema = new mongoose.Schema({
     // topics: {
     //     type: [ mongoose.Schema.Types.ObjectId ]
     // }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 });
 
 // inverse relationship is set up (Workshop -> Topic)

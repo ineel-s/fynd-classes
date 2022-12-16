@@ -161,6 +161,19 @@ const postTopic = async ( req, res, next ) => {
     }
 };
 
+const categorize = async ( req, res, next ) => {
+    try {
+        const data = await WorkshopsService.categorize();
+
+        res.json({
+            status: 'success',
+            data
+        });
+    } catch( error ) {
+        return next( error );
+    }
+};
+
 module.exports = {
     getWorkshops,
     getWorkshop,
@@ -168,5 +181,6 @@ module.exports = {
     patchWorkshop,
     deleteWorkshop,
     getTopics,
-    postTopic
+    postTopic,
+    categorize
 };

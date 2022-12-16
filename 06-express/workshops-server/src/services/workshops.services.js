@@ -23,7 +23,7 @@ const getWorkshopById = ( _id ) => {
     //     // _id: _id
     //     _id
     // });
-    return Workshop.findById( _id );
+    return Workshop.findById( _id ).populate( 'topics' );
 };
 
 const addWorkshop = ( newWorkshopDetails ) => {
@@ -46,10 +46,27 @@ const deleteWorkshop = ( id ) => {
     return Workshop.findByIdAndDelete( id );
 };
 
+const categorize = async () => {
+    return Workshop
+            .aggregate(
+                [
+                    {
+                        $group: {
+                            _id: "$category",
+                            numWorkshops: {
+                                $sum: 1 // or $count: {} in latest MongoDB versions
+                            }
+                        }
+                    }
+                ]
+            );
+};
+
 module.exports = {
     getWorkshops,
     getWorkshopById,
     addWorkshop,
     updateWorkshop,
-    deleteWorkshop
+    deleteWorkshop,
+    categorize
 };
