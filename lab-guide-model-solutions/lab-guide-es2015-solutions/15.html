@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Using Promises, Promise.all(), fetch</title>
+    </head>
+    <body>
+        <h1>Check the console for logs</h1>
+
+        <script>
+            function getJsonDataOrThrowError( response ) {
+                if( !response.ok ) {
+                    throw new Error( response.statusText );
+                }
+                
+                return response.json();
+            }
+
+            const getWorkshops = async () => {
+                const response = await fetch( `https://workshops-server.herokuapp.com/workshops` );
+                const workshops = getJsonDataOrThrowError( response );
+                return workshops;
+            };
+
+            const getSessions = async () => {
+                const response = await fetch( `https://workshops-server.herokuapp.com/sessions` );
+                const sessions = getJsonDataOrThrowError( response );
+                return sessions;
+            };
+
+            const getAllData = async () => {
+                // Promise.all() takes in an array of promises, and returns a promise. The resolved value of this promise is an array with the resolved value of the individual promises in the array (in the array of promises)
+                const [ workshops, sessions ] = await Promise.all( [ getWorkshops(), getSessions() ] );
+                
+                return {
+                    workshops,
+                    sessions
+                };
+            };
+
+            getAllData()
+                .then(data => {
+                    console.log( data );
+                })
+                .catch(error => {
+                    console.log( error.message );
+                });
+        </script>
+    </body>
+</html>

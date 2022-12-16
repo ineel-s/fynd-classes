@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Using Promises, async..await, fetch</title>
+    </head>
+    <body>
+        <h1>Check the console for logs</h1>
+
+        <script>
+            // NOTE: response.json() returns a promise and hence this function has to be awaited upon
+            const getJsonDataOrThrowError = ( response ) => {
+                if( !response.ok ) {
+                    throw new Error( response.statusText );
+                }
+                
+                return response.json();
+            }
+
+            // NOTE: async function returns a promise which resolves with the value in the return statement, and hence this function has to be awaited upon
+            const getCommentersEmailIds = async ( username ) => {
+                let response, data;
+                
+                response = await fetch( `https://jsonplaceholder.typicode.com/users?username=${username}` )
+                data = await getJsonDataOrThrowError( response );
+                
+                const userId = data[0].id;
+                response = await fetch( `https://jsonplaceholder.typicode.com/users/${userId}/posts` );
+                data = await getJsonDataOrThrowError( response );
+
+                const postId = data[0].id;
+                response = await fetch( `https://jsonplaceholder.typicode.com/comments?postId=${postId}` );
+                data = await getJsonDataOrThrowError( response );
+
+                const emailIds = data.map( ( { email } ) => email );
+                return emailIds; 
+            }
+
+            // using an IIFE to execute the function immediately
+            (async () => {
+                try {
+                    const emailIds = await getCommentersEmailIds( 'Bret' );
+                    console.log( emailIds)
+                } catch( error ) {
+                    console.log( error.message );
+                }
+            })(); 
+        </script>
+    </body>
+</html>

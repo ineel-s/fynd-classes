@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Using Modules - Projects and Employees</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script type="module">
+            import { projects, employees } from './index.js';
+            
+            const getTableMarkup = ( caption, dataList ) => {
+                const keys = Object.keys( dataList[0] );
+
+                return `
+                    <table>
+                        <caption>${caption}</caption>
+                        <thead>
+                            <tr>
+                                ${
+                                    keys.map(
+                                        key => `<th>${key.toUpperCase()}</th>`
+                                    ).join( '' )
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${
+                                dataList.map(
+                                    item => `
+                                        <tr>
+                                            ${
+                                                keys.map(
+                                                    key => `<td>${item[key]}</td>`
+                                                ).join( '' )
+                                            }
+                                        </tr>
+                                    `
+                                ).join( '' )
+                            }
+                        </tbody>
+                    </table>
+                `;
+            }
+
+            const render = () => {
+                const root = document.getElementById( 'root' );
+
+                // The Project class has a toString() implementation that displays the name of the project. This helps display the array of projects for every employee.
+                root.innerHTML = `
+                    ${getTableMarkup( 'Projects', projects )}
+                    <hr />
+                    ${getTableMarkup( 'Employees', employees )}
+                `;
+            }
+            
+            render();
+        </script>
+    </body>
+</html>
